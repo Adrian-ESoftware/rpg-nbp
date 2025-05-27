@@ -27,13 +27,29 @@ const ActionButtons: React.FC = () => (
         <Link
           key={button.id}
           href={button.href}
-          className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 hover:from-gray-700/80 hover:to-gray-800/80 border border-yellow-900/30 p-8 rounded-xl text-center transition-all duration-300 hover:shadow-[0_0_30px_rgba(16,185,129,0.2)] hover:border-emerald-600/50 group cursor-pointer block backdrop-blur-sm"
+          className={`
+            bg-background bg-opacity-80
+            hover:bg-opacity-90
+            border border-border
+            p-8 rounded-xl text-center
+            transition-all duration-300
+            hover:shadow-[0_0_30px_rgb(var(--primary))]
+            hover:border-primary
+            group cursor-pointer block backdrop-blur-sm
+          `}
         >
-          <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-emerald-600/20 to-emerald-800/20 border-2 border-emerald-500 flex items-center justify-center group-hover:from-emerald-500 group-hover:to-emerald-600 transition-all duration-300 shadow-lg">
-            <IconComponent className="w-8 h-8 text-emerald-400 group-hover:text-gray-900" />
-          </div>
-          <h3 className="text-2xl font-bold text-emerald-400 mb-2 font-serif">{button.label}</h3>
-          <p className="text-gray-200/70">{button.desc}</p>
+            <div className={`
+            w-20 h-20 mx-auto mb-6 rounded-full
+            bg-primary bg-opacity-20
+            border-2 border-primary
+            flex items-center justify-center
+            group-hover:bg-opacity-40
+            transition-all duration-300 shadow-lg
+            `}>
+            <IconComponent className="w-8 h-8 text-background" />
+            </div>
+          <h3 className="text-2xl font-bold text-primary mb-2 font-serif">{button.label}</h3>
+          <p className="text-foreground/70">{button.desc}</p>
         </Link>
       )
     })}

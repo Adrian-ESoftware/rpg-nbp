@@ -9,7 +9,6 @@ const notifications = [
     date: "27 de Maio, 2025",
     type: "update",
     icon: Scroll,
-    bgColor: "bg-emerald-600",
   },
   {
     id: 2,
@@ -18,7 +17,6 @@ const notifications = [
     date: "25 de Maio, 2025",
     type: "event",
     icon: Calendar,
-    bgColor: "bg-blue-600",
   },
   {
     id: 3,
@@ -27,7 +25,6 @@ const notifications = [
     date: "24 de Maio, 2025",
     type: "system",
     icon: Gear,
-    bgColor: "bg-gray-700",
   },
   {
     id: 4,
@@ -36,7 +33,6 @@ const notifications = [
     date: "20 de Maio, 2025",
     type: "update",
     icon: BookOpen,
-    bgColor: "bg-yellow-600",
   },
   {
     id: 5,
@@ -45,33 +41,43 @@ const notifications = [
     date: "18 de Maio, 2025",
     type: "invite",
     icon: Mail,
-    bgColor: "bg-red-600",
   },
 ]
 
+const borderColorsByType: Record<string, string> = {
+  update: "border-primary",
+  event: "border-accent",
+  system: "border-muted",
+  invite: "border-destructive",
+}
+
 const NotificationsPanel: React.FC = () => (
-  <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 border border-yellow-900/30 rounded-xl p-8 h-full shadow-2xl backdrop-blur-sm">
-    <h2 className="text-2xl font-bold text-emerald-400 mb-8 flex items-center font-serif">
+  <div className="bg-background bg-opacity-80 border border-border rounded-xl p-8 h-full shadow-2xl backdrop-blur-sm">
+    <h2 className="text-2xl font-bold text-primary mb-8 flex items-center font-serif select-none">
       <Bell className="w-6 h-6 mr-3" />
       Quadro de Avisos
     </h2>
     <div className="space-y-6 max-h-[700px] overflow-y-auto pr-2">
       {notifications.map((notification) => {
         const IconComponent = notification.icon
+        const borderColorClass = borderColorsByType[notification.type] || "border-border"
         return (
           <div
             key={notification.id}
-            className={`bg-gray-900/70 p-6 rounded-xl border-4 border-transparent relative cursor-pointer hover:border-emerald-500 transition-all duration-200 shadow-lg backdrop-blur-sm`}
-            style={{ borderColor: notification.bgColor.replace("bg-", "") }}
+            className={`
+              bg-card bg-opacity-70 p-6 rounded-xl border-4 border-transparent
+              relative cursor-pointer hover:${borderColorClass} transition-all duration-200
+              shadow-lg backdrop-blur-sm
+            `}
           >
             <div className="flex items-start">
-              <div className="w-8 h-8 rounded-full flex items-center justify-center mr-3 shadow-lg bg-gray-800">
-                <IconComponent className="w-4 h-4 text-white" />
+              <div className="w-8 h-8 rounded-full flex items-center justify-center mr-3 shadow-lg bg-muted bg-opacity-70">
+                <IconComponent className="w-4 h-4 text-foreground" />
               </div>
               <div className="flex-1">
-                <h3 className="font-bold text-gray-100 font-serif">{notification.title}</h3>
-                <p className="text-sm mb-2 text-gray-300">{notification.content}</p>
-                <p className="text-xs text-gray-400">{notification.date}</p>
+                <h3 className="font-bold text-foreground font-serif">{notification.title}</h3>
+                <p className="text-sm mb-2 text-muted-foreground">{notification.content}</p>
+                <p className="text-xs text-muted-foreground">{notification.date}</p>
               </div>
             </div>
           </div>

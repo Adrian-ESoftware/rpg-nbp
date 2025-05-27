@@ -24,10 +24,17 @@ const SidebarMenuItems: React.FC = () => (
         <SidebarMenuItem key={item.id}>
           <SidebarMenuButton
             asChild
-            className="w-full text-left px-8 py-4 flex items-center space-x-4 transition-all duration-200 hover:bg-emerald-900/20 hover:text-emerald-300 data-[active=true]:bg-emerald-900/30 data-[active=true]:text-emerald-300 data-[active=true]:border-l-4 data-[active=true]:border-emerald-400 text-gray-100"
+            className={`
+              w-full text-left px-8 py-4 flex items-center space-x-4
+              transition-all duration-200
+              hover:bg-primary/20 hover:text-primary
+              data-[active=true]:bg-primary/30 data-[active=true]:text-primary
+              data-[active=true]:border-l-4 data-[active=true]:border-primary
+              text-foreground
+            `}
           >
             <Link href={item.href} className="flex items-center space-x-4 w-full">
-              <IconComponent className="w-6 h-6 text-emerald-400" />
+              <IconComponent className="w-6 h-6 text-primary" />
               <span className="whitespace-nowrap">{item.label}</span>
             </Link>
           </SidebarMenuButton>

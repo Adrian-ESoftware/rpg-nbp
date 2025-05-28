@@ -45,10 +45,10 @@ const notifications = [
 ]
 
 const borderColorsByType: Record<string, string> = {
-  update: "border-primary",
-  event: "border-accent",
-  system: "border-muted",
-  invite: "border-destructive",
+  update: "border-primary", // Cor primária para atualizações (já estava boa)
+  event: "border-blue-500",  // Alterado para um azul mais vibrante para eventos
+  system: "border-yellow-400", // Amarelo vibrante para avisos de sistema (já estava boa)
+  invite: "border-destructive", // Cor destrutiva para convites (geralmente vermelho/laranja, deve ser visível)
 }
 
 const NotificationsPanel: React.FC = () => (
@@ -57,10 +57,26 @@ const NotificationsPanel: React.FC = () => (
       <Bell className="w-6 h-6 mr-3" />
       Quadro de Avisos
     </h2>
-    <div className="space-y-6 max-h-[700px] overflow-y-auto pr-2">
+    {/* Adicionado um estilo inline para ocultar a scrollbar */}
+    <div
+      className="space-y-6 max-h-[700px] overflow-y-auto pr-2"
+      style={{
+        scrollbarWidth: 'none', // Para Firefox
+        msOverflowStyle: 'none', // Para Internet Explorer e Edge
+      }}
+    >
+      {/* Estilo para navegadores Webkit (Chrome, Safari) */}
+      <style>
+        {`
+        .space-y-6::-webkit-scrollbar {
+          display: none;
+        }
+        `}
+      </style>
       {notifications.map((notification) => {
         const IconComponent = notification.icon
-        const borderColorClass = borderColorsByType[notification.type] || "border-border"
+        // A cor da borda será a definida em borderColorsByType ou um azul claro como fallback
+        const borderColorClass = borderColorsByType[notification.type] || "border-blue-400"
         return (
           <div
             key={notification.id}

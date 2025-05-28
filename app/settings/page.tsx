@@ -124,19 +124,12 @@ export default function SettingsPage() {
                 <button className="w-full p-3 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80 transition-colors">
                   Backup Personagens
                 </button>
-              </div>
-            </div>
-
-            {/* Danger Zone */}
-            <div className="bg-card border border-destructive/20 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-destructive mb-4">
-                Zona de Perigo
-              </h3>
-              <div className="space-y-3">
+                <div className="space-y-3">
                 <button className="w-full p-3 bg-destructive/10 text-destructive rounded-lg hover:bg-destructive/20 transition-colors flex items-center justify-center space-x-2">
                   <LogOut className="w-4 h-4" />
                   <span>Sair da Conta</span>
                 </button>
+              </div>
               </div>
             </div>
           </div>

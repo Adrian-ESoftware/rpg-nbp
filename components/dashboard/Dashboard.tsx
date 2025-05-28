@@ -12,7 +12,6 @@ import SidebarMenuItems from "./SidebarMenuItems"
 import SidebarUserProfile from "./SidebarUserProfile"
 import WelcomeBanner from "./WelcomeBanner"
 import JoinRoomPanel from "./JoinRoomPanel"
-import ActionButtons from "./ActionButtons"
 import RecentCampaigns from "./RecentCampaigns"
 import NotificationsPanel from "./NotificationsPanel"
 
@@ -69,7 +68,6 @@ const Dashboard: React.FC = () => {
 
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
                 <div className="lg:col-span-2 space-y-10">
-                  <ActionButtons />
                   <RecentCampaigns />
                 </div>
                 <div className="lg:col-span-1">

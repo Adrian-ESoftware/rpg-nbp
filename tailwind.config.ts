@@ -63,9 +63,14 @@ const config: Config = {
         },
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        DEFAULT: "0.5rem",     // 8px - rounded padrão
+        sm: "0.25rem",         // 4px - rounded-sm
+        md: "0.375rem",        // 6px - rounded-md  
+        lg: "0.5rem",          // 8px - rounded-lg (FIXO)
+        xl: "0.75rem",         // 12px - rounded-xl
+        "2xl": "1rem",         // 16px - rounded-2xl
+        "3xl": "1.5rem",       // 24px - rounded-3xl
+        full: "9999px",        // rounded-full
       },
       // Adicionando configurações de transição suave
       transitionProperty: {

@@ -1,12 +1,14 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import Link from "next/link"
-import { ArrowLeft, User, Bell, Shield, LogOut } from "lucide-react"
+import { useTranslations } from 'next-intl'
+import { User, Bell, Shield, LogOut, Globe } from "lucide-react"
 import ThemeSwitcher from "@/components/ThemeSwitcher"
+import LanguageSwitcher from "@/components/LanguageSwitcher"
 
 export default function SettingsPage() {
   const [mounted, setMounted] = useState(false)
+  const t = useTranslations('settings')
 
   useEffect(() => {
     setMounted(true)
@@ -16,27 +18,27 @@ export default function SettingsPage() {
 
   const settingsCategories = [
     {
-      title: "Perfil",
+      title: t('profile'),
       icon: User,
-      description: "Gerencie suas informações pessoais",
+      description: t('profileDescription'),
       items: [
         { label: "Editar Perfil", action: () => console.log("Editar perfil") },
         { label: "Alterar Senha", action: () => console.log("Alterar senha") },
       ]
     },
     {
-      title: "Notificações",
+      title: t('notifications'),
       icon: Bell,
-      description: "Configure suas preferências de notificação",
+      description: t('notificationsDescription'),
       items: [
         { label: "Notificações de Campanhas", action: () => console.log("Campanhas") },
         { label: "Notificações de Convites", action: () => console.log("Convites") },
       ]
     },
     {
-      title: "Segurança",
+      title: t('security'),
       icon: Shield,
-      description: "Configurações de segurança e privacidade",
+      description: t('securityDescription'),
       items: [
         { label: "Autenticação de Dois Fatores", action: () => console.log("2FA") },
         { label: "Sessões Ativas", action: () => console.log("Sessões") },
@@ -50,7 +52,7 @@ export default function SettingsPage() {
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center space-x-4">
-            <h1 className="text-3xl font-bold text-foreground">Configurações</h1>
+            <h1 className="text-3xl font-bold text-foreground">{t('title')}</h1>
           </div>
         </div>
 
@@ -60,12 +62,23 @@ export default function SettingsPage() {
             {/* Theme Section */}
             <div className="bg-card border border-border rounded-lg p-4">
               <h2 className="text-lg font-semibold text-card-foreground mb-2">
-                Aparência
+                {t('appearance')}
               </h2>
               <p className="text-muted-foreground text-sm mb-3">
-                Personalize a aparência da sua interface
+                {t('appearanceDescription')}
               </p>
               <ThemeSwitcher />
+            </div>
+
+            {/* Language Section */}
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h2 className="text-lg font-semibold text-card-foreground mb-2">
+                {t('language')}
+              </h2>
+              <p className="text-muted-foreground text-sm mb-3">
+                {t('languageDescription')}
+              </p>
+              <LanguageSwitcher />
             </div>
 
             {/* Settings Categories */}
@@ -107,19 +120,19 @@ export default function SettingsPage() {
             {/* Quick Actions */}
             <div className="bg-card border border-border rounded-lg p-6">
               <h3 className="text-lg font-semibold text-card-foreground mb-4">
-                Ações Rápidas
+                {t('quickActions')}
               </h3>
               <div className="space-y-3">
                 <button className="w-full p-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors">
-                  Exportar Dados
+                  {t('exportData')}
                 </button>
                 <button className="w-full p-3 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80 transition-colors">
-                  Backup Personagens
+                  {t('backupCharacters')}
                 </button>
                 <div className="space-y-3">
                 <button className="w-full p-3 bg-destructive/10 text-destructive rounded-lg hover:bg-destructive/20 transition-colors flex items-center justify-center space-x-2">
                   <LogOut className="w-4 h-4" />
-                  <span>Sair da Conta</span>
+                  <span>{t('logout')}</span>
                 </button>
               </div>
               </div>

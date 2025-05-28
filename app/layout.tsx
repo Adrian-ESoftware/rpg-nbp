@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
+import { NextIntlClientProvider } from 'next-intl'
+import { getLocale, getMessages } from 'next-intl/server'
 import { ThemeProvider } from "next-themes"
+import { LanguageProvider } from '@/contexts/LanguageContext'
 import "../styles/globals.css"
 
 export const metadata: Metadata = {
@@ -7,23 +10,30 @@ export const metadata: Metadata = {
   description: 'Sistema de RPG',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const locale = await getLocale()
+  const messages = await getMessages()
+
   return (
-    <html lang="pt-BR" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body suppressHydrationWarning>
-        <ThemeProvider
-          attribute="class"
-          themes={["light", "dark", "rpg", "fantasy", "emerald", "crimson"]}
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange={false}
-        >
-          {children}
-        </ThemeProvider>
+        <NextIntlClientProvider messages={messages}>
+          <LanguageProvider>
+            <ThemeProvider
+              attribute="class"
+              themes={["light", "dark", "rpg", "fantasy", "emerald", "crimson"]}
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange={false}
+            >
+              {children}
+            </ThemeProvider>
+          </LanguageProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   )

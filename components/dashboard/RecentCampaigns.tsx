@@ -2,55 +2,58 @@
 
 import React from "react"
 import { useRouter } from "next/navigation"
+import { useTranslations } from 'next-intl'
 import { Crown, BirdIcon as Dragon, TreesIcon as Tree, Dice1, PlayIcon, Wand2 } from "lucide-react"
-
-// Updated campaign data with image placeholders and descriptions
-const recentCampaigns = [
-  {
-    id: 1,
-    name: "As Ruínas de Draconia",
-    description: "Explore as antigas ruínas e desvende os segredos do dragão adormecido. Uma aventura épica espera por você!",
-    lastSession: "27 de Maio, 2025",
-    imageUrl: "https://placehold.co/400x180/525252/FFFFFF?text=Draconia+Ruins",
-    icon: Dragon,
-  },
-  {
-    id: 2,
-    name: "A Floresta dos Sussurros",
-    description: "Uma floresta mística onde cada sussurro esconde um segredo ou um perigo. Prepare-se para o desconhecido.",
-    lastSession: "20 de Maio, 2025",
-    imageUrl: "https://placehold.co/400x180/4CAF50/FFFFFF?text=Whispering+Forest",
-    icon: Tree,
-  },
-  {
-    id: 3,
-    name: "O Tesouro do Rei Caído",
-    description: "Embarque em uma jornada perigosa para recuperar o tesouro de um rei esquecido. A fortuna aguarda os bravos.",
-    lastSession: "15 de Maio, 2025",
-    imageUrl: "https://placehold.co/400x180/FFC107/333333?text=Fallen+King%27s+Treasure",
-    icon: Crown,
-  },
-  {
-    id: 4,
-    name: "A Mina Assombrada",
-    description: "Desça às profundezas de uma mina amaldiçoada em busca de riquezas e respostas. Cuidado com o que espreita nas sombras.",
-    lastSession: "08 de Maio, 2025",
-    imageUrl: "https://placehold.co/400x180/795548/FFFFFF?text=Haunted+Mine",
-    icon: Dice1,
-  },
-  // Novo card para criar sessão
-  {
-    id: 5,
-    name: "Criar Nova Sessão",
-    description: "Comece uma nova aventura do zero, defina seus desafios e convide seus jogadores.",
-    lastSession: "N/A",
-    icon: Wand2,
-    isCreateCard: true,
-  },
-]
 
 const RecentCampaigns: React.FC = () => {
   const router = useRouter()
+  const t = useTranslations('campaigns')
+  const tCommon = useTranslations('common')
+
+  // Updated campaign data with translations
+  const recentCampaigns = [
+    {
+      id: 1,
+      name: t('ruinsOfDraconia'),
+      description: t('ruinsDescription'),
+      lastSession: "27 de Maio, 2025",
+      imageUrl: "https://placehold.co/400x180/525252/FFFFFF?text=Draconia+Ruins",
+      icon: Dragon,
+    },
+    {
+      id: 2,
+      name: t('whisperingForest'),
+      description: t('forestDescription'),
+      lastSession: "20 de Maio, 2025",
+      imageUrl: "https://placehold.co/400x180/4CAF50/FFFFFF?text=Whispering+Forest",
+      icon: Tree,
+    },
+    {
+      id: 3,
+      name: t('fallenKingTreasure'),
+      description: t('treasureDescription'),
+      lastSession: "15 de Maio, 2025",
+      imageUrl: "https://placehold.co/400x180/FFC107/333333?text=Fallen+King%27s+Treasure",
+      icon: Crown,
+    },
+    {
+      id: 4,
+      name: t('hauntedMine'),
+      description: t('mineDescription'),
+      lastSession: "08 de Maio, 2025",
+      imageUrl: "https://placehold.co/400x180/795548/FFFFFF?text=Haunted+Mine",
+      icon: Dice1,
+    },
+    // Novo card para criar sessão
+    {
+      id: 5,
+      name: t('createNewSession'),
+      description: t('createNewDescription'),
+      lastSession: "N/A",
+      icon: Wand2,
+      isCreateCard: true,
+    },
+  ]
 
   // Função para lidar com o clique no card inteiro "Criar"
   const handleCreateSession = () => {
@@ -61,7 +64,7 @@ const RecentCampaigns: React.FC = () => {
     <div className="text-white font-inter">
       {/* Title and dividing line */}
       <div className="flex items-center mb-10">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-primary font-serif tracking-wide">Campanhas Recentes</h2>
+        <h2 className="text-3xl md:text-4xl font-extrabold text-primary font-serif tracking-wide">{t('recentCampaigns')}</h2>
         <div className="ml-6 flex-1 h-1 bg-gradient-to-r from-primary/70 to-transparent rounded-full"></div>
       </div>
 
@@ -137,14 +140,14 @@ const RecentCampaigns: React.FC = () => {
                     <h3 className="text-2xl font-bold text-primary mb-2 font-serif leading-tight">{campaign.name}</h3>
                     {/* Description with 3-line limit */}
                     <p className="text-foreground/80 text-sm mb-4 line-clamp-3">{campaign.description}</p>
-                    <p className="text-foreground/60 text-xs mt-2">Última sessão: {campaign.lastSession}</p>
+                    <p className="text-foreground/60 text-xs mt-2">{t('lastSession')}: {campaign.lastSession}</p>
                   </div>
                   {/* "Enter" button */}
                   <button className="mt-6 px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground rounded
                                      flex items-center justify-center space-x-3 transition-all duration-300 shadow-lg
                                      text-base font-semibold">
                     <PlayIcon className="w-5 h-5" />
-                    <span>Entrar</span>
+                    <span>{tCommon('enter')}</span>
                   </button>
                 </div>
               </div>

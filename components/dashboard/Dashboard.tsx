@@ -50,10 +50,13 @@ const Dashboard: React.FC = () => {
           </Sidebar>
           <SidebarInset className="bg-background">
             {/* Header fixo no topo */}
-            <div className="sticky top-0 z-20 bg-background border-b border-border p-4">
-              <SidebarTrigger className="text-foreground hover:text-primary cursor-pointer" />
+            <div className="sticky top-0 z-20 bg-background border-b border-border p-4 flex items-center"> {/* Added flex and items-center */}
+              {/* SidebarTrigger agora é arredondado */}
+              <SidebarTrigger
+                className="p-2 bg-card rounded-full text-foreground hover:text-primary cursor-pointer border border-transparent hover:border-primary transition-colors duration-200"
+              />
             </div>
-            
+
             <div className="p-10 overflow-y-auto relative z-10">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
                 <div className="lg:col-span-2">

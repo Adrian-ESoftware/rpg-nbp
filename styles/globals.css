@@ -23,7 +23,7 @@
                 color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Desabilitar transições durante resize para performance */
+  /* Desabilitar transições */
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -35,136 +35,142 @@
     }
   }
 
+  /* Tema Base (Light - Pergaminho e Azul Clássico) - Mantido */
   :root {
-    --background: 42 33% 97%;           /* pergaminho claro */
-    --foreground: 230 20% 15%;          /* azul petróleo escuro */
-    --card: 44 23% 95%;                 /* papel antigo */
-    --card-foreground: 230 20% 15%;
-    --popover: 44 23% 94%;
-    --popover-foreground: 230 20% 15%;
-    --primary: 222 75% 60%;             /* azul arcano */
+    --background: 45 50% 96%;           /* pergaminho mais quente */
+    --foreground: 225 25% 20%;           /* azul-acinzentado escuro */
+    --card: 45 40% 94%;                 /* pergaminho um pouco mais escuro */
+    --card-foreground: 225 25% 20%;
+    --popover: 45 40% 93%;
+    --popover-foreground: 225 25% 20%;
+    --primary: 215 70% 58%;              /* azul celeste */
     --primary-foreground: 0 0% 100%;
-    --secondary: 30 30% 85%;            /* marfim envelhecido */
-    --secondary-foreground: 230 20% 15%;
-    --muted: 220 10% 80%;               /* cinza claro com tom azul */
+    --secondary: 140 30% 85%;            /* verde sálvia claro */
+    --secondary-foreground: 140 25% 25%;
+    --muted: 220 15% 88%;                /* cinza-azulado muito claro */
     --muted-foreground: 220 10% 45%;
-    --accent: 43 70% 60%;               /* ouro pálido */
-    --accent-foreground: 230 20% 15%;
+    --accent: 35 75% 65%;                /* laranja suave (como selo de cera) */
+    --accent-foreground: 35 30% 15%;
     --destructive: 0 72% 50%;
     --destructive-foreground: 0 0% 100%;
-    --border: 44 15% 80%;
-    --input: 44 15% 80%;
-    --ring: 222 75% 60%;
+    --border: 45 25% 80%;
+    --input: 45 25% 85%;
+    --ring: 215 70% 58%;
   }
 
+  /* Tema Dark (Noite Estrelada) - Mantido */
   .dark {
-    --background: 220 15% 8%;           /* azul petróleo quase preto */
-    --foreground: 220 20% 90%;          /* gelo acinzentado */
-    --card: 220 15% 12%;
-    --card-foreground: 220 20% 90%;
-    --popover: 220 15% 12%;
-    --popover-foreground: 220 20% 90%;
-    --primary: 215 95% 65%;             /* azul intenso */
-    --primary-foreground: 0 0% 100%;
-    --secondary: 210 10% 25%;           /* ardósia escura */
-    --secondary-foreground: 220 20% 90%;
-    --muted: 215 10% 30%;               /* pedra fria */
-    --muted-foreground: 210 15% 65%;
-    --accent: 195 40% 40%;              /* ciano acinzentado */
-    --accent-foreground: 220 20% 90%;
-    --destructive: 0 60% 40%;
+    --background: 230 25% 10%;           /* azul meia-noite profundo */
+    --foreground: 210 30% 92%;           /* cinza-azulado claro (estrelas) */
+    --card: 230 25% 14%;
+    --card-foreground: 210 30% 92%;
+    --popover: 230 25% 12%;
+    --popover-foreground: 210 30% 92%;
+    --primary: 190 80% 60%;              /* ciano elétrico (nébula) */
+    --primary-foreground: 190 30% 10%;
+    --secondary: 260 20% 35%;            /* violeta escuro (espaço profundo) */
+    --secondary-foreground: 260 30% 90%;
+    --muted: 225 15% 28%;                /* ardósia escura */
+    --muted-foreground: 220 15% 65%;
+    --accent: 50 70% 60%;                /* dourado cósmico */
+    --accent-foreground: 50 30% 15%;
+    --destructive: 0 65% 55%;            /* vermelho pulsar */
     --destructive-foreground: 0 0% 100%;
-    --border: 215 10% 30%;
-    --input: 215 10% 30%;
-    --ring: 215 95% 65%;
+    --border: 225 15% 30%;
+    --input: 225 15% 30%;
+    --ring: 190 80% 60%;
   }
 
+  /* Tema Fantasy (Roxo Místico e Prata Lunar) - REVISADO */
   .fantasy {
-    --background: 268 30% 10%;              /* roxo profundo (quase ametista) */
-    --foreground: 280 20% 92%;              /* lavanda clara */
-    --card: 268 30% 14%;
-    --card-foreground: 280 20% 92%;
-    --popover: 268 30% 12%;
-    --popover-foreground: 280 20% 92%;
-    --primary: 275 85% 60%;                 /* roxo real forte */
+    --background: 270 50% 10%;           /* roxo noite profunda (mais roxo) */
+    --foreground: 275 30% 95%;           /* lavanda pálida */
+    --card: 270 45% 15%;                 /* roxo um pouco mais claro */
+    --card-foreground: 275 30% 95%;
+    --popover: 270 45% 13%;
+    --popover-foreground: 275 30% 95%;
+    --primary: 275 80% 60%;              /* roxo arcano vibrante (mais roxo) */
     --primary-foreground: 0 0% 100%;
-    --secondary: 258 30% 25%;               /* violeta escuro neutro */
-    --secondary-foreground: 280 20% 92%;
-    --muted: 270 20% 28%;                   /* violeta acinzentado */
-    --muted-foreground: 275 25% 70%;
-    --accent: 50 80% 50%;                   /* dourado mágico */
-    --accent-foreground: 268 30% 10%;
-    --destructive: 0 70% 50%;
+    --secondary: 220 40% 45%;            /* azul luar (contraste suave) */
+    --secondary-foreground: 220 15% 95%;
+    --muted: 265 30% 30%;                /* roxo acinzentado */
+    --muted-foreground: 270 25% 75%;
+    --accent: 195 60% 70%;               /* prata-azulado místico (alto contraste) */
+    --accent-foreground: 195 30% 15%;
+    --destructive: 340 70% 55%;          /* rosa choque amaldiçoado */
     --destructive-foreground: 0 0% 100%;
-    --border: 270 20% 30%;
-    --input: 270 20% 30%;
-    --ring: 275 85% 60%;
+    --border: 265 30% 35%;
+    --input: 265 30% 35%;
+    --ring: 275 80% 60%;
   }
 
+  /* Tema RPG (Taverna Aconchegante) - Mantido */
   .rpg {
-    --background: 30 20% 10%;           /* madeira escura */
-    --foreground: 45 80% 85%;           /* pergaminho limpo */
-    --card: 30 25% 12%;
-    --card-foreground: 45 80% 85%;
-    --popover: 30 25% 10%;
-    --popover-foreground: 45 80% 85%;
-    --primary: 35 80% 55%;              /* dourado queimado */
-    --primary-foreground: 30 20% 10%;
-    --secondary: 0 10% 25%;             /* ferro velho */
-    --secondary-foreground: 45 80% 85%;
-    --muted: 28 15% 22%;                /* couro */
-    --muted-foreground: 45 50% 70%;
-    --accent: 210 25% 40%;              /* azul de aço */
-    --accent-foreground: 45 80% 85%;
-    --destructive: 0 70% 50%;
+    --background: 30 30% 15%;           /* madeira escura rústica */
+    --foreground: 45 60% 90%;           /* pergaminho iluminado */
+    --card: 30 35% 18%;
+    --card-foreground: 45 60% 90%;
+    --popover: 30 35% 13%;
+    --popover-foreground: 45 60% 90%;
+    --primary: 35 75% 60%;              /* dourado aventureiro (moedas) */
+    --primary-foreground: 35 30% 10%;
+    --secondary: 120 25% 30%;            /* verde floresta escuro (capas) */
+    --secondary-foreground: 120 15% 85%;
+    --muted: 28 20% 25%;                 /* couro desgastado */
+    --muted-foreground: 45 40% 70%;
+    --accent: 210 25% 55%;               /* aço forjado (armaduras) */
+    --accent-foreground: 210 15% 95%;
+    --destructive: 15 65% 50%;           /* vermelho-ferrugem (sangue seco) */
     --destructive-foreground: 0 0% 100%;
-    --border: 30 25% 20%;
-    --input: 30 25% 20%;
-    --ring: 35 80% 55%;
+    --border: 30 25% 25%;
+    --input: 30 25% 25%;
+    --ring: 35 75% 60%;
   }
 
+  /* Tema Crimson (Sangue e Obsidiana) - REVISADO */
   .crimson {
-    --background: 345 25% 8%;              /* vinho profundo */
-    --foreground: 0 0% 95%;                /* cinza neve */
-    --card: 345 20% 12%;                   /* bordô fosco */
-    --card-foreground: 0 0% 95%;
-    --popover: 345 20% 11%;
-    --popover-foreground: 0 0% 95%;
-    --primary: 0 85% 55%;                  /* vermelho puro */
+    --background: 355 50% 9%;           /* vinho tinto muito escuro */
+    --foreground: 15 20% 94%;           /* marfim pálido */
+    --card: 355 45% 13%;
+    --card-foreground: 15 20% 94%;
+    --popover: 355 45% 11%;
+    --popover-foreground: 15 20% 94%;
+    --primary: 0 85% 58%;                /* vermelho sangue arterial */
     --primary-foreground: 0 0% 100%;
-    --secondary: 30 25% 20%;               /* cobre escurecido */
-    --secondary-foreground: 0 0% 95%;
-    --muted: 0 15% 18%;                    /* couro vermelho seco */
-    --muted-foreground: 0 25% 65%;         /* tabaco rosado */
-    --accent: 42 50% 45%;                  /* dourado envelhecido */
-    --accent-foreground: 345 25% 8%;
-    --destructive: 0 75% 45%;              /* vermelho sangue */
+    --secondary: 210 10% 25%;            /* cinza obsidiana (frio e escuro) */
+    --secondary-foreground: 210 15% 88%;
+    --muted: 0 5% 18%;                   /* quase preto */
+    --muted-foreground: 0 5% 60%;
+    --accent: 40 65% 60%;                /* dourado macabro (contraste) */
+    --accent-foreground: 40 30% 10%;
+    --destructive: 0 75% 50%;
     --destructive-foreground: 0 0% 100%;
-    --border: 0 15% 20%;
-    --input: 0 15% 20%;
-    --ring: 0 85% 55%;
+    --border: 210 10% 28%;
+    --input: 210 10% 28%;
+    --ring: 0 85% 58%;
   }
 
+  /* Tema Emerald (Coração da Selva e Cascata) - REVISADO */
   .emerald {
-    --background: 120 10% 8%;           /* fundo musgo/couro escuro */
-    --foreground: 48 30% 82%;           /* areia quente */
-    --card: 120 10% 12%;                /* tom de casca ou tronco */
-    --card-foreground: 48 30% 82%;
-    --popover: 120 10% 10%;
-    --popover-foreground: 48 30% 82%;
-    --primary: 160 80% 45%;             /* esmeralda viva */
-    --primary-foreground: 0 0% 100%;
-    --secondary: 36 30% 25%;            /* bronze apagado */
-    --secondary-foreground: 48 30% 82%;
-    --muted: 30 15% 20%;                /* marrom neutro */
-    --muted-foreground: 40 10% 60%;
-    --accent: 160 30% 25%;              /* verde musgo escuro */
-    --accent-foreground: 48 30% 82%;
-    --destructive: 0 60% 45%;           /* vermelho fosco */
+    --background: 140 35% 11%;          /* verde musgo escuro */
+    --foreground: 80 30% 88%;           /* verde folha pálido */
+    --card: 140 30% 15%;
+    --card-foreground: 80 30% 88%;
+    --popover: 140 30% 13%;
+    --popover-foreground: 80 30% 88%;
+    --primary: 155 65% 48%;              /* esmeralda rica */
+    --primary-foreground: 155 30% 95%;
+    --secondary: 35 50% 40%;             /* madeira tropical (contraste quente) */
+    --secondary-foreground: 35 25% 92%;
+    --muted: 150 20% 28%;                /* pedra úmida */
+    --muted-foreground: 150 10% 65%;
+    --accent: 190 70% 55%;               /* azul cascata vibrante (contraste frio) */
+    --accent-foreground: 190 30% 10%;
+    --destructive: 30 75% 55%;           /* laranja-terra */
     --destructive-foreground: 0 0% 100%;
-    --border: 120 10% 25%;
-    --input: 120 10% 25%;
-    --ring: 160 80% 45%;
+    --border: 150 20% 30%;
+    --input: 150 20% 30%;
+    --ring: 155 65% 48%;
   }
 
   * {

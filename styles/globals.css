@@ -43,7 +43,8 @@
     --card-foreground: 225 25% 20%;
     --popover: 45 40% 93%;
     --popover-foreground: 225 25% 20%;
-    --primary: 215 70% 58%;              /* azul celeste */
+    --primary: 215 70% 58%;
+    --primary-icon: 215 70% 28%;              /* azul celeste mais escuro */
     --primary-foreground: 0 0% 100%;
     --secondary: 140 30% 85%;            /* verde sálvia claro */
     --secondary-foreground: 140 25% 25%;
@@ -66,7 +67,8 @@
     --card-foreground: 210 30% 92%;
     --popover: 230 25% 12%;
     --popover-foreground: 210 30% 92%;
-    --primary: 190 80% 60%;              /* ciano elétrico (nébula) */
+    --primary: 190 80% 60%;
+    --primary-icon: 190 80% 30%;              /* ciano elétrico mais escuro */
     --primary-foreground: 190 30% 10%;
     --secondary: 260 20% 35%;            /* violeta escuro (espaço profundo) */
     --secondary-foreground: 260 30% 90%;
@@ -89,7 +91,8 @@
     --card-foreground: 275 30% 95%;
     --popover: 270 45% 13%;
     --popover-foreground: 275 30% 95%;
-    --primary: 275 80% 60%;              /* roxo arcano vibrante (mais roxo) */
+    --primary: 275 80% 60%;
+    --primary-icon: 275 80% 30%;             /* roxo arcano mais escuro */
     --primary-foreground: 0 0% 100%;
     --secondary: 220 40% 45%;            /* azul luar (contraste suave) */
     --secondary-foreground: 220 15% 95%;
@@ -112,7 +115,8 @@
     --card-foreground: 45 60% 90%;
     --popover: 30 35% 13%;
     --popover-foreground: 45 60% 90%;
-    --primary: 35 75% 60%;              /* dourado aventureiro (moedas) */
+    --primary: 35 75% 60%;
+    --primary-icon: 35 75% 30%;              /* dourado aventureiro mais escuro */
     --primary-foreground: 35 30% 10%;
     --secondary: 120 25% 30%;            /* verde floresta escuro (capas) */
     --secondary-foreground: 120 15% 85%;
@@ -135,7 +139,8 @@
     --card-foreground: 15 20% 94%;
     --popover: 355 45% 11%;
     --popover-foreground: 15 20% 94%;
-    --primary: 0 85% 58%;                /* vermelho sangue arterial */
+    --primary: 0 85% 58%;
+    --primary-icon: 0 85% 28%;                /* vermelho sangue mais escuro */
     --primary-foreground: 0 0% 100%;
     --secondary: 210 10% 25%;            /* cinza obsidiana (frio e escuro) */
     --secondary-foreground: 210 15% 88%;
@@ -158,7 +163,8 @@
     --card-foreground: 80 30% 88%;
     --popover: 140 30% 13%;
     --popover-foreground: 80 30% 88%;
-    --primary: 155 65% 48%;              /* esmeralda rica */
+    --primary: 155 65% 48%;
+    --primary-icon: 155 65% 18%;                  /* esmeralda mais escura */
     --primary-foreground: 155 30% 95%;
     --secondary: 35 50% 40%;             /* madeira tropical (contraste quente) */
     --secondary-foreground: 35 25% 92%;
@@ -184,5 +190,30 @@
   /* Otimização para elementos que mudam frequentemente */
   [data-theme-transition] {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* SVG fill classes for themed icon */
+  .fill-background {
+    fill: hsl(var(--background));
+  }
+
+  .fill-primary {
+    fill: hsl(var(--primary));
+  }
+
+  .fill-primary-icon {
+  fill: hsl(var(--primary-icon));
+  }
+
+  .fill-secondary {
+    fill: hsl(var(--secondary));
+  }
+
+  /* Make SVG responsive */
+  .themed-icon-svg {
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+    max-height: 200px;
   }
 }

@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from "react"
-import Link from "next/link"
+import { useTranslations } from 'next-intl'
 import { ArrowLeft, Users, Clock , Scroll, Settings, Wand2, Plus, X, CheckCircle, AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -37,6 +37,10 @@ interface ValidationErrors {
 export default function CreateSessionPage() {
   const { toast } = useToast()
   const router = useRouter()
+  const t = useTranslations('createSession')
+  const tCommon = useTranslations('common')
+  const tValidation = useTranslations('validation')
+  
   const [sessionData, setSessionData] = useState<SessionData>({
     name: "",
     description: "",
@@ -59,39 +63,39 @@ export default function CreateSessionPage() {
     "pathfinder": "Pathfinder",
     "tormenta20": "Tormenta 20",
     "3det": "3D&T",
-    "custom": "Sistema Personalizado"
+    "custom": t('customSystem')
   }
 
   const difficultyOptions = {
-    "easy": "Fácil",
-    "medium": "Médio", 
-    "hard": "Difícil",
-    "expert": "Expert"
+    "easy": t('difficultyEasy'),
+    "medium": t('difficultyMedium'), 
+    "hard": t('difficultyHard'),
+    "expert": t('difficultyExpert')
   }
 
   const sessionTypeOptions = {
-    "oneshot": "One-shot",
-    "campaign": "Campanha",
-    "adventure": "Aventura"
+    "oneshot": t('typeOneshot'),
+    "campaign": t('typeCampaign'),
+    "adventure": t('typeAdventure')
   }
 
   const validateForm = (): boolean => {
     const newErrors: ValidationErrors = {}
 
     if (!sessionData.name.trim()) {
-      newErrors.name = "Nome da sessão é obrigatório"
+      newErrors.name = tValidation('sessionNameRequired')
     } else if (sessionData.name.trim().length < 3) {
-      newErrors.name = "Nome deve ter pelo menos 3 caracteres"
+      newErrors.name = tValidation('sessionNameMinLength')
     }
 
     if (!sessionData.description.trim()) {
-      newErrors.description = "Descrição é obrigatória"
+      newErrors.description = tValidation('descriptionRequired')
     } else if (sessionData.description.trim().length < 10) {
-      newErrors.description = "Descrição deve ter pelo menos 10 caracteres"
+      newErrors.description = tValidation('descriptionMinLength')
     }
 
     if (sessionData.maxPlayers < 1 || sessionData.maxPlayers > 8) {
-      newErrors.maxPlayers = "Número de jogadores deve estar entre 1 e 8"
+      newErrors.maxPlayers = tValidation('playersRange')
     }
 
     setErrors(newErrors)
@@ -128,8 +132,8 @@ export default function CreateSessionPage() {
   const handleCreateSession = async () => {
     if (!validateForm()) {
       toast({
-        title: "Erro de validação",
-        description: "Por favor, corrija os erros antes de continuar.",
+        title: tValidation('validationError'),
+        description: tValidation('validationErrorDescription'),
         variant: "destructive",
       })
       return
@@ -144,8 +148,8 @@ export default function CreateSessionPage() {
       console.log("Criando sessão:", sessionData)
       
       toast({
-        title: "Sessão criada com sucesso!",
-        description: `"${sessionData.name}" foi criada e está pronta para jogadores.`,
+        title: t('successMessage'),
+        description: t('successDescription', { name: sessionData.name }),
       })
       
       // Redirect to dashboard after successful creation
@@ -153,8 +157,8 @@ export default function CreateSessionPage() {
       
     } catch (error) {
       toast({
-        title: "Erro ao criar sessão",
-        description: "Ocorreu um erro inesperado. Tente novamente.",
+        title: tValidation('createError'),
+        description: tValidation('createErrorDescription'),
         variant: "destructive",
       })
     } finally {
@@ -180,8 +184,8 @@ export default function CreateSessionPage() {
                 <Wand2 className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <h1 className="text-3xl font-bold text-foreground">Criar Nova Sessão</h1>
-                <p className="text-muted-foreground">Configure sua aventura e convide jogadores</p>
+                <h1 className="text-3xl font-bold text-foreground">{t('title')}</h1>
+                <p className="text-muted-foreground">{t('description')}</p>
               </div>
             </div>
           </div>
@@ -195,20 +199,20 @@ export default function CreateSessionPage() {
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
                   <Scroll className="w-5 h-5 text-primary" />
-                  <span>Informações Básicas</span>
+                  <span>{t('basicInfo')}</span>
                 </CardTitle>
                 <CardDescription>
-                  Configure os detalhes principais da sua sessão
+                  {t('basicInfoDescription')}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-2">
-                  <Label htmlFor="session-name">Nome da Sessão *</Label>
+                  <Label htmlFor="session-name">{t('sessionName')} *</Label>
                   <Input
                     id="session-name"
                     value={sessionData.name}
                     onChange={(e) => handleInputChange("name", e.target.value)}
-                    placeholder="Ex: A Maldição do Castelo Sombrio"
+                    placeholder={t('sessionNamePlaceholder')}
                     className={errors.name ? "border-destructive focus:border-destructive" : ""}
                   />
                   {errors.name && (
@@ -220,13 +224,13 @@ export default function CreateSessionPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="description">Descrição *</Label>
+                  <Label htmlFor="description">{t('sessionDescription')} *</Label>
                   <Textarea
                     id="description"
                     value={sessionData.description}
                     onChange={(e) => handleInputChange("description", e.target.value)}
                     rows={4}
-                    placeholder="Descreva sua aventura, o cenário, o tom da campanha e o que os jogadores podem esperar..."
+                    placeholder={t('sessionDescriptionPlaceholder')}
                     className={`resize-none ${errors.description ? "border-destructive focus:border-destructive" : ""}`}
                   />
                   <div className="flex justify-between items-center">
@@ -237,7 +241,7 @@ export default function CreateSessionPage() {
                       </div>
                     ) : (
                       <div className="text-xs text-muted-foreground">
-                        {sessionData.description.length}/500 caracteres
+                        {sessionData.description.length}/500 {t('characters')}
                       </div>
                     )}
                   </div>
@@ -245,7 +249,7 @@ export default function CreateSessionPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label>Sistema de RPG</Label>
+                    <Label>{t('rpgSystem')}</Label>
                     <Select value={sessionData.systemType} onValueChange={(value) => handleInputChange("systemType", value)}>
                       <SelectTrigger>
                         <SelectValue />
@@ -259,7 +263,7 @@ export default function CreateSessionPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label>Tipo de Sessão</Label>
+                    <Label>{t('sessionType')}</Label>
                     <Select value={sessionData.sessionType} onValueChange={(value) => handleInputChange("sessionType", value)}>
                       <SelectTrigger>
                         <SelectValue />
@@ -280,10 +284,10 @@ export default function CreateSessionPage() {
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
                   <Settings className="w-5 h-5 text-primary" />
-                  <span>Configurações da Sessão</span>
+                  <span>{t('sessionSettings')}</span>
                 </CardTitle>
                 <CardDescription>
-                  Defina os parâmetros de gameplay e acessibilidade
+                  {t('sessionSettingsDescription')}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -291,7 +295,7 @@ export default function CreateSessionPage() {
                   <div className="space-y-2 flex flex-col justify-end">
                     <Label className="flex items-center space-x-2">
                       <Users className="w-4 h-4" />
-                      <span>Máximo de Jogadores</span>
+                      <span>{t('maxPlayers')}</span>
                     </Label>
                     <Input
                       type="number"
@@ -312,18 +316,18 @@ export default function CreateSessionPage() {
                   <div className="space-y-2 flex flex-col justify-end">
                     <Label className="flex items-center space-x-2">
                       <Clock className="w-4 h-4" />
-                      <span>Duração Estimada</span>
+                      <span>{t('estimatedDuration')}</span>
                     </Label>
                     <Select value={sessionData.duration} onValueChange={(value) => handleInputChange("duration", value)}>
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="1">1 hora</SelectItem>
-                        <SelectItem value="2">2 horas</SelectItem>
-                        <SelectItem value="3">3 horas</SelectItem>
-                        <SelectItem value="4">4 horas</SelectItem>
-                        <SelectItem value="5+">5+ horas</SelectItem>
+                        <SelectItem value="1">{t('duration1h')}</SelectItem>
+                        <SelectItem value="2">{t('duration2h')}</SelectItem>
+                        <SelectItem value="3">{t('duration3h')}</SelectItem>
+                        <SelectItem value="4">{t('duration4h')}</SelectItem>
+                        <SelectItem value="5+">{t('duration5h')}</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -331,7 +335,7 @@ export default function CreateSessionPage() {
                   <div className="space-y-2 flex flex-col justify-end">
                     <Label className="flex items-center space-x-2">
                       <Settings className="w-4 h-4" />
-                      <span>Nível de Dificuldade</span>
+                      <span>{t('difficultyLevel')}</span>
                     </Label>
                     <Select value={sessionData.difficulty} onValueChange={(value) => handleInputChange("difficulty", value)}>
                       <SelectTrigger>
@@ -349,17 +353,17 @@ export default function CreateSessionPage() {
                 <Separator />
 
                 <div className="space-y-4">
-                  <h4 className="font-medium text-foreground">Configurações de Privacidade</h4>
+                  <h4 className="font-medium text-foreground">{t('privacySettings')}</h4>
                   
                   <div className="space-y-3">
                     <div className="flex items-center justify-between p-4 bg-muted/30 rounded-lg border border-muted">
                       <div className="space-y-1">
                         <div className="flex items-center space-x-2">
-                          <span className="font-medium text-foreground">Sessão Privada</span>
-                          {sessionData.isPrivate && <Badge variant="secondary" className="text-xs">Privada</Badge>}
+                          <span className="font-medium text-foreground">{t('privateSession')}</span>
+                          {sessionData.isPrivate && <Badge variant="secondary" className="text-xs">{t('private')}</Badge>}
                         </div>
                         <p className="text-sm text-muted-foreground">
-                          Apenas jogadores convidados podem participar
+                          {t('privateSessionDescription')}
                         </p>
                       </div>
                       <Checkbox
@@ -374,11 +378,11 @@ export default function CreateSessionPage() {
                     <div className="flex items-center justify-between p-4 bg-muted/30 rounded-lg border border-muted">
                       <div className="space-y-1">
                         <div className="flex items-center space-x-2">
-                          <span className="font-medium text-foreground">Permitir Espectadores</span>
-                          {sessionData.allowSpectators && <Badge variant="outline" className="text-xs">Público</Badge>}
+                          <span className="font-medium text-foreground">{t('allowSpectators')}</span>
+                          {sessionData.allowSpectators && <Badge variant="outline" className="text-xs">{t('public')}</Badge>}
                         </div>
                         <p className="text-sm text-muted-foreground">
-                          Outros usuários podem assistir a sessão
+                          {t('allowSpectatorsDescription')}
                         </p>
                       </div>
                       <Checkbox
@@ -397,9 +401,9 @@ export default function CreateSessionPage() {
             {/* Tags */}
             <Card className="shadow-sm hover:shadow-md transition-shadow duration-200">
               <CardHeader>
-                <CardTitle>Tags e Categorias</CardTitle>
+                <CardTitle>{t('tagsAndCategories')}</CardTitle>
                 <CardDescription>
-                  Adicione tags para ajudar outros jogadores a encontrar sua sessão (máx. 10)
+                  {t('tagsDescription')}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -408,7 +412,7 @@ export default function CreateSessionPage() {
                     value={newTag}
                     onChange={(e) => setNewTag(e.target.value)}
                     onKeyPress={handleKeyPress}
-                    placeholder="Ex: fantasia, investigação, combate..."
+                    placeholder={t('tagPlaceholder')}
                     disabled={sessionData.tags.length >= 10}
                     className="flex-1"
                   />
@@ -424,7 +428,7 @@ export default function CreateSessionPage() {
                 {sessionData.tags.length > 0 && (
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="text-sm font-medium">Tags adicionadas:</span>
+                      <span className="text-sm font-medium">{t('addedTags')}:</span>
                       <span className="text-xs text-muted-foreground">{sessionData.tags.length}/10</span>
                     </div>
                     <div className="flex flex-wrap gap-2">
@@ -458,54 +462,54 @@ export default function CreateSessionPage() {
               <CardHeader className="pb-4">
                 <CardTitle className="flex items-center space-x-2">
                   <CheckCircle className="w-5 h-5 text-primary" />
-                  <span>Resumo da Sessão</span>
+                  <span>{t('summary')}</span>
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-3">
                   <div className="flex justify-between items-start">
-                    <span className="text-sm text-muted-foreground">Nome:</span>
+                    <span className="text-sm text-muted-foreground">{t('name')}:</span>
                     <span className="text-sm font-medium text-right max-w-[60%]">
-                      {sessionData.name || "Sem nome"}
+                      {sessionData.name || t('noName')}
                     </span>
                   </div>
                   
                   <Separator />
                   
                   <div className="flex justify-between">
-                    <span className="text-sm text-muted-foreground">Sistema:</span>
+                    <span className="text-sm text-muted-foreground">{t('system')}:</span>
                     <Badge variant="outline" className="text-xs">
                       {systemOptions[sessionData.systemType as keyof typeof systemOptions]}
                     </Badge>
                   </div>
                   
                   <div className="flex justify-between">
-                    <span className="text-sm text-muted-foreground">Tipo:</span>
+                    <span className="text-sm text-muted-foreground">{t('type')}:</span>
                     <span className="text-sm font-medium">
                       {sessionTypeOptions[sessionData.sessionType as keyof typeof sessionTypeOptions]}
                     </span>
                   </div>
                   
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">Jogadores:</span>
+                    <span className="text-sm text-muted-foreground">{t('players')}:</span>
                     <div className="flex items-center space-x-1">
                       <Users className="w-3 h-3 text-muted-foreground" />
-                      <span className="text-sm font-medium">Até {sessionData.maxPlayers}</span>
+                      <span className="text-sm font-medium">{t('upTo')} {sessionData.maxPlayers}</span>
                     </div>
                   </div>
                   
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">Duração:</span>
+                    <span className="text-sm text-muted-foreground">{t('duration')}:</span>
                     <div className="flex items-center space-x-1">
                       <Clock className="w-3 h-3 text-muted-foreground" />
                       <span className="text-sm font-medium">
-                        {sessionData.duration} {sessionData.duration === "1" ? "hora" : "horas"}
+                        {sessionData.duration} {sessionData.duration === "1" ? t('hour') : t('hours')}
                       </span>
                     </div>
                   </div>
                   
                   <div className="flex justify-between">
-                    <span className="text-sm text-muted-foreground">Dificuldade:</span>
+                    <span className="text-sm text-muted-foreground">{t('difficulty')}:</span>
                     <Badge 
                       variant={sessionData.difficulty === "expert" ? "destructive" : 
                                sessionData.difficulty === "hard" ? "secondary" : "outline"}
@@ -516,9 +520,9 @@ export default function CreateSessionPage() {
                   </div>
                   
                   <div className="flex justify-between">
-                    <span className="text-sm text-muted-foreground">Privacidade:</span>
+                    <span className="text-sm text-muted-foreground">{t('privacy')}:</span>
                     <Badge variant={sessionData.isPrivate ? "secondary" : "outline"} className="text-xs">
-                      {sessionData.isPrivate ? "Privada" : "Pública"}
+                      {sessionData.isPrivate ? t('private') : t('public')}
                     </Badge>
                   </div>
 
@@ -535,7 +539,7 @@ export default function CreateSessionPage() {
                           ))}
                           {sessionData.tags.length > 3 && (
                             <Badge variant="outline" className="text-xs">
-                              +{sessionData.tags.length - 3} mais
+                              +{sessionData.tags.length - 3} {t('more')}
                             </Badge>
                           )}
                         </div>
@@ -555,18 +559,18 @@ export default function CreateSessionPage() {
                   {isSubmitting ? (
                     <div className="flex items-center space-x-2">
                       <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                      <span>Criando...</span>
+                      <span>{t('creating')}</span>
                     </div>
                   ) : (
                     <div className="flex items-center space-x-2">
                       <Wand2 className="w-4 h-4" />
-                      <span>Criar Sessão</span>
+                      <span>{t('createButton')}</span>
                     </div>
                   )}
                 </Button>
 
                 <p className="text-xs text-muted-foreground text-center">
-                  Após criar, você poderá convidar jogadores e configurar detalhes adicionais.
+                  {t('afterCreateMessage')}
                 </p>
               </CardContent>
             </Card>

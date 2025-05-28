@@ -71,7 +71,13 @@
     "quickActions": "Quick Actions",
     "exportData": "Export Data",
     "backupCharacters": "Backup Characters",
-    "logout": "Sign Out"
+    "logout": "Sign Out",
+    "editProfile": "Edit Profile",
+    "changePassword": "Change Password",
+    "campaignNotifications": "Campaign Notifications",
+    "inviteNotifications": "Invite Notifications",
+    "twoFactorAuth": "Two-Factor Authentication",
+    "activeSessions": "Active Sessions"
   },
   "themes": {
     "dark": "Dark",
@@ -115,6 +121,51 @@
     "createButton": "Create Session",
     "creating": "Creating...",
     "successMessage": "Session created successfully!",
-    "afterCreateMessage": "After creating, you can invite players and configure additional details."
+    "successDescription": "\"{name}\" has been created and is ready for players.",
+    "afterCreateMessage": "After creating, you can invite players and configure additional details.",
+    "customSystem": "Custom System",
+    "difficultyEasy": "Easy",
+    "difficultyMedium": "Medium",
+    "difficultyHard": "Hard",
+    "difficultyExpert": "Expert",
+    "typeOneshot": "One-shot",
+    "typeCampaign": "Campaign",
+    "typeAdventure": "Adventure",
+    "characters": "characters",
+    "duration1h": "1 hour",
+    "duration2h": "2 hours",
+    "duration3h": "3 hours",
+    "duration4h": "4 hours",
+    "duration5h": "5+ hours",
+    "private": "Private",
+    "public": "Public",
+    "addedTags": "Added tags",
+    "name": "Name",
+    "noName": "No name",
+    "system": "System",
+    "type": "Type",
+    "players": "Players",
+    "upTo": "Up to",
+    "duration": "Duration",
+    "hour": "hour",
+    "hours": "hours",
+    "difficulty": "Difficulty",
+    "privacy": "Privacy",
+    "more": "more"
+  },
+  "validation": {
+    "sessionNameRequired": "Session name is required",
+    "sessionNameMinLength": "Name must have at least 3 characters",
+    "descriptionRequired": "Description is required",
+    "descriptionMinLength": "Description must have at least 10 characters",
+    "playersRange": "Number of players must be between 1 and 8",
+    "validationError": "Validation error",
+    "validationErrorDescription": "Please fix the errors before continuing.",
+    "createError": "Error creating session",
+    "createErrorDescription": "An unexpected error occurred. Please try again."
+  },
+  "createCharacter": {
+    "title": "Create Character",
+    "developmentMessage": "Page under development..."
   }
 }

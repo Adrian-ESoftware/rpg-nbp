@@ -22,8 +22,8 @@ export default function SettingsPage() {
       icon: User,
       description: t('profileDescription'),
       items: [
-        { label: "Editar Perfil", action: () => console.log("Editar perfil") },
-        { label: "Alterar Senha", action: () => console.log("Alterar senha") },
+        { labelKey: "editProfile", action: () => console.log("Editar perfil") },
+        { labelKey: "changePassword", action: () => console.log("Alterar senha") },
       ]
     },
     {
@@ -31,8 +31,8 @@ export default function SettingsPage() {
       icon: Bell,
       description: t('notificationsDescription'),
       items: [
-        { label: "Notificações de Campanhas", action: () => console.log("Campanhas") },
-        { label: "Notificações de Convites", action: () => console.log("Convites") },
+        { labelKey: "campaignNotifications", action: () => console.log("Campanhas") },
+        { labelKey: "inviteNotifications", action: () => console.log("Convites") },
       ]
     },
     {
@@ -40,8 +40,8 @@ export default function SettingsPage() {
       icon: Shield,
       description: t('securityDescription'),
       items: [
-        { label: "Autenticação de Dois Fatores", action: () => console.log("2FA") },
-        { label: "Sessões Ativas", action: () => console.log("Sessões") },
+        { labelKey: "twoFactorAuth", action: () => console.log("2FA") },
+        { labelKey: "activeSessions", action: () => console.log("Sessões") },
       ]
     }
   ]
@@ -102,11 +102,11 @@ export default function SettingsPage() {
                   <div className="space-y-2">
                     {category.items.map((item) => (
                       <button
-                        key={item.label}
+                        key={item.labelKey}
                         onClick={item.action}
                         className="w-full text-left p-3 rounded-lg bg-background hover:bg-accent hover:text-accent-foreground transition-colors"
                       >
-                        {item.label}
+                        {t(item.labelKey)}
                       </button>
                     ))}
                   </div>

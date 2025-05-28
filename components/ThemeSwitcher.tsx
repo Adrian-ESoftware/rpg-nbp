@@ -1,62 +1,13 @@
 "use client"
 
 import { useTheme } from "next-themes"
+import { useTranslations } from 'next-intl'
 import { useEffect, useState } from "react"
 import { Sun, Moon, Castle, Wand2, ChevronDown, Palette, Gem } from "lucide-react"
 
-const themes = [
-    {
-    id: "dark",
-    name: "Escuro",
-    description: "Tema escuro para os olhos",
-    icon: Moon,
-    preview: "bg-gray-900 border-gray-700",
-    iconColor: "text-white"
-  },
-  {
-    id: "light",
-    name: "Claro",
-    description: "Tema claro e limpo",
-    icon: Sun,
-    preview: "bg-white border-gray-200",
-    iconColor: "text-black"
-  },
-  {
-    id: "fantasy",
-    name: "Fantasia",
-    description: "Tons mágicos e místicos",
-    icon: Wand2,
-    preview: "bg-purple-900 border-purple-600",
-    iconColor: "text-white"
-  },
-  {
-    id: "rpg",
-    name: "RPG",
-    description: "Estilo medieval e aventureiro",
-    icon: Castle,
-    preview: "bg-amber-900 border-amber-600",
-    iconColor: "text-white"
-  },
-  {
-    id: "emerald",
-    name: "Esmeralda",
-    description: "Verde esmeralda vibrante",
-    icon: Gem,
-    preview: "bg-emerald-800 border-emerald-600",
-    iconColor: "text-white"
-  },
-  {
-    id: "crimson",
-    name: "Carmesim",
-    description: "Vermelho intenso e poderoso",
-    icon: Palette,
-    preview: "bg-red-900 border-red-600",
-    iconColor: "text-white"
-  }
-]
-
 export default function ThemeSwitcher() {
   const { theme, setTheme } = useTheme()
+  const t = useTranslations('themes')
   const [mounted, setMounted] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const [isTransitioning, setIsTransitioning] = useState(false)
@@ -64,6 +15,57 @@ export default function ThemeSwitcher() {
   useEffect(() => {
     setMounted(true)
   }, [])
+
+  const themes = [
+    {
+      id: "dark",
+      name: t('dark'),
+      description: t('darkDescription'),
+      icon: Moon,
+      preview: "bg-gray-900 border-gray-700",
+      iconColor: "text-white"
+    },
+    {
+      id: "light",
+      name: t('light'),
+      description: t('lightDescription'),
+      icon: Sun,
+      preview: "bg-white border-gray-200",
+      iconColor: "text-black"
+    },
+    {
+      id: "fantasy",
+      name: t('fantasy'),
+      description: t('fantasyDescription'),
+      icon: Wand2,
+      preview: "bg-purple-900 border-purple-600",
+      iconColor: "text-white"
+    },
+    {
+      id: "rpg",
+      name: t('rpg'),
+      description: t('rpgDescription'),
+      icon: Castle,
+      preview: "bg-amber-900 border-amber-600",
+      iconColor: "text-white"
+    },
+    {
+      id: "emerald",
+      name: t('emerald'),
+      description: t('emeraldDescription'),
+      icon: Gem,
+      preview: "bg-emerald-800 border-emerald-600",
+      iconColor: "text-white"
+    },
+    {
+      id: "crimson",
+      name: t('crimson'),
+      description: t('crimsonDescription'),
+      icon: Palette,
+      preview: "bg-red-900 border-red-600",
+      iconColor: "text-white"
+    }
+  ]
 
   const handleThemeChange = (newTheme: string) => {
     if (newTheme === theme) {

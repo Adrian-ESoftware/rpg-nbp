@@ -71,7 +71,13 @@
     "quickActions": "Acciones Rápidas",
     "exportData": "Exportar Datos",
     "backupCharacters": "Respaldar Personajes",
-    "logout": "Cerrar Sesión"
+    "logout": "Cerrar Sesión",
+    "editProfile": "Editar Perfil",
+    "changePassword": "Cambiar Contraseña",
+    "campaignNotifications": "Notificaciones de Campañas",
+    "inviteNotifications": "Notificaciones de Invitaciones",
+    "twoFactorAuth": "Autenticación de Dos Factores",
+    "activeSessions": "Sesiones Activas"
   },
   "themes": {
     "dark": "Oscuro",
@@ -115,6 +121,51 @@
     "createButton": "Crear Sesión",
     "creating": "Creando...",
     "successMessage": "¡Sesión creada exitosamente!",
-    "afterCreateMessage": "Después de crear, podrás invitar jugadores y configurar detalles adicionales."
+    "successDescription": "\"{name}\" ha sido creada y está lista para jugadores.",
+    "afterCreateMessage": "Después de crear, podrás invitar jugadores y configurar detalles adicionales.",
+    "customSystem": "Sistema Personalizado",
+    "difficultyEasy": "Fácil",
+    "difficultyMedium": "Medio",
+    "difficultyHard": "Difícil",
+    "difficultyExpert": "Experto",
+    "typeOneshot": "One-shot",
+    "typeCampaign": "Campaña",
+    "typeAdventure": "Aventura",
+    "characters": "caracteres",
+    "duration1h": "1 hora",
+    "duration2h": "2 horas",
+    "duration3h": "3 horas",
+    "duration4h": "4 horas",
+    "duration5h": "5+ horas",
+    "private": "Privada",
+    "public": "Pública",
+    "addedTags": "Etiquetas añadidas",
+    "name": "Nombre",
+    "noName": "Sin nombre",
+    "system": "Sistema",
+    "type": "Tipo",
+    "players": "Jugadores",
+    "upTo": "Hasta",
+    "duration": "Duración",
+    "hour": "hora",
+    "hours": "horas",
+    "difficulty": "Dificultad",
+    "privacy": "Privacidad",
+    "more": "más"
+  },
+  "validation": {
+    "sessionNameRequired": "El nombre de la sesión es obligatorio",
+    "sessionNameMinLength": "El nombre debe tener al menos 3 caracteres",
+    "descriptionRequired": "La descripción es obligatoria",
+    "descriptionMinLength": "La descripción debe tener al menos 10 caracteres",
+    "playersRange": "El número de jugadores debe estar entre 1 y 8",
+    "validationError": "Error de validación",
+    "validationErrorDescription": "Por favor, corrige los errores antes de continuar.",
+    "createError": "Error al crear sesión",
+    "createErrorDescription": "Ocurrió un error inesperado. Inténtalo de nuevo."
+  },
+  "createCharacter": {
+    "title": "Crear Personaje",
+    "developmentMessage": "Página en desarrollo..."
   }
 }

@@ -8,12 +8,12 @@ import {
 } from "@/components/ui/sidebar"
 
 const navigationItems = [
-  { id: "dashboard", icon: Castle, label: "Dashboard", href: "/" },
+  { id: "dashboard", icon: Castle, label: "Dashboard", href: "/dash" },
   { id: "create-character", icon: Shield, label: "Criar Personagem", href: "/create-character" },
   { id: "campaigns", icon: Scroll, label: "Minhas Campanhas", href: "/campaigns" },
   { id: "join-room", icon: DoorOpen, label: "Entrar em Sala", href: "/join-room" },
   { id: "master-tools", icon: Wand2, label: "Ferramentas do Mestre", href: "/master-tools" },
-  { id: "settings", icon: Settings, label: "Configurações", href: "/settings" },
+  { id: "settings", icon: Settings, label: "Configurações", href: "/dash/settings" },
 ]
 
 const SidebarMenuItems: React.FC = () => (

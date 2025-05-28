@@ -54,7 +54,7 @@ const RecentCampaigns: React.FC = () => {
 
   // Função para lidar com o clique no card inteiro "Criar"
   const handleCreateSession = () => {
-    router.push("/create-session")
+    router.push("/dash/create-session")
   }
 
   return (

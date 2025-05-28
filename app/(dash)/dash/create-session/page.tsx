@@ -2,7 +2,7 @@
 
 import React, { useState } from "react"
 import Link from "next/link"
-import { ArrowLeft, Users, Clock, MapPin, Scroll, Settings, Wand2, Plus, X, CheckCircle, AlertCircle } from "lucide-react"
+import { ArrowLeft, Users, Clock , Scroll, Settings, Wand2, Plus, X, CheckCircle, AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -175,14 +175,6 @@ export default function CreateSessionPage() {
         {/* Enhanced Header */}
         <div className="mb-8">
           <div className="flex items-center space-x-4 mb-4">
-            <Link 
-              href="/" 
-              className="inline-flex items-center space-x-2 text-muted-foreground hover:text-foreground transition-all duration-200 hover:translate-x-[-2px]"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              <span>Voltar ao Dashboard</span>
-            </Link>
-            <Separator orientation="vertical" className="h-6" />
             <div className="flex items-center space-x-3">
               <div className="p-2 bg-primary/10 rounded-lg">
                 <Wand2 className="w-6 h-6 text-primary" />
@@ -296,7 +288,7 @@ export default function CreateSessionPage() {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="space-y-2">
+                  <div className="space-y-2 flex flex-col justify-end">
                     <Label className="flex items-center space-x-2">
                       <Users className="w-4 h-4" />
                       <span>Máximo de Jogadores</span>
@@ -317,7 +309,7 @@ export default function CreateSessionPage() {
                     )}
                   </div>
 
-                  <div className="space-y-2">
+                  <div className="space-y-2 flex flex-col justify-end">
                     <Label className="flex items-center space-x-2">
                       <Clock className="w-4 h-4" />
                       <span>Duração Estimada</span>
@@ -336,8 +328,11 @@ export default function CreateSessionPage() {
                     </Select>
                   </div>
 
-                  <div className="space-y-2">
-                    <Label>Nível de Dificuldade</Label>
+                  <div className="space-y-2 flex flex-col justify-end">
+                    <Label className="flex items-center space-x-2">
+                      <Settings className="w-4 h-4" />
+                      <span>Nível de Dificuldade</span>
+                    </Label>
                     <Select value={sessionData.difficulty} onValueChange={(value) => handleInputChange("difficulty", value)}>
                       <SelectTrigger>
                         <SelectValue />
@@ -369,7 +364,10 @@ export default function CreateSessionPage() {
                       </div>
                       <Checkbox
                         checked={sessionData.isPrivate}
-                        onCheckedChange={(checked) => handleInputChange("isPrivate", checked)}
+                        onCheckedChange={(checked) => {
+                          handleInputChange("isPrivate", checked)
+                          if (checked) handleInputChange("allowSpectators", false)
+                        }}
                       />
                     </div>
 
@@ -385,7 +383,10 @@ export default function CreateSessionPage() {
                       </div>
                       <Checkbox
                         checked={sessionData.allowSpectators}
-                        onCheckedChange={(checked) => handleInputChange("allowSpectators", checked)}
+                        onCheckedChange={(checked) => {
+                          handleInputChange("allowSpectators", checked)
+                          if (checked) handleInputChange("isPrivate", false)
+                        }}
                       />
                     </div>
                   </div>

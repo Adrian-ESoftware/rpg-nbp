@@ -1,14 +1,5 @@
 "use client"
 import React, { useState, useEffect } from "react"
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarHeader,
-  SidebarProvider,
-  SidebarTrigger,
-  SidebarInset,
-} from "@/components/ui/sidebar"
-import SidebarMenuItems from "../layout/SidebarMenuItems"
 import WelcomeBanner from "./WelcomeBanner"
 import JoinRoomPanel from "./JoinRoomPanel"
 import RecentCampaigns from "./RecentCampaigns"
@@ -28,7 +19,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-        <div className="flex min-h-screen text-foreground">er
+        <div className="flex min-h-screen text-foreground">
             <div className="p-10 overflow-y-auto relative z-10">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
               <div className="lg:col-span-2">

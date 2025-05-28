@@ -1,13 +1,10 @@
 import type { Metadata } from 'next'
-import './globals.css'
 import { ThemeProvider } from "next-themes"
-import { ThemeSwitcher } from "@/components/ThemeSwitcher"
-
+import "../styles/globals.css"
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.dev',
+  title: 'RPG App',
+  description: 'Sistema de RPG',
 }
 
 export default function RootLayout({
@@ -16,18 +13,15 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html>
-      <body>
+    <html lang="pt-BR" suppressHydrationWarning>
+      <body suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
-          themes={["light", "dark", "rpg", "fantasy"]}
+          themes={["light", "dark", "rpg", "fantasy", "emerald", "crimson"]}
           defaultTheme="system"
           enableSystem
+          disableTransitionOnChange={false}
         >
-          {/* Adicione o ThemeSwitcher em posição fixa */}
-          <div className="fixed top-4 right-4 z-50">
-            <ThemeSwitcher />
-          </div>
           {children}
         </ThemeProvider>
       </body>

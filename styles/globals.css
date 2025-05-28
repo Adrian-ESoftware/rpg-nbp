@@ -2,93 +2,181 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
-
 @layer base {
+  /* Transições suaves globais */
+  *,
+  *::before,
+  *::after {
+    transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  html {
+    transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  body {
+    transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Desabilitar transições durante resize para performance */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: 42 33% 97%;           /* pergaminho claro */
+    --foreground: 230 20% 15%;          /* azul petróleo escuro */
+    --card: 44 23% 95%;                 /* papel antigo */
+    --card-foreground: 230 20% 15%;
+    --popover: 44 23% 94%;
+    --popover-foreground: 230 20% 15%;
+    --primary: 222 75% 60%;             /* azul arcano */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 30 30% 85%;            /* marfim envelhecido */
+    --secondary-foreground: 230 20% 15%;
+    --muted: 220 10% 80%;               /* cinza claro com tom azul */
+    --muted-foreground: 220 10% 45%;
+    --accent: 43 70% 60%;               /* ouro pálido */
+    --accent-foreground: 230 20% 15%;
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 44 15% 80%;
+    --input: 44 15% 80%;
+    --ring: 222 75% 60%;
   }
-  .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-}
 
-@layer base {
+  .dark {
+    --background: 220 15% 8%;           /* azul petróleo quase preto */
+    --foreground: 220 20% 90%;          /* gelo acinzentado */
+    --card: 220 15% 12%;
+    --card-foreground: 220 20% 90%;
+    --popover: 220 15% 12%;
+    --popover-foreground: 220 20% 90%;
+    --primary: 215 95% 65%;             /* azul intenso */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 10% 25%;           /* ardósia escura */
+    --secondary-foreground: 220 20% 90%;
+    --muted: 215 10% 30%;               /* pedra fria */
+    --muted-foreground: 210 15% 65%;
+    --accent: 195 40% 40%;              /* ciano acinzentado */
+    --accent-foreground: 220 20% 90%;
+    --destructive: 0 60% 40%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 215 10% 30%;
+    --input: 215 10% 30%;
+    --ring: 215 95% 65%;
+  }
+
+  .fantasy {
+    --background: 268 30% 10%;              /* roxo profundo (quase ametista) */
+    --foreground: 280 20% 92%;              /* lavanda clara */
+    --card: 268 30% 14%;
+    --card-foreground: 280 20% 92%;
+    --popover: 268 30% 12%;
+    --popover-foreground: 280 20% 92%;
+    --primary: 275 85% 60%;                 /* roxo real forte */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 258 30% 25%;               /* violeta escuro neutro */
+    --secondary-foreground: 280 20% 92%;
+    --muted: 270 20% 28%;                   /* violeta acinzentado */
+    --muted-foreground: 275 25% 70%;
+    --accent: 50 80% 50%;                   /* dourado mágico */
+    --accent-foreground: 268 30% 10%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 270 20% 30%;
+    --input: 270 20% 30%;
+    --ring: 275 85% 60%;
+  }
+
+  .rpg {
+    --background: 30 20% 10%;           /* madeira escura */
+    --foreground: 45 80% 85%;           /* pergaminho limpo */
+    --card: 30 25% 12%;
+    --card-foreground: 45 80% 85%;
+    --popover: 30 25% 10%;
+    --popover-foreground: 45 80% 85%;
+    --primary: 35 80% 55%;              /* dourado queimado */
+    --primary-foreground: 30 20% 10%;
+    --secondary: 0 10% 25%;             /* ferro velho */
+    --secondary-foreground: 45 80% 85%;
+    --muted: 28 15% 22%;                /* couro */
+    --muted-foreground: 45 50% 70%;
+    --accent: 210 25% 40%;              /* azul de aço */
+    --accent-foreground: 45 80% 85%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 30 25% 20%;
+    --input: 30 25% 20%;
+    --ring: 35 80% 55%;
+  }
+
+  .crimson {
+    --background: 345 25% 8%;              /* vinho profundo */
+    --foreground: 0 0% 95%;                /* cinza neve */
+    --card: 345 20% 12%;                   /* bordô fosco */
+    --card-foreground: 0 0% 95%;
+    --popover: 345 20% 11%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 0 85% 55%;                  /* vermelho puro */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 30 25% 20%;               /* cobre escurecido */
+    --secondary-foreground: 0 0% 95%;
+    --muted: 0 15% 18%;                    /* couro vermelho seco */
+    --muted-foreground: 0 25% 65%;         /* tabaco rosado */
+    --accent: 42 50% 45%;                  /* dourado envelhecido */
+    --accent-foreground: 345 25% 8%;
+    --destructive: 0 75% 45%;              /* vermelho sangue */
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 15% 20%;
+    --input: 0 15% 20%;
+    --ring: 0 85% 55%;
+  }
+
+  .emerald {
+    --background: 120 10% 8%;           /* fundo musgo/couro escuro */
+    --foreground: 48 30% 82%;           /* areia quente */
+    --card: 120 10% 12%;                /* tom de casca ou tronco */
+    --card-foreground: 48 30% 82%;
+    --popover: 120 10% 10%;
+    --popover-foreground: 48 30% 82%;
+    --primary: 160 80% 45%;             /* esmeralda viva */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 36 30% 25%;            /* bronze apagado */
+    --secondary-foreground: 48 30% 82%;
+    --muted: 30 15% 20%;                /* marrom neutro */
+    --muted-foreground: 40 10% 60%;
+    --accent: 160 30% 25%;              /* verde musgo escuro */
+    --accent-foreground: 48 30% 82%;
+    --destructive: 0 60% 45%;           /* vermelho fosco */
+    --destructive-foreground: 0 0% 100%;
+    --border: 120 10% 25%;
+    --input: 120 10% 25%;
+    --ring: 160 80% 45%;
+  }
+
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Otimização para elementos que mudam frequentemente */
+  [data-theme-transition] {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }

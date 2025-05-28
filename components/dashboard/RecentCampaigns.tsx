@@ -58,7 +58,7 @@ const RecentCampaigns: React.FC = () => {
   }
 
   return (
-    <div className="p-4 md:p-8 lg:p-12 text-white font-inter">
+    <div className="text-white font-inter">
       {/* Title and dividing line */}
       <div className="flex items-center mb-10">
         <h2 className="text-3xl md:text-4xl font-extrabold text-primary font-serif tracking-wide">Campanhas Recentes</h2>
@@ -80,7 +80,7 @@ const RecentCampaigns: React.FC = () => {
                            shadow-2xl backdrop-blur-sm transform hover:scale-105 min-h-[280px]
                            hover:bg-primary/5 active:scale-95"
               >
-                                <div className="w-20 h-20 mx-auto mb-6 rounded-full
+                <div className="w-20 h-20 mx-auto mb-6 rounded-full
                                 bg-primary/20 border-2 border-primary
                                 flex items-center justify-center
                                 hover:bg-primary/30 transition-all duration-300 shadow-lg">

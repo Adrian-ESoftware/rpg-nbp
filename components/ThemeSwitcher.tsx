@@ -5,6 +5,14 @@ import { useEffect, useState } from "react"
 import { Sun, Moon, Castle, Wand2, ChevronDown, Palette, Gem } from "lucide-react"
 
 const themes = [
+    {
+    id: "dark",
+    name: "Escuro",
+    description: "Tema escuro para os olhos",
+    icon: Moon,
+    preview: "bg-gray-900 border-gray-700",
+    iconColor: "text-white"
+  },
   {
     id: "light",
     name: "Claro",
@@ -12,14 +20,6 @@ const themes = [
     icon: Sun,
     preview: "bg-white border-gray-200",
     iconColor: "text-black"
-  },
-  {
-    id: "dark",
-    name: "Escuro",
-    description: "Tema escuro para os olhos",
-    icon: Moon,
-    preview: "bg-gray-900 border-gray-700",
-    iconColor: "text-white"
   },
   {
     id: "fantasy",

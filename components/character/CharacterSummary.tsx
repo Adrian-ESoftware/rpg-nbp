@@ -2,132 +2,177 @@
 
 import React from "react"
 import { useTranslations } from 'next-intl'
-import { Shield, BookOpen } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import type { SystemConfiguration, CharacterData } from "@/types/character-creation"
+import { CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { User, Scroll, Loader2 } from "lucide-react"
+import type { RPGSystemConfig, CharacterSheet } from "@/types/rpg-systems"
 
 interface CharacterSummaryProps {
-  characterData: CharacterData
-  systemConfig: SystemConfiguration
+  characterData: Partial<CharacterSheet>
+  system: RPGSystemConfig
   isSubmitting: boolean
   onCreateCharacter: () => void
+  tSystem: (text: any) => string
 }
 
 export function CharacterSummary({
   characterData,
-  systemConfig,
+  system,
   isSubmitting,
-  onCreateCharacter
+  onCreateCharacter,
+  tSystem
 }: CharacterSummaryProps) {
   const t = useTranslations('createCharacter')
 
-  const selectedLegacy = systemConfig.identity.legacyOptions.find(l => l.id === characterData.legacy);
-  const selectedCombatPath = systemConfig.identity.combatPathOptions.find(p => p.id === characterData.combatPath);
+  const getRaceName = () => {
+    if (!characterData.race) return t('selectLegacy')
+    const race = system.races.find(r => r.id === characterData.race)
+    return race ? tSystem(race.name) : characterData.race
+  }
 
-  const backgroundSnippet = characterData.background 
-    ? characterData.background 
-    : t("noBackground");
+  const getClassName = () => {
+    if (!characterData.class) return t('selectCombatPath')
+    const cls = system.classes.find(c => c.id === characterData.class)
+    return cls ? tSystem(cls.name) : characterData.class
+  }
+
+  const getAttributeCount = () => {
+    return Object.values(characterData.attributes || {}).reduce((sum, val) => sum + (val || 0), 0)
+  }
+
+  const getSkillCount = () => {
+    return Object.values(characterData.skills || {}).reduce((sum, val) => sum + (val || 0), 0)
+  }
 
   return (
     <>
       <CardHeader className="pb-4">
         <CardTitle className="flex items-center space-x-3 text-xl">
-          <Shield className="w-6 h-6 text-primary" />
-          <span>{t("characterSummary")}</span>
+          <Scroll className="w-6 h-6 text-primary" />
+          <span>{t('characterSummary')}</span>
         </CardTitle>
+        <CardDescription className="text-base">
+          Resumo do seu personagem
+        </CardDescription>
       </CardHeader>
-      <CardContent className="pt-0 space-y-4 flex flex-col flex-grow">
-        <div className="space-y-3 flex-grow">
-          <div className="flex justify-between items-start">
-            <span className="text-base text-muted-foreground font-medium">{t("name")}:</span>
-            <span className="text-base font-semibold text-right max-w-[60%] truncate text-foreground">
-              {characterData.name || t("noName")}
-            </span>
-          </div>
-
-          <div className="flex justify-between items-center">
-            <span className="text-base text-muted-foreground font-medium">{t("system")}:</span>
-            <Badge variant="outline" className="text-sm font-medium border-primary/30">
-              {systemConfig.name}
-            </Badge>
-          </div>
-
-          {characterData.legacy && selectedLegacy && (
-            <div className="flex justify-between items-start">
-              <span className="text-base text-muted-foreground font-medium">
-                {systemConfig.identity.legacyLabel}:
-              </span>
-              <span className="text-base font-semibold text-right max-w-[60%] truncate text-foreground">
-                {selectedLegacy.name}
-              </span>
-            </div>
-          )}
-
-          {characterData.combatPath && selectedCombatPath && (
-            <div className="flex justify-between items-start">
-              <span className="text-base text-muted-foreground font-medium">
-                {systemConfig.identity.combatPathLabel}:
-              </span>
-              <span className="text-base font-semibold text-right max-w-[60%] truncate text-foreground">
-                {selectedCombatPath.name}
-              </span>
-            </div>
-          )}
-          
-          <Separator className="bg-primary/20 my-3" />
-
-          {/* Background Snippet */}
-          <div>
-            <div className="flex items-center text-base text-muted-foreground font-medium mb-1">
-              <BookOpen className="w-4 h-4 mr-2 text-primary" />
-              <span>{t("backgroundTitle")}</span>
-            </div>
-            <p className="text-sm text-foreground/80 leading-relaxed line-clamp-3 overflow-hidden break-words"> {/* Added overflow-hidden and break-words to assist line-clamp */}
-              {backgroundSnippet}
-            </p>
+      <CardContent className="space-y-6">
+        {/* Basic Info */}
+        <div className="space-y-3">
+          <div className="flex items-center space-x-2">
+            <User className="w-4 h-4 text-muted-foreground" />
+            <span className="font-medium">{t('name')}:</span>
+            <span>{characterData.name || t('noName')}</span>
           </div>
           
-          <Separator className="bg-primary/20 my-3" />
-
-          <div className="grid grid-cols-2 gap-4">
-            <div className="text-center p-3 bg-primary/5 rounded-lg border border-primary/20">
-              <div className="text-sm text-muted-foreground font-medium">{t("hitPoints")}</div>
-              <div className="text-2xl font-bold text-primary">{characterData.hitPoints}</div>
+          <div className="grid grid-cols-1 gap-2 text-sm">
+            <div className="flex justify-between">
+              <span className="text-muted-foreground">{t('system')}:</span>
+              <span>{tSystem(system.name)}</span>
             </div>
-            <div className="text-center p-3 bg-primary/5 rounded-lg border border-primary/20">
-              <div className="text-sm text-muted-foreground font-medium">{t("energyPoints")}</div>
-              <div className="text-2xl font-bold text-primary">{characterData.energyPoints}</div>
+            <div className="flex justify-between">
+              <span className="text-muted-foreground">
+                {system.id === 'gaia' ? t('legacy') : 'Raça'}:
+              </span>
+              <span>{getRaceName()}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-muted-foreground">
+                {system.id === 'gaia' ? t('combatPath') : 'Classe'}:
+              </span>
+              <span>{getClassName()}</span>
             </div>
           </div>
         </div>
 
-        <div className="mt-auto pt-4">
-          <Button
-            onClick={onCreateCharacter}
-            disabled={isSubmitting || !characterData.name.trim()}
-            className="w-full h-12 text-base font-semibold"
-            size="lg"
-          >
-            {isSubmitting ? (
+        <Separator />
+
+        {/* Resources */}
+        <div className="space-y-3">
+          <h4 className="font-semibold">Recursos</h4>
+          <div className="grid grid-cols-1 gap-3">
+            <div className="flex items-center justify-between p-3 bg-muted/30 rounded-lg border">
               <div className="flex items-center space-x-2">
-                <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                <span>{t("creating")}</span>
+                <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                <span className="text-sm font-medium">{tSystem(system.resources.hitPoints.name)}</span>
               </div>
-            ) : (
-              <div className="flex items-center space-x-2">
-                <Shield className="w-5 h-5" />
-                <span>{t("createCharacter")}</span>
+              <Badge variant="outline" className="text-sm font-bold">
+                {characterData.hitPoints?.max || system.resources.hitPoints.base}
+              </Badge>
+            </div>
+            {system.resources.secondaryResource && (
+              <div className="flex items-center justify-between p-3 bg-muted/30 rounded-lg border">
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                  <span className="text-sm font-medium">{tSystem(system.resources.secondaryResource.name)}</span>
+                </div>
+                <Badge variant="outline" className="text-sm font-bold">
+                  {characterData.secondaryResource?.max || system.resources.secondaryResource.base}
+                </Badge>
               </div>
             )}
-          </Button>
-
-          <p className="text-sm text-muted-foreground text-center leading-relaxed mt-4">
-            {t("afterCreateMessage")}
-          </p>
+          </div>
         </div>
+
+        <Separator />
+
+        {/* Progress */}
+        <div className="space-y-3">
+          <h4 className="font-semibold">Progresso</h4>
+          <div className="space-y-3">
+            <div className="flex items-center justify-between p-3 bg-muted/20 rounded-lg">
+              <span className="text-sm font-medium">{tSystem(system.attributes.label)}:</span>
+              <Badge variant={getAttributeCount() === system.attributes.totalPoints ? "default" : "secondary"} className="text-sm">
+                {getAttributeCount()}/{system.attributes.totalPoints}
+              </Badge>
+            </div>
+            {system.skills.totalPoints && (
+              <div className="flex items-center justify-between p-3 bg-muted/20 rounded-lg">
+                <span className="text-sm font-medium">{tSystem(system.skills.label)}:</span>
+                <Badge variant={getSkillCount() === system.skills.totalPoints ? "default" : "secondary"} className="text-sm">
+                  {getSkillCount()}/{system.skills.totalPoints}
+                </Badge>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Background */}
+        {characterData.background && (
+          <>
+            <Separator />
+            <div className="space-y-2">
+              <h4 className="font-semibold">{t('backgroundTitle')}</h4>
+              <p className="text-sm text-muted-foreground line-clamp-3">
+                {characterData.background}
+              </p>
+            </div>
+          </>
+        )}
+
+        <Separator />
+
+        {/* Create Button */}
+        <Button
+          onClick={onCreateCharacter}
+          disabled={isSubmitting}
+          className="w-full h-12 text-base"
+          size="lg"
+        >
+          {isSubmitting ? (
+            <>
+              <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+              {t('creating')}
+            </>
+          ) : (
+            t('createCharacter')
+          )}
+        </Button>
+
+        <p className="text-xs text-muted-foreground text-center">
+          {t('afterCreateMessage')}
+        </p>
       </CardContent>
     </>
   )

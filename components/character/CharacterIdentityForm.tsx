@@ -2,26 +2,28 @@
 
 import React from "react"
 import { useTranslations } from 'next-intl'
-import { User, AlertCircle } from "lucide-react"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import type { SystemConfiguration, CharacterData } from "@/types/character-creation"
+import { User, BookOpen } from "lucide-react"
+import type { RPGSystemConfig, CharacterSheet } from "@/types/rpg-systems"
 
 interface CharacterIdentityFormProps {
-  characterData: CharacterData
-  systemConfig: SystemConfiguration
+  characterData: Partial<CharacterSheet>
+  system: RPGSystemConfig
   errors: Record<string, string>
   onInputChange: (field: string, value: any) => void
+  tSystem: (text: any) => string
 }
 
 export function CharacterIdentityForm({
   characterData,
-  systemConfig,
+  system,
   errors,
-  onInputChange
+  onInputChange,
+  tSystem
 }: CharacterIdentityFormProps) {
   const t = useTranslations('createCharacter')
 
@@ -30,101 +32,102 @@ export function CharacterIdentityForm({
       <CardHeader className="pb-4">
         <CardTitle className="flex items-center space-x-3 text-xl">
           <User className="w-6 h-6 text-primary" />
-          <span>{t("characterIdentity")}</span>
+          <span>{t('characterIdentity')}</span>
         </CardTitle>
         <CardDescription className="text-base">
-          {t("characterIdentityDescription")}
+          {t('characterIdentityDescription')}
         </CardDescription>
       </CardHeader>
-      <CardContent className="pt-0 space-y-6">
-        <div className="space-y-3">
-          <Label htmlFor="character-name" className="text-base font-medium">{t("characterName")} *</Label>
+      <CardContent className="space-y-6">
+        {/* Character Name */}
+        <div className="space-y-2">
+          <Label htmlFor="characterName" className="text-base font-medium">
+            {t('characterName')}
+          </Label>
           <Input
-            id="character-name"
-            value={characterData.name}
-            onChange={(e) => onInputChange("name", e.target.value)}
-            placeholder={t("characterNamePlaceholder")}
-            className={`h-12 text-base ${errors.name ? "border-destructive focus:border-destructive" : "border-primary/30 focus:border-primary"}`}
+            id="characterName"
+            placeholder={t('characterNamePlaceholder')}
+            value={characterData.name || ''}
+            onChange={(e) => onInputChange('name', e.target.value)}
+            className={`h-12 text-base ${errors.name ? 'border-destructive' : ''}`}
           />
           {errors.name && (
-            <div className="flex items-center space-x-2 text-destructive text-sm">
-              <AlertCircle className="w-4 h-4" />
-              <span>{errors.name}</span>
-            </div>
+            <p className="text-sm text-destructive">{errors.name}</p>
           )}
         </div>
 
-        <div className="grid grid-cols-1 gap-6">
-          <div className="space-y-3">
-            <Label className="text-base font-medium">{systemConfig.identity.legacyLabel} *</Label>
-            <Select
-              value={characterData.legacy}
-              onValueChange={(value) => onInputChange("legacy", value)}
-            >
-              <SelectTrigger
-                className={`h-12 text-base text-left ${errors.legacy ? "border-destructive focus:border-destructive" : "border-primary/30 focus:border-primary"}`}
-              >
-                <SelectValue placeholder={t("selectLegacy")} />
-              </SelectTrigger>
-              <SelectContent>
-                {systemConfig.identity.legacyOptions.map((legacy) => (
-                  <SelectItem key={legacy.id} value={legacy.id} textValue={legacy.name}>
-                    <div className="flex flex-col">
-                      <span className="font-medium">{legacy.name}</span>
-                      <span className="text-xs text-muted-foreground">{legacy.description}</span>
-                    </div>
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            {errors.legacy && (
-              <div className="flex items-center space-x-2 text-destructive text-sm">
-                <AlertCircle className="w-4 h-4" />
-                <span>{errors.legacy}</span>
-              </div>
-            )}
-          </div>
-
-          <div className="space-y-3">
-            <Label className="text-base font-medium">{systemConfig.identity.combatPathLabel} *</Label>
-            <Select
-              value={characterData.combatPath}
-              onValueChange={(value) => onInputChange("combatPath", value)}
-            >
-              <SelectTrigger
-                className={`h-12 text-base text-left ${errors.combatPath ? "border-destructive focus:border-destructive" : "border-primary/30 focus:border-primary"}`}
-              >
-                <SelectValue placeholder={t("selectCombatPath")} />
-              </SelectTrigger>
-              <SelectContent>
-                {systemConfig.identity.combatPathOptions.map((path) => (
-                  <SelectItem key={path.id} value={path.id} textValue={path.name}>
-                    <div className="flex flex-col">
-                      <span className="font-medium">{path.name}</span>
-                      <span className="text-xs text-muted-foreground">{path.description}</span>
-                    </div>
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            {errors.combatPath && (
-              <div className="flex items-center space-x-2 text-destructive text-sm">
-                <AlertCircle className="w-4 h-4" />
-                <span>{errors.combatPath}</span>
-              </div>
-            )}
-          </div>
+        {/* Race/Legacy */}
+        <div className="space-y-2">
+          <Label className="text-base font-medium">
+            {system.id === 'gaia' ? t('legacy') : 'Raça'}
+          </Label>
+          <Select
+            value={characterData.race || ''}
+            onValueChange={(value) => onInputChange('race', value)}
+          >
+            <SelectTrigger className={`h-12 text-base ${errors.race ? 'border-destructive' : ''}`}>
+              <SelectValue placeholder={t('selectLegacy')} />
+            </SelectTrigger>
+            <SelectContent>
+              {system.races.map((race) => (
+                <SelectItem key={race.id} value={race.id}>
+                  <div className="flex flex-col text-left">
+                    <span className="font-medium">{tSystem(race.name)}</span>
+                    <span className="text-xs text-muted-foreground">
+                      {tSystem(race.description)}
+                    </span>
+                  </div>
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          {errors.race && (
+            <p className="text-sm text-destructive">{errors.race}</p>
+          )}
         </div>
 
-        <div className="space-y-3">
-          <Label htmlFor="background" className="text-base font-medium">{t("background")}</Label>
+        {/* Class/Combat Path */}
+        <div className="space-y-2">
+          <Label className="text-base font-medium">
+            {system.id === 'gaia' ? t('combatPath') : 'Classe'}
+          </Label>
+          <Select
+            value={characterData.class || ''}
+            onValueChange={(value) => onInputChange('class', value)}
+          >
+            <SelectTrigger className={`h-12 text-base ${errors.class ? 'border-destructive' : ''}`}>
+              <SelectValue placeholder={t('selectCombatPath')} />
+            </SelectTrigger>
+            <SelectContent>
+              {system.classes.map((cls) => (
+                <SelectItem key={cls.id} value={cls.id}>
+                  <div className="flex flex-col text-left">
+                    <span className="font-medium">{tSystem(cls.name)}</span>
+                    <span className="text-xs text-muted-foreground">
+                      {tSystem(cls.description)}
+                    </span>
+                  </div>
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          {errors.class && (
+            <p className="text-sm text-destructive">{errors.class}</p>
+          )}
+        </div>
+
+        {/* Background */}
+        <div className="space-y-2">
+          <Label htmlFor="background" className="text-base font-medium flex items-center space-x-2">
+            <BookOpen className="w-4 h-4" />
+            <span>{t('background')}</span>
+          </Label>
           <Textarea
             id="background"
-            value={characterData.background}
-            onChange={(e) => onInputChange("background", e.target.value)}
-            rows={4}
-            placeholder={t("backgroundPlaceholder")}
-            className="resize-none text-base border-primary/30 focus:border-primary"
+            placeholder={t('backgroundPlaceholder')}
+            value={characterData.background || ''}
+            onChange={(e) => onInputChange('background', e.target.value)}
+            className="min-h-[120px] text-base resize-none"
           />
         </div>
       </CardContent>

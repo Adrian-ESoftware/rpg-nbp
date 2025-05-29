@@ -76,7 +76,6 @@ export default function CreateSessionPage() {
   const sessionTypeOptions = {
     "oneshot": t('typeOneshot'),
     "campaign": t('typeCampaign'),
-    "adventure": t('typeAdventure')
   }
 
   const validateForm = (): boolean => {
@@ -313,12 +312,14 @@ export default function CreateSessionPage() {
                     )}
                   </div>
 
-                  <div className="space-y-2 flex flex-col justify-end">
-                    <Label className="flex items-center space-x-2">
+                    {/* Só mostra duração se for oneshot */}
+                    {sessionData.sessionType === "oneshot" && (
+                    <div className="space-y-2 flex flex-col justify-end">
+                      <Label className="flex items-center space-x-2">
                       <Clock className="w-4 h-4" />
                       <span>{t('estimatedDuration')}</span>
-                    </Label>
-                    <Select value={sessionData.duration} onValueChange={(value) => handleInputChange("duration", value)}>
+                      </Label>
+                      <Select value={sessionData.duration} onValueChange={(value) => handleInputChange("duration", value)}>
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
@@ -329,8 +330,9 @@ export default function CreateSessionPage() {
                         <SelectItem value="4">{t('duration4h')}</SelectItem>
                         <SelectItem value="5+">{t('duration5h')}</SelectItem>
                       </SelectContent>
-                    </Select>
-                  </div>
+                      </Select>
+                    </div>
+                    )}
 
                   <div className="space-y-2 flex flex-col justify-end">
                     <Label className="flex items-center space-x-2">
@@ -498,15 +500,18 @@ export default function CreateSessionPage() {
                     </div>
                   </div>
                   
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">{t('duration')}:</span>
-                    <div className="flex items-center space-x-1">
-                      <Clock className="w-3 h-3 text-muted-foreground" />
-                      <span className="text-sm font-medium">
-                        {sessionData.duration} {sessionData.duration === "1" ? t('hour') : t('hours')}
-                      </span>
+                  {/* Duração só aparece no resumo se for oneshot */}
+                  {sessionData.sessionType === "oneshot" && (
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-muted-foreground">{t('duration')}:</span>
+                      <div className="flex items-center space-x-1">
+                        <Clock className="w-3 h-3 text-muted-foreground" />
+                        <span className="text-sm font-medium">
+                          {sessionData.duration} {sessionData.duration === "1" ? t('hour') : t('hours')}
+                        </span>
+                      </div>
                     </div>
-                  </div>
+                  )}
                   
                   <div className="flex justify-between">
                     <span className="text-sm text-muted-foreground">{t('difficulty')}:</span>

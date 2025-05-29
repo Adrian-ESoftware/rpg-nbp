@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
-import { Shield, Dice6, Wand2, Package, CheckCircle } from "lucide-react";
+import { Shield, Dice6, Wand2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -25,8 +25,6 @@ import { useRouter } from "next/navigation";
 import { CharacterImageUpload } from "@/components/character/CharacterImageUpload";
 import { CharacterIdentityForm } from "@/components/character/CharacterIdentityForm";
 import { AttributeDistribution } from "@/components/character/AttributeDistribution";
-import { SkillSelection } from "@/components/character/SkillSelection";
-import { EquipmentDisplay } from "@/components/character/EquipmentDisplay";
 import { CharacterSummary } from "@/components/character/CharacterSummary";
 import { systemConfigurations } from "@/lib/character-systems";
 import type { CharacterData, SystemConfiguration } from "@/types/character-creation";
@@ -114,13 +112,6 @@ export default function CreateCharacterPage() {
     if (knowledgePoints !== systemConfig.knowledge.totalPoints) {
       newErrors.knowledge = tValidation("knowledgePointsRequired", {
         points: systemConfig.knowledge.totalPoints,
-      });
-    }
-
-    // Validate skills
-    if (characterData.skills.length < systemConfig.skills.initialCount) {
-      newErrors.skills = tValidation("skillsRequired", {
-        count: systemConfig.skills.initialCount,
       });
     }
 
@@ -226,116 +217,111 @@ export default function CreateCharacterPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
-      <div className="container mx-auto px-4 py-6 max-w-[1600px]">
+      {/* Changed max-width to full and added responsive padding */}
+      <div className="container mx-auto px-4 md:px-8 lg:px-16 py-6 max-w-full">
         {/* Header */}
         <div className="mb-8 text-center">
           <div className="flex items-center justify-center space-x-3 mb-4">
-            <div className="p-2 bg-primary/10 rounded-lg">
-              <Shield className="w-6 h-6 text-primary" />
+            <div className="p-3 bg-primary/10 rounded-xl">
+              <Shield className="w-8 h-8 text-primary" />
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-foreground">
+              <h1 className="text-4xl font-bold text-foreground">
                 {t("title")}
               </h1>
-              <p className="text-muted-foreground">{t("description")}</p>
+              <p className="text-lg text-muted-foreground">{t("description")}</p>
             </div>
           </div>
         </div>
 
-        {/* System Selection */}
-        <div className="mb-8">
-          <Card className="max-w-md mx-auto shadow-sm hover:shadow-md transition-shadow duration-200">
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2 justify-center">
-                <Dice6 className="w-5 h-5 text-primary" />
-                <span>{t("systemSelection")}</span>
-              </CardTitle>
-              <CardDescription className="text-center">
-                {t("systemSelectionDescription")}
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-2">
-                <Label>{t("rpgSystem")}</Label>
-                <Select
-                  value={selectedSystem}
-                  onValueChange={setSelectedSystem}
-                >
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="gaia">Gaia: O Prelúdio</SelectItem>
-                    <SelectItem value="dnd5e">D&D 5ª Edição</SelectItem>
-                    <SelectItem value="pathfinder">Pathfinder</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Main Layout Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* Left Column - Character Identity */}
-          <div className="lg:col-span-3 space-y-6">
-            <CharacterIdentityForm
-              characterData={characterData}
-              systemConfig={systemConfig}
-              errors={errors}
-              onInputChange={handleInputChange}
-            />
-          </div>
-
-          {/* Center Column - Character Image */}
-          <div className="lg:col-span-6 flex flex-col items-center justify-start space-y-6">
-            <CharacterImageUpload
-              imageUrl={characterData.imageUrl}
-              onImageChange={handleImageChange}
-              characterName={characterData.name}
-            />
-
-            {/* Character Summary for mobile */}
-            <div className="lg:hidden w-full max-w-md">
-              <CharacterSummary
+        {/* Main Content Grid - Top Row */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+          {/* Left Column: Character Identity */}
+          <div className="lg:col-span-1 flex">
+            <Card className="shadow-lg border-primary/20 h-full w-full">
+              <CharacterIdentityForm
                 characterData={characterData}
                 systemConfig={systemConfig}
-                isSubmitting={isSubmitting}
-                onCreateCharacter={handleCreateCharacter}
+                errors={errors}
+                onInputChange={handleInputChange}
+              />
+            </Card>
+          </div>
+
+          {/* Center Column: System Selection & Character Image */}
+          <div className="lg:col-span-1 flex flex-col items-center space-y-8">
+            {/* Applied max-w-lg to the card for system selection */}
+            <Card className="w-full max-w-lg mx-auto shadow-lg border-2 border-primary/20">
+              <CardHeader className="pb-4">
+                <CardTitle className="flex items-center space-x-3 justify-center text-xl">
+                  <Dice6 className="w-6 h-6 text-primary" />
+                  <span>{t("systemSelection")}</span>
+                </CardTitle>
+                <CardDescription className="text-center text-base">
+                  {t("systemSelectionDescription")}
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="pt-0">
+                <div className="space-y-3">
+                  <Label className="text-base font-medium">{t("rpgSystem")}</Label>
+                  <Select
+                    value={selectedSystem}
+                    onValueChange={setSelectedSystem}
+                  >
+                    <SelectTrigger className="h-12 text-base">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="gaia">Gaia: O Prelúdio</SelectItem>
+                      <SelectItem value="dnd5e">D&D 5ª Edição</SelectItem>
+                      <SelectItem value="pathfinder">Pathfinder</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </CardContent>
+            </Card>
+            {/* Applied max-w-lg to the image upload container */}
+            <div className="w-full max-w-lg mx-auto mt-auto"> 
+              <CharacterImageUpload
+                imageUrl={characterData.imageUrl}
+                onImageChange={handleImageChange}
+                characterName={characterData.name}
               />
             </div>
           </div>
 
-          {/* Right Column - Character Summary (Desktop) */}
-          <div className="lg:col-span-3 hidden lg:block">
-            <div className="sticky top-6">
-              <CharacterSummary
-                characterData={characterData}
-                systemConfig={systemConfig}
-                isSubmitting={isSubmitting}
-                onCreateCharacter={handleCreateCharacter}
-              />
+          {/* Right Column: Character Summary */}
+          <div className="lg:col-span-1 flex">
+            <div className="lg:sticky lg:top-6 w-full">
+              <Card className="shadow-lg border-primary/20 h-full w-full">
+                <CharacterSummary
+                  characterData={characterData}
+                  systemConfig={systemConfig}
+                  isSubmitting={isSubmitting}
+                  onCreateCharacter={handleCreateCharacter}
+                />
+              </Card>
             </div>
           </div>
         </div>
 
-        {/* Bottom Section - Attributes, Knowledge, Skills, Equipment */}
-        <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Bottom Section - Attributes and Knowledge */}
+        <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Attributes */}
-          <Card className="shadow-sm hover:shadow-md transition-shadow duration-200">
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <Wand2 className="w-5 h-5 text-primary" />
+          <Card className="shadow-lg border-primary/20">
+            <CardHeader className="pb-4">
+              <CardTitle className="flex items-center space-x-3 text-xl">
+                <Wand2 className="w-6 h-6 text-primary" />
                 <span>{systemConfig.attributes.label}</span>
               </CardTitle>
-              <CardDescription>
+              <CardDescription className="text-base">
                 {t("attributesDescription", {
                   points: systemConfig.attributes.totalPoints,
                   max: systemConfig.attributes.maxPerAttribute,
                 })}
               </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="pt-0">
               <AttributeDistribution
                 attributes={systemConfig.attributes.list}
                 values={characterData.attributes}
@@ -348,20 +334,20 @@ export default function CreateCharacterPage() {
           </Card>
 
           {/* Knowledge */}
-          <Card className="shadow-sm hover:shadow-md transition-shadow duration-200">
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <Wand2 className="w-5 h-5 text-primary" />
+          <Card className="shadow-lg border-primary/20">
+            <CardHeader className="pb-4">
+              <CardTitle className="flex items-center space-x-3 text-xl">
+                <Wand2 className="w-6 h-6 text-primary" />
                 <span>{systemConfig.knowledge.label}</span>
               </CardTitle>
-              <CardDescription>
+              <CardDescription className="text-base">
                 {t("knowledgeDescription", {
                   points: systemConfig.knowledge.totalPoints,
                   max: systemConfig.knowledge.maxPerKnowledge,
                 })}
               </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="pt-0">
               <AttributeDistribution
                 attributes={systemConfig.knowledge.list}
                 values={characterData.knowledge}
@@ -370,47 +356,6 @@ export default function CreateCharacterPage() {
                 maxPerAttribute={systemConfig.knowledge.maxPerKnowledge}
                 error={errors.knowledge}
               />
-            </CardContent>
-          </Card>
-
-          {/* Skills */}
-          <Card className="shadow-sm hover:shadow-md transition-shadow duration-200">
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <CheckCircle className="w-5 h-5 text-primary" />
-                <span>{t("skills")}</span>
-              </CardTitle>
-              <CardDescription>
-                {t("skillsDescription", {
-                  count: systemConfig.skills.initialCount,
-                })}
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <SkillSelection
-                availableSkills={systemConfig.skills.available}
-                selectedSkills={characterData.skills}
-                onChange={handleSkillChange}
-                maxSelection={systemConfig.skills.initialCount}
-                combatPath={characterData.combatPath}
-                error={errors.skills}
-              />
-            </CardContent>
-          </Card>
-
-          {/* Equipment */}
-          <Card className="shadow-sm hover:shadow-md transition-shadow duration-200">
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <Package className="w-5 h-5 text-primary" />
-                <span>{t("initialEquipment")}</span>
-              </CardTitle>
-              <CardDescription>
-                {t("equipmentDescription")}
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <EquipmentDisplay equipment={characterData.equipment} />
             </CardContent>
           </Card>
         </div>

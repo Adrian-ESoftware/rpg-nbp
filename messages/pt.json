@@ -210,6 +210,10 @@
     "characterPortrait": "Retrato do Personagem",
     "imageUploadSuccess": "Imagem enviada com sucesso!",
     "imageUploadError": "Erro ao enviar imagem. Tente novamente.",
-    "more": "mais"
+    "more": "mais",
+    "noSkillsAvailable": "Nenhuma habilidade disponível para o caminho selecionado.",
+    "noEquipmentDefined": "Nenhum equipamento inicial definido.",
+    "backgroundTitle": "História",
+    "noBackground": "Nenhuma história fornecida."
   }
 }

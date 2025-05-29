@@ -73,11 +73,11 @@ export function CharacterImageUpload({
   }
 
   return (
-    <div className="flex flex-col items-center space-y-4">
-      <Card className="relative overflow-hidden shadow-lg">
-        <CardContent className="p-0">
+    <div className="flex flex-col items-center space-y-4 w-full">
+      <Card className="relative overflow-hidden shadow-lg w-full">
+        <CardContent className={imageUrl ? "p-0" : "p-6"}>
           <div
-            className={`relative w-80 h-80 flex items-center justify-center transition-all duration-200 ${
+            className={`relative w-full aspect-square flex items-center justify-center transition-all duration-200 ${
               isDragging ? 'bg-primary/10 border-primary' : 'bg-muted/30'
             } ${!imageUrl ? 'border-2 border-dashed border-muted-foreground/30 cursor-pointer hover:border-primary/50' : ''}`}
             onDrop={handleDrop}

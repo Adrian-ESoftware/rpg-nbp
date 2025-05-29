@@ -212,6 +212,8 @@
     "characterPortrait": "Retrato del Personaje",
     "imageUploadSuccess": "¡Imagen subida exitosamente!",
     "imageUploadError": "Error al subir imagen. Inténtalo de nuevo.",
-    "more": "más"
+    "more": "más",
+    "backgroundTitle": "Historia",
+    "noBackground": "No se proporcionó trasfondo."
   }
 }

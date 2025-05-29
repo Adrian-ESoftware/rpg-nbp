@@ -212,6 +212,8 @@
     "characterPortrait": "Character Portrait",
     "imageUploadSuccess": "Image uploaded successfully!",
     "imageUploadError": "Error uploading image. Please try again.",
-    "more": "more"
+    "more": "more",
+    "backgroundTitle": "Background",
+    "noBackground": "No background provided."
   }
 }

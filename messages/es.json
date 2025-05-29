@@ -31,6 +31,17 @@
     "enter": "Entrar"
   },
   "campaigns": {
+    "title": "Mis Campañas",
+    "description": "Gestiona tus aventuras de RPG",
+    "newCampaign": "Nueva Campaña",
+    "searchPlaceholder": "Buscar campañas...",
+    "players": "jugadores",
+    "viewDetails": "Ver Detalles",
+    "joinSession": "Unirse a Sesión",
+    "noCampaignsFound": "No se encontraron campañas",
+    "noCampaignsDescription": "Intenta ajustar tu búsqueda o crear una nueva campaña.",
+    "createFirstCampaign": "Comienza creando tu primera campaña de RPG.",
+    "createFirstCampaignButton": "Crear Primera Campaña",
     "recentCampaigns": "Campañas Recientes",
     "ruinsOfDraconia": "Las Ruinas de Draconia",
     "ruinsDescription": "Explora ruinas antiguas y descubre los secretos del dragón dormido. ¡Una aventura épica te espera!",

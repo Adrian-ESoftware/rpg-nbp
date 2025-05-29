@@ -28,12 +28,14 @@ import { AttributeDistribution } from "@/components/character/AttributeDistribut
 import { CharacterSummary } from "@/components/character/CharacterSummary";
 import { systemConfigurations } from "@/lib/character-systems";
 import type { CharacterData, SystemConfiguration } from "@/types/character-creation";
+import { useLocale } from "next-intl";
 
 export default function CreateCharacterPage() {
   const { toast } = useToast();
   const router = useRouter();
   const t = useTranslations("createCharacter");
   const tValidation = useTranslations("validation");
+  const locale = useLocale();
 
   const [selectedSystem, setSelectedSystem] = useState<string>("gaia");
   const [systemConfig, setSystemConfig] = useState<SystemConfiguration>(
@@ -312,7 +314,7 @@ export default function CreateCharacterPage() {
             <CardHeader className="pb-4">
               <CardTitle className="flex items-center space-x-3 text-xl">
                 <Wand2 className="w-6 h-6 text-primary" />
-                <span>{systemConfig.attributes.label}</span>
+                <span>{systemConfig.attributes.label[locale as keyof typeof systemConfig.attributes.label]}</span>
               </CardTitle>
               <CardDescription className="text-base">
                 {t("attributesDescription", {
@@ -338,7 +340,7 @@ export default function CreateCharacterPage() {
             <CardHeader className="pb-4">
               <CardTitle className="flex items-center space-x-3 text-xl">
                 <Wand2 className="w-6 h-6 text-primary" />
-                <span>{systemConfig.knowledge.label}</span>
+                <span>{systemConfig.knowledge.label[locale as keyof typeof systemConfig.knowledge.label]}</span>
               </CardTitle>
               <CardDescription className="text-base">
                 {t("knowledgeDescription", {

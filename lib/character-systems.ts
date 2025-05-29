@@ -205,7 +205,11 @@ export const systemConfigurations: Record<string, SystemConfiguration> = {
       ]
     },
     attributes: {
-      label: "Parâmetros",
+      label: {
+        pt: "Parâmetros",
+        en: "Attributes",
+        es: "Atributos"
+      },
       totalPoints: 7,
       maxPerAttribute: 2,
       list: [
@@ -220,7 +224,11 @@ export const systemConfigurations: Record<string, SystemConfiguration> = {
       ]
     },
     knowledge: {
-      label: "Conhecimentos",
+      label: {
+        pt: "Conhecimentos",
+        en: "Knowledge",
+        es: "Conocimientos"
+      },
       totalPoints: 7,
       maxPerKnowledge: 2,
       list: [
@@ -288,7 +296,11 @@ export const systemConfigurations: Record<string, SystemConfiguration> = {
       ]
     },
     attributes: {
-      label: "Atributos",
+      label: {
+        pt: "Atributos",
+        en: "Attributes",
+        es: "Atributos"
+      },
       totalPoints: 27,
       maxPerAttribute: 15,
       list: [
@@ -301,7 +313,11 @@ export const systemConfigurations: Record<string, SystemConfiguration> = {
       ]
     },
     knowledge: {
-      label: "Perícias",
+      label: {
+        pt: "Perícias",
+        en: "Skills",
+        es: "Habilidades"
+      },
       totalPoints: 4,
       maxPerKnowledge: 1,
       list: [

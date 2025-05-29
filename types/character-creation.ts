@@ -30,13 +30,21 @@ export interface SystemConfiguration {
     combatPathOptions: CombatPathOption[]
   }
   attributes: {
-    label: string
+    label: {
+      pt: string
+      en: string
+      es: string
+    }
     totalPoints: number
     maxPerAttribute: number
     list: AttributeOption[]
   }
   knowledge: {
-    label: string
+    label: {
+      pt: string
+      en: string
+      es: string
+    }
     totalPoints: number
     maxPerKnowledge: number
     list: AttributeOption[]

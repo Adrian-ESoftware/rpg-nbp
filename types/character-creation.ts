@@ -69,3 +69,35 @@ export interface CharacterData {
   equipment: EquipmentItem[]
   imageUrl?: string
 }
+
+export interface LocalizedString {
+  pt: string
+  en: string
+  es: string
+}
+
+export interface Attribute {
+  id: string
+  name: string | LocalizedString
+  description: string | LocalizedString
+}
+
+export interface Knowledge {
+  id: string
+  name: string | LocalizedString
+  description: string | LocalizedString
+}
+
+export interface AttributeConfiguration {
+  label: string | LocalizedString
+  totalPoints: number
+  maxPerAttribute: number
+  list: Attribute[]
+}
+
+export interface KnowledgeConfiguration {
+  label: string | LocalizedString
+  totalPoints: number
+  maxPerKnowledge: number
+  list: Knowledge[]
+}

@@ -37,7 +37,7 @@
     "whisperingForest": "The Whispering Forest",
     "forestDescription": "A mystical forest where every whisper hides a secret or danger. Prepare for the unknown.",
     "fallenKingTreasure": "The Fallen King's Treasure",
-    "treasureDescription": "Embark on a dangerous journey to recover a forgotten king's treasure. Fortune awaits the brave.",
+    "treasureDescription": "Embark on a dangerous journey to recover the treasure of a forgotten king. Fortune awaits the brave.",
     "hauntedMine": "The Haunted Mine",
     "mineDescription": "Descend into the depths of a cursed mine in search of riches and answers. Beware what lurks in the shadows.",
     "createNewSession": "Create New Session",
@@ -48,13 +48,13 @@
     "newExpansion": "New Expansion!",
     "expansionContent": "The Shadow Realm is now available! Dive into a new mysterious continent, full of unprecedented challenges.",
     "tournament": "Adventurers Tournament",
-    "tournamentContent": "Registration open for the grand tournament. Magical prizes for the winners!",
+    "tournamentContent": "Registrations open for the grand tournament. Magical prizes for the winners!",
     "maintenance": "Scheduled Maintenance",
     "maintenanceContent": "Servers will be under maintenance on 05/30 from 02h to 05h.",
     "newRulebook": "New Rulebook",
     "rulebookContent": "We've added the Arcane Grimoire with 50 new spells for all classes!",
-    "campaignInvite": "Campaign Invite",
-    "inviteContent": "You've been invited to the \"Frozen Mountains\" campaign by Merlin."
+    "campaignInvite": "Campaign Invitation",
+    "inviteContent": "You have been invited to the campaign \"Frozen Mountains\" by Merlin."
   },
   "settings": {
     "title": "Settings",
@@ -81,13 +81,13 @@
   },
   "themes": {
     "dark": "Dark",
-    "darkDescription": "Dark theme for your eyes",
+    "darkDescription": "Dark theme easy on the eyes",
     "light": "Light",
     "lightDescription": "Clean and bright theme",
     "fantasy": "Fantasy",
     "fantasyDescription": "Magical and mystical tones",
     "rpg": "RPG",
-    "rpgDescription": "Medieval adventurer style",
+    "rpgDescription": "Medieval adventurous style",
     "emerald": "Emerald",
     "emeraldDescription": "Vibrant emerald green",
     "crimson": "Crimson",
@@ -155,12 +155,12 @@
   },
   "validation": {
     "sessionNameRequired": "Session name is required",
-    "sessionNameMinLength": "Name must have at least 3 characters",
+    "sessionNameMinLength": "Name must be at least 3 characters",
     "descriptionRequired": "Description is required",
-    "descriptionMinLength": "Description must have at least 10 characters",
+    "descriptionMinLength": "Description must be at least 10 characters",
     "playersRange": "Number of players must be between 1 and 8",
-    "validationError": "Validation error",
-    "validationErrorDescription": "Please fix the errors before continuing.",
+    "validationError": "Validation Error",
+    "validationErrorDescription": "Please correct the errors before continuing.",
     "createError": "Error creating session",
     "createErrorDescription": "An unexpected error occurred. Please try again.",
     "characterNameRequired": "Character name is required",
@@ -172,7 +172,7 @@
   },
   "createCharacter": {
     "title": "Create Character",
-    "description": "Configure your hero and begin your journey",
+    "description": "Configure your hero and start your journey",
     "systemSelection": "System Selection",
     "systemSelectionDescription": "Choose the RPG system for your character",
     "rpgSystem": "RPG System",
@@ -183,13 +183,15 @@
     "selectLegacy": "Select a legacy",
     "selectCombatPath": "Select a path",
     "background": "Personal Background",
-    "backgroundPlaceholder": "Describe your character's origin and story...",
-    "attributesDescription": "Distribute {points} points among attributes (max {max} per attribute)",
-    "knowledgeDescription": "Distribute {points} points among knowledge (max {max} per knowledge)",
+    "backgroundPlaceholder": "Describe your character's origin and history...",
+    "attributes": "Attributes",
+    "attributesDescription": "Distribute {points} points among attributes (maximum {max} per attribute)",
+    "knowledge": "Knowledge",
+    "knowledgeDescription": "Distribute {points} points among knowledge (maximum {max} per knowledge)",
     "skills": "Skills",
     "skillsDescription": "Select {count} initial skills",
     "initialEquipment": "Initial Equipment",
-    "equipmentDescription": "Your starting equipment based on the chosen system",
+    "equipmentDescription": "Your initial equipment based on the chosen system",
     "characterSummary": "Character Summary",
     "createCharacter": "Create Character",
     "creating": "Creating...",
@@ -204,8 +206,6 @@
     "selectedSkills": "Selected Skills",
     "selectedSkillsCount": "Selected Skills",
     "remainingPoints": "Remaining Points",
-    "noSkillsAvailable": "No skills available for the selected path",
-    "noEquipmentDefined": "No initial equipment defined",
     "uploadCharacterImage": "Upload Character Image",
     "dragDropOrClick": "Drag and drop or click to select",
     "changeImage": "Change Image",
@@ -213,7 +213,154 @@
     "imageUploadSuccess": "Image uploaded successfully!",
     "imageUploadError": "Error uploading image. Please try again.",
     "more": "more",
+    "noSkillsAvailable": "No skills available for the selected path.",
+    "noEquipmentDefined": "No initial equipment defined.",
     "backgroundTitle": "Background",
-    "noBackground": "No background provided."
+    "noBackground": "No background provided.",
+    "legacy": "Legacy",
+    "combatPath": "Combat Path",
+    "selectSystem": "Select a system",
+    "stepOf": "Step {current} of {total}",
+    "next": "Next",
+    "previous": "Previous",
+    "finish": "Finish"
+  },
+  "characterSystems": {
+    "gaia": {
+      "attributes": {
+        "label": "Attributes",
+        "brutalidade": {
+          "name": "Brutality",
+          "description": "Raw physical strength"
+        },
+        "destreza": {
+          "name": "Dexterity",
+          "description": "Manual skill and coordination"
+        },
+        "agilidade": {
+          "name": "Agility",
+          "description": "Speed and reflexes"
+        },
+        "precisao": {
+          "name": "Precision",
+          "description": "Attack accuracy"
+        },
+        "canalizacao": {
+          "name": "Channeling",
+          "description": "Magical energy control"
+        },
+        "arcanismo": {
+          "name": "Arcanism",
+          "description": "Knowledge of arcane arts"
+        },
+        "espirito": {
+          "name": "Spirit",
+          "description": "Willpower and determination"
+        },
+        "vigor": {
+          "name": "Vigor",
+          "description": "Physical resistance and health"
+        }
+      },
+      "knowledge": {
+        "label": "Knowledge",
+        "mistico": {
+          "name": "Mystical",
+          "description": "Knowledge about magic and mysteries"
+        },
+        "exploracao": {
+          "name": "Exploration",
+          "description": "Survival and navigation"
+        },
+        "historia": {
+          "name": "History",
+          "description": "Knowledge of the past"
+        },
+        "religiao": {
+          "name": "Religion",
+          "description": "Knowledge about gods and faith"
+        },
+        "carisma": {
+          "name": "Charisma",
+          "description": "Influence and leadership"
+        },
+        "intuicao": {
+          "name": "Intuition",
+          "description": "Perception and instinct"
+        },
+        "intimidacao": {
+          "name": "Intimidation",
+          "description": "Ability to frighten"
+        },
+        "vontade": {
+          "name": "Will",
+          "description": "Mental resistance"
+        },
+        "furtividade": {
+          "name": "Stealth",
+          "description": "Ability to hide"
+        },
+        "performance": {
+          "name": "Performance",
+          "description": "Artistic abilities"
+        },
+        "percepcao": {
+          "name": "Perception",
+          "description": "Ability to notice details"
+        },
+        "tecnologia": {
+          "name": "Technology",
+          "description": "Technical and inventive knowledge"
+        }
+      }
+    },
+    "dnd5e": {
+      "attributes": {
+        "label": "Attributes",
+        "forca": {
+          "name": "Strength",
+          "description": "Physical power"
+        },
+        "destreza": {
+          "name": "Dexterity",
+          "description": "Agility and reflexes"
+        },
+        "constituicao": {
+          "name": "Constitution",
+          "description": "Resistance and vitality"
+        },
+        "inteligencia": {
+          "name": "Intelligence",
+          "description": "Reasoning and memory"
+        },
+        "sabedoria": {
+          "name": "Wisdom",
+          "description": "Perception and intuition"
+        },
+        "carisma": {
+          "name": "Charisma",
+          "description": "Force of personality"
+        }
+      },
+      "knowledge": {
+        "label": "Skills",
+        "atletismo": {
+          "name": "Athletics",
+          "description": "Physical activities"
+        },
+        "acrobacia": {
+          "name": "Acrobatics",
+          "description": "Balance and agility"
+        },
+        "furtividade": {
+          "name": "Stealth",
+          "description": "Move without being detected"
+        },
+        "percepcao": {
+          "name": "Perception",
+          "description": "Notice details"
+        }
+      }
+    }
   }
 }

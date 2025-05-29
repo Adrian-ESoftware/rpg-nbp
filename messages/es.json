@@ -184,7 +184,9 @@
     "selectCombatPath": "Selecciona un camino",
     "background": "Historia Personal",
     "backgroundPlaceholder": "Describe el origen e historia de tu personaje...",
+    "attributes": "Atributos",
     "attributesDescription": "Distribuye {points} puntos entre los atributos (máximo {max} por atributo)",
+    "knowledge": "Conocimientos",
     "knowledgeDescription": "Distribuye {points} puntos entre los conocimientos (máximo {max} por conocimiento)",
     "skills": "Habilidades",
     "skillsDescription": "Selecciona {count} habilidades iniciales",
@@ -214,6 +216,151 @@
     "imageUploadError": "Error al subir imagen. Inténtalo de nuevo.",
     "more": "más",
     "backgroundTitle": "Historia",
-    "noBackground": "No se proporcionó trasfondo."
+    "noBackground": "No se proporcionó trasfondo.",
+    "legacy": "Legado",
+    "combatPath": "Camino de Combate",
+    "selectSystem": "Selecciona un sistema",
+    "stepOf": "Paso {current} de {total}",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "finish": "Finalizar"
+  },
+  "characterSystems": {
+    "gaia": {
+      "attributes": {
+        "label": "Atributos",
+        "brutalidade": {
+          "name": "Brutalidad",
+          "description": "Fuerza física bruta"
+        },
+        "destreza": {
+          "name": "Destreza",
+          "description": "Habilidad manual y coordinación"
+        },
+        "agilidade": {
+          "name": "Agilidad",
+          "description": "Velocidad y reflejos"
+        },
+        "precisao": {
+          "name": "Precisión",
+          "description": "Precisión en ataques"
+        },
+        "canalizacao": {
+          "name": "Canalización",
+          "description": "Control de energía mágica"
+        },
+        "arcanismo": {
+          "name": "Arcanismo",
+          "description": "Conocimiento de las artes arcanas"
+        },
+        "espirito": {
+          "name": "Espíritu",
+          "description": "Fuerza de voluntad y determinación"
+        },
+        "vigor": {
+          "name": "Vigor",
+          "description": "Resistencia física y salud"
+        }
+      },
+      "knowledge": {
+        "label": "Conocimientos",
+        "mistico": {
+          "name": "Místico",
+          "description": "Conocimiento sobre magia y misterios"
+        },
+        "exploracao": {
+          "name": "Exploración",
+          "description": "Supervivencia y navegación"
+        },
+        "historia": {
+          "name": "Historia",
+          "description": "Conocimiento del pasado"
+        },
+        "religiao": {
+          "name": "Religión",
+          "description": "Conocimiento sobre dioses y fe"
+        },
+        "carisma": {
+          "name": "Carisma",
+          "description": "Influencia y liderazgo"
+        },
+        "intuicao": {
+          "name": "Intuición",
+          "description": "Percepción e instinto"
+        },
+        "intimidacao": {
+          "name": "Intimidación",
+          "description": "Capacidad de intimidar"
+        },
+        "vontade": {
+          "name": "Voluntad",
+          "description": "Resistencia mental"
+        },
+        "furtividade": {
+          "name": "Sigilo",
+          "description": "Capacidad de ocultarse"
+        },
+        "performance": {
+          "name": "Interpretación",
+          "description": "Habilidades artísticas"
+        },
+        "percepcao": {
+          "name": "Percepción",
+          "description": "Capacidad de notar detalles"
+        },
+        "tecnologia": {
+          "name": "Tecnología",
+          "description": "Conocimiento técnico e inventivo"
+        }
+      }
+    },
+    "dnd5e": {
+      "attributes": {
+        "label": "Atributos",
+        "forca": {
+          "name": "Fuerza",
+          "description": "Poder físico"
+        },
+        "destreza": {
+          "name": "Destreza",
+          "description": "Agilidad y reflejos"
+        },
+        "constituicao": {
+          "name": "Constitución",
+          "description": "Resistencia y vitalidad"
+        },
+        "inteligencia": {
+          "name": "Inteligencia",
+          "description": "Razonamiento y memoria"
+        },
+        "sabedoria": {
+          "name": "Sabiduría",
+          "description": "Percepción e intuición"
+        },
+        "carisma": {
+          "name": "Carisma",
+          "description": "Fuerza de personalidad"
+        }
+      },
+      "knowledge": {
+        "label": "Habilidades",
+        "atletismo": {
+          "name": "Atletismo",
+          "description": "Actividades físicas"
+        },
+        "acrobacia": {
+          "name": "Acrobacia",
+          "description": "Equilibrio y agilidad"
+        },
+        "furtividade": {
+          "name": "Sigilo",
+          "description": "Moverse sin ser detectado"
+        },
+        "percepcao": {
+          "name": "Percepción",
+          "description": "Notar detalles"
+        }
+      }
+    }
   }
 }

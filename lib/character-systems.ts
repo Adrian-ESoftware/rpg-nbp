@@ -1,4 +1,176 @@
-import type { SystemConfiguration } from "@/types/character-creation"
+import type { SystemConfiguration, LocalizedString } from "@/types/character-creation"
+
+// Helper function to get localized string
+export function getLocalizedString(text: string | LocalizedString, language: 'pt' | 'en' | 'es' = 'pt'): string {
+  if (typeof text === 'string') {
+    return text
+  }
+  return text[language] || text.pt
+}
+
+// Internationalization data for future use
+export const localizedData = {
+  gaia: {
+    attributes: {
+      label: {
+        pt: "Parâmetros",
+        en: "Attributes",
+        es: "Atributos"
+      },
+      items: {
+        brutalidade: {
+          name: { pt: "Brutalidade", en: "Brutality", es: "Brutalidad" },
+          description: { pt: "Força física bruta", en: "Raw physical strength", es: "Fuerza física bruta" }
+        },
+        destreza: {
+          name: { pt: "Destreza", en: "Dexterity", es: "Destreza" },
+          description: { pt: "Habilidade manual e coordenação", en: "Manual skill and coordination", es: "Habilidad manual y coordinación" }
+        },
+        agilidade: {
+          name: { pt: "Agilidade", en: "Agility", es: "Agilidad" },
+          description: { pt: "Velocidade e reflexos", en: "Speed and reflexes", es: "Velocidad y reflejos" }
+        },
+        precisao: {
+          name: { pt: "Precisão", en: "Precision", es: "Precisión" },
+          description: { pt: "Acurácia em ataques", en: "Attack accuracy", es: "Precisión en ataques" }
+        },
+        canalizacao: {
+          name: { pt: "Canalização", en: "Channeling", es: "Canalización" },
+          description: { pt: "Controle de energia mágica", en: "Magical energy control", es: "Control de energía mágica" }
+        },
+        arcanismo: {
+          name: { pt: "Arcanismo", en: "Arcanism", es: "Arcanismo" },
+          description: { pt: "Conhecimento das artes arcanas", en: "Knowledge of arcane arts", es: "Conocimiento de las artes arcanas" }
+        },
+        espirito: {
+          name: { pt: "Espírito", en: "Spirit", es: "Espíritu" },
+          description: { pt: "Força de vontade e determinação", en: "Willpower and determination", es: "Fuerza de voluntad y determinación" }
+        },
+        vigor: {
+          name: { pt: "Vigor", en: "Vigor", es: "Vigor" },
+          description: { pt: "Resistência física e saúde", en: "Physical resistance and health", es: "Resistencia física y salud" }
+        }
+      }
+    },
+    knowledge: {
+      label: {
+        pt: "Conhecimentos",
+        en: "Knowledge",
+        es: "Conocimientos"
+      },
+      items: {
+        mistico: {
+          name: { pt: "Místico", en: "Mystical", es: "Místico" },
+          description: { pt: "Conhecimento sobre magia e mistérios", en: "Knowledge about magic and mysteries", es: "Conocimiento sobre magia y misterios" }
+        },
+        exploracao: {
+          name: { pt: "Exploração", en: "Exploration", es: "Exploración" },
+          description: { pt: "Sobrevivência e navegação", en: "Survival and navigation", es: "Supervivencia y navegación" }
+        },
+        historia: {
+          name: { pt: "História", en: "History", es: "Historia" },
+          description: { pt: "Conhecimento do passado", en: "Knowledge of the past", es: "Conocimiento del pasado" }
+        },
+        religiao: {
+          name: { pt: "Religião", en: "Religion", es: "Religión" },
+          description: { pt: "Conhecimento sobre deuses e fé", en: "Knowledge about gods and faith", es: "Conocimiento sobre dioses y fe" }
+        },
+        carisma: {
+          name: { pt: "Carisma", en: "Charisma", es: "Carisma" },
+          description: { pt: "Influência e liderança", en: "Influence and leadership", es: "Influencia y liderazgo" }
+        },
+        intuicao: {
+          name: { pt: "Intuição", en: "Intuition", es: "Intuición" },
+          description: { pt: "Percepção e instinto", en: "Perception and instinct", es: "Percepción e instinto" }
+        },
+        intimidacao: {
+          name: { pt: "Intimidação", en: "Intimidation", es: "Intimidación" },
+          description: { pt: "Capacidade de amedrontar", en: "Ability to frighten", es: "Capacidad de intimidar" }
+        },
+        vontade: {
+          name: { pt: "Vontade", en: "Will", es: "Voluntad" },
+          description: { pt: "Resistência mental", en: "Mental resistance", es: "Resistencia mental" }
+        },
+        furtividade: {
+          name: { pt: "Furtividade", en: "Stealth", es: "Sigilo" },
+          description: { pt: "Capacidade de se esconder", en: "Ability to hide", es: "Capacidad de ocultarse" }
+        },
+        performance: {
+          name: { pt: "Performance", en: "Performance", es: "Interpretación" },
+          description: { pt: "Habilidades artísticas", en: "Artistic abilities", es: "Habilidades artísticas" }
+        },
+        percepcao: {
+          name: { pt: "Percepção", en: "Perception", es: "Percepción" },
+          description: { pt: "Capacidade de notar detalhes", en: "Ability to notice details", es: "Capacidad de notar detalles" }
+        },
+        tecnologia: {
+          name: { pt: "Tecnologia", en: "Technology", es: "Tecnología" },
+          description: { pt: "Conhecimento técnico e inventivo", en: "Technical and inventive knowledge", es: "Conocimiento técnico e inventivo" }
+        }
+      }
+    }
+  },
+  dnd5e: {
+    attributes: {
+      label: {
+        pt: "Atributos",
+        en: "Attributes",
+        es: "Atributos"
+      },
+      items: {
+        forca: {
+          name: { pt: "Força", en: "Strength", es: "Fuerza" },
+          description: { pt: "Poder físico", en: "Physical power", es: "Poder físico" }
+        },
+        destreza: {
+          name: { pt: "Destreza", en: "Dexterity", es: "Destreza" },
+          description: { pt: "Agilidade e reflexos", en: "Agility and reflexes", es: "Agilidad y reflejos" }
+        },
+        constituicao: {
+          name: { pt: "Constituição", en: "Constitution", es: "Constitución" },
+          description: { pt: "Resistência e vitalidade", en: "Resistance and vitality", es: "Resistencia y vitalidad" }
+        },
+        inteligencia: {
+          name: { pt: "Inteligência", en: "Intelligence", es: "Inteligencia" },
+          description: { pt: "Raciocínio e memória", en: "Reasoning and memory", es: "Razonamiento y memoria" }
+        },
+        sabedoria: {
+          name: { pt: "Sabedoria", en: "Wisdom", es: "Sabiduría" },
+          description: { pt: "Percepção e intuição", en: "Perception and intuition", es: "Percepción e intuición" }
+        },
+        carisma: {
+          name: { pt: "Carisma", en: "Charisma", es: "Carisma" },
+          description: { pt: "Força de personalidade", en: "Force of personality", es: "Fuerza de personalidad" }
+        }
+      }
+    },
+    knowledge: {
+      label: {
+        pt: "Perícias",
+        en: "Skills",
+        es: "Habilidades"
+      },
+      items: {
+        atletismo: {
+          name: { pt: "Atletismo", en: "Athletics", es: "Atletismo" },
+          description: { pt: "Atividades físicas", en: "Physical activities", es: "Actividades físicas" }
+        },
+        acrobacia: {
+          name: { pt: "Acrobacia", en: "Acrobatics", es: "Acrobacia" },
+          description: { pt: "Equilíbrio e agilidade", en: "Balance and agility", es: "Equilibrio y agilidad" }
+        },
+        furtividade: {
+          name: { pt: "Furtividade", en: "Stealth", es: "Sigilo" },
+          description: { pt: "Mover-se sem ser detectado", en: "Move without being detected", es: "Moverse sin ser detectado" }
+        },
+        percepcao: {
+          name: { pt: "Percepção", en: "Perception", es: "Percepción" },
+          description: { pt: "Notar detalhes", en: "Notice details", es: "Notar detalles" }
+        }
+      }
+    }
+  }
+}
 
 export const systemConfigurations: Record<string, SystemConfiguration> = {
   gaia: {

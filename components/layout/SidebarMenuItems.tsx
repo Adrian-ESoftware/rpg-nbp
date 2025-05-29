@@ -15,8 +15,6 @@ const SidebarMenuItems: React.FC = () => {
     { id: "dashboard", icon: Castle, label: t('dashboard'), href: "/dash" },
     { id: "create-character", icon: Shield, label: t('createCharacter'), href: "/dash/create-character" },
     { id: "campaigns", icon: Scroll, label: t('campaigns'), href: "/dash/campaigns" },
-    { id: "join-room", icon: DoorOpen, label: t('joinRoom'), href: "/join-room" },
-    { id: "master-tools", icon: Wand2, label: t('masterTools'), href: "/master-tools" },
     { id: "settings", icon: Settings, label: t('settings'), href: "/dash/settings" },
   ]
 

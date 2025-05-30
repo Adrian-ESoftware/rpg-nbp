@@ -1,7 +1,6 @@
 import type { RPGSystemConfig } from '@/types/rpg-systems';
 import { gaiaSystem } from './gaia';
 import { dnd5eSystem } from './dnd5e';
-import { pathfinderSystem } from './pathfinder';
 
 // Registro central de todos os sistemas
 export const registeredSystems: Record<string, RPGSystemConfig> = {

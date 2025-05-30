@@ -3,12 +3,17 @@ import { useTranslations } from 'next-intl'
 import { useToast } from "@/hooks/use-toast"
 import { useRouter } from "next/navigation"
 import { SessionData, ValidationErrors } from '../types'
+import { getAllSystems } from '@/lib/systems'
 
 export const useCreateSession = () => {
   const { toast } = useToast()
   const router = useRouter()
   const tValidation = useTranslations('validation')
   const t = useTranslations('createSession')
+  
+  // Obter primeiro sistema disponível como padrão
+  const availableSystems = getAllSystems()
+  const defaultSystemId = availableSystems.length > 0 ? availableSystems[0].id : 'gaia'
   
   const [sessionData, setSessionData] = useState<SessionData>({
     name: "",
@@ -17,7 +22,7 @@ export const useCreateSession = () => {
     duration: "3",
     sessionType: "oneshot",
     difficulty: "medium",
-    systemType: "dnd5e",
+    systemType: defaultSystemId, // Usar sistema válido do registro
     isPrivate: false,
     allowSpectators: true,
     tags: [],

@@ -59,7 +59,7 @@ export default function SettingsPage() {
       <div className="absolute bottom-1/6 right-1/4 w-32 h-32 bg-accent/22 rounded-full blur-xl animate-pulse delay-400"></div>
 
       <div className="relative z-10">
-        <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-8xl">
+        <div className="container mx-auto px-2 md:px-4 max-w-full">
           {/* Header */}
           <div className="pt-4 pb-2">
             <div className="text-center mb-3">

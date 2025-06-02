@@ -30,8 +30,8 @@ const Dashboard: React.FC = () => {
       <div className="absolute bottom-1/6 right-1/4 w-32 h-32 bg-accent/22 rounded-full blur-xl animate-pulse delay-400"></div>
 
       <div className="flex min-h-screen text-foreground relative z-10">
-        <div className="p-10 overflow-y-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+        <div className="container mx-auto px-2 md:px-4 max-w-full py-8 overflow-y-auto relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
             <div className="lg:col-span-2">
               <WelcomeBanner />
             </div>
@@ -40,8 +40,8 @@ const Dashboard: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-            <div className="lg:col-span-2 space-y-10">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="lg:col-span-2 space-y-8">
               <RecentCampaigns />
             </div>
             <div className="lg:col-span-1">

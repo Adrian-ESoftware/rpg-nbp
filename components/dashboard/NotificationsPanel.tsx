@@ -70,11 +70,15 @@ const NotificationsPanel: React.FC = () => {
   const [notificationList] = useState<NotificationItem[]>(initialNotifications)
 
   return (
-    <div className="bg-card border border-border rounded-xl p-6 shadow-lg">
-      <h2 className="text-xl font-bold text-card-foreground mb-6 flex items-center">
-        <Bell className="w-5 h-5 mr-3 text-primary" />
-        {tDashboard('notificationsBoard')}
-      </h2>
+    <div className="bg-card/60 backdrop-blur-lg border border-border/40 rounded-2xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-[1.01] bg-gradient-to-br from-card/70 via-card/50 to-card/30">
+      <div className="flex items-center space-x-3 mb-6">
+        <div className="p-3 bg-primary/20 backdrop-blur-sm rounded-xl border border-primary/30">
+          <Bell className="w-6 h-6 text-primary" />
+        </div>
+        <h2 className="text-xl font-bold text-card-foreground font-serif">
+          {tDashboard('notificationsBoard')}
+        </h2>
+      </div>
       
       <ScrollArea className="h-[600px]">
         <div className="space-y-4 pr-4">
@@ -86,29 +90,28 @@ const NotificationsPanel: React.FC = () => {
               <div
                 key={notification.id}
                 className={`
-                  bg-background/50 p-4 rounded-lg border-l-4 ${borderColorClass}
-                  hover:bg-accent/10 transition-all duration-200
+                  bg-background/60 backdrop-blur-sm p-4 rounded-xl border-l-4 ${borderColorClass}
+                  hover:bg-accent/20 transition-all duration-300 shadow-lg hover:shadow-xl
+                  transform hover:scale-[1.02] hover:-translate-y-0.5
                 `}
               >
                 <div className="flex items-start space-x-3">
-                  <div className="p-2 bg-primary/10 rounded-lg flex-shrink-0">
+                  <div className="p-2 bg-primary/20 backdrop-blur-sm rounded-lg flex-shrink-0 border border-primary/20">
                     <IconComponent className="w-4 h-4 text-primary" />
                   </div>
                   
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-semibold text-card-foreground mb-1 text-sm">
+                    <h3 className="font-semibold text-card-foreground mb-2 text-sm">
                       {t(notification.titleKey)}
                     </h3>
                   
-                    <p className="text-xs text-muted-foreground mb-2 leading-relaxed">
+                    <p className="text-xs text-muted-foreground mb-3 leading-relaxed">
                       {t(notification.contentKey)}
                     </p>
                   
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-muted-foreground">
-                        {notification.date}
-                      </span>
-                    </div>
+                    <span className="text-xs text-muted-foreground/70 bg-background/40 px-2 py-1 rounded-md">
+                      {notification.date}
+                    </span>
                   </div>
                 </div>
               </div>

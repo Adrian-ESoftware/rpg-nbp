@@ -152,7 +152,7 @@ export default function CampaignsPage() {
       <div className="relative z-10">
         {/* Header - sem badge */}
         <div className="pt-8 pb-6">
-          <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-8xl">
+          <div className="container mx-auto px-2 md:px-4 max-w-full">
             <div className="text-center mb-8">
               <h1 className="text-6xl md:text-7xl font-black bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent mb-2 tracking-tight leading-[1.2] pb-2">
                 {t('title')}
@@ -189,7 +189,7 @@ export default function CampaignsPage() {
         </div>
 
         {/* Grid com mais campanhas por linha */}
-        <div className="container mx-auto px-6 md:px-12 lg:px-20 pb-32 max-w-8xl">
+        <div className="container mx-auto px-2 md:px-4 pb-32 max-w-full">
           <ScrollArea className="h-[calc(100vh-400px)]">
             {/* Grid responsivo com 5 colunas em telas grandes */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 pr-6">

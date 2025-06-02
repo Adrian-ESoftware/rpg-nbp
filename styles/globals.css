@@ -59,28 +59,28 @@
     --ring: 215 45% 46%;
   }
 
-  /* Tema Dark (Noite Estrelada) - Mantido */
+  /* Tema Dark (Noite Estrelada) - Mais consistente, menos cinza */
   .dark {
-    --background: 230 25% 10%;           /* azul meia-noite profundo */
-    --foreground: 210 30% 92%;           /* cinza-azulado claro (estrelas) */
-    --card: 230 25% 14%;
-    --card-foreground: 210 30% 92%;
-    --popover: 230 25% 12%;
-    --popover-foreground: 210 30% 92%;
-    --primary: 210 60% 50%;              /* azul escuro mais neutro */
-    --primary-icon: 210 60% 30%;         /* azul escuro */
-    --primary-foreground: 210 30% 10%;
-    --secondary: 220 20% 28%;            /* azul acinzentado escuro */
-    --secondary-foreground: 210 30% 92%;
-    --muted: 225 15% 28%;                /* ardósia escura */
-    --muted-foreground: 220 15% 65%;
-    --accent: 220 20% 40%;               /* azul acinzentado médio */
-    --accent-foreground: 210 30% 92%;
-    --destructive: 0 65% 40%;            /* vermelho escuro menos saturado */
+    --background: 230 40% 8%;            /* azul meia-noite mais profundo */
+    --foreground: 220 60% 96%;           /* azul claro (estrelas) */
+    --card: 230 40% 12%;                 /* azul escuro */
+    --card-foreground: 220 60% 96%;
+    --popover: 230 40% 10%;
+    --popover-foreground: 220 60% 96%;
+    --primary: 220 80% 60%;              /* azul mais vibrante */
+    --primary-icon: 220 80% 36%;         /* azul escuro */
+    --primary-foreground: 220 60% 96%;
+    --secondary: 220 50% 22%;            /* azul profundo */
+    --secondary-foreground: 220 60% 96%;
+    --muted: 230 30% 18%;                /* azul escuro menos acinzentado */
+    --muted-foreground: 220 40% 70%;
+    --accent: 220 70% 38%;               /* azul médio */
+    --accent-foreground: 220 60% 96%;
+    --destructive: 0 65% 40%;            /* vermelho escuro */
     --destructive-foreground: 0 0% 100%;
-    --border: 225 15% 30%;
-    --input: 225 15% 30%;
-    --ring: 210 60% 50%;
+    --border: 230 30% 22%;
+    --input: 230 30% 22%;
+    --ring: 220 80% 60%;
   }
 
   /* Tema Fantasy (Roxo Místico e Prata Lunar) - REVISADO */

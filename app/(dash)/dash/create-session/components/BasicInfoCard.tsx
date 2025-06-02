@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { SessionData, ValidationErrors, FormOptions } from '../types'
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 interface BasicInfoCardProps {
   sessionData: SessionData
@@ -64,27 +65,31 @@ export const BasicInfoCard: React.FC<BasicInfoCardProps> = ({
           <Label htmlFor="description" className="text-lg font-semibold text-foreground">
             {t('sessionDescription')} *
           </Label>
-          <Textarea
-            id="description"
-            value={sessionData.description}
-            onChange={(e) => onInputChange("description", e.target.value)}
-            rows={5}
-            placeholder={t('sessionDescriptionPlaceholder')}
-            className={`resize-none text-base border-2 bg-background/50 backdrop-blur-sm transition-all duration-300 hover:bg-background/80 focus:scale-[1.01] ${
-              errors.description ? "border-destructive focus:border-destructive" : "border-border focus:border-primary"
-            }`}
-          />
-          <div className="flex justify-between items-center">
-            {errors.description ? (
-              <div className="flex items-center space-x-2 text-destructive text-sm font-medium bg-destructive/10 p-3 rounded-lg">
-                <AlertCircle className="w-4 h-4" />
-                <span>{errors.description}</span>
-              </div>
-            ) : (
-              <div className="text-sm text-muted-foreground bg-muted/50 px-3 py-1 rounded-full">
-                {sessionData.description.length}/500 {t('characters')}
-              </div>
-            )}
+          <div className="space-y-2">
+            <ScrollArea className="h-[120px] rounded-md border border-border/60">
+              <Textarea
+                id="description"
+                value={sessionData.description}
+                onChange={(e) => onInputChange("description", e.target.value)}
+                rows={5}
+                placeholder={t('sessionDescriptionPlaceholder')}
+                className={`min-h-[120px] resize-none border-0 focus:shadow-lg transition-all duration-300 ${
+                  errors.description ? "border-destructive" : ""
+                }`}
+              />
+            </ScrollArea>
+            <div className="flex justify-between items-center">
+              {errors.description ? (
+                <div className="flex items-center space-x-2 text-destructive text-sm font-medium bg-destructive/10 p-3 rounded-lg">
+                  <AlertCircle className="w-4 h-4" />
+                  <span>{errors.description}</span>
+                </div>
+              ) : (
+                <div className="text-sm text-muted-foreground bg-muted/50 px-3 py-1 rounded-full">
+                  {sessionData.description.length}/500 {t('characters')}
+                </div>
+              )}
+            </div>
           </div>
         </div>
 

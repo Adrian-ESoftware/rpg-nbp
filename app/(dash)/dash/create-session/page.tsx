@@ -61,7 +61,7 @@ export default function CreateSessionPage() {
           <div className="container mx-auto px-4 max-w-4xl text-center">
             <div className="inline-flex items-center space-x-3 mb-6 bg-card/70 backdrop-blur-sm px-6 py-3 rounded-full border border-border shadow-lg">
               <Sparkles className="w-5 h-5 text-primary" />
-              <span className="text-sm font-medium text-primary">Criar Nova Aventura</span>
+              <span className="text-sm font-medium text-primary">{t('createNewAdventure')}</span>
             </div>
             
             <h1 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent mb-4">

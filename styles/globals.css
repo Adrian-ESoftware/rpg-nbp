@@ -257,4 +257,75 @@
     @apply bg-card border-input text-foreground placeholder:text-muted-foreground;
     @apply focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring;
   }
+
+  /* Custom Scrollbar - Themed */
+  .scrollbar-themed {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--primary)) hsl(var(--muted));
+  }
+
+  .scrollbar-themed::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .scrollbar-themed::-webkit-scrollbar-track {
+    background: hsl(var(--muted) / 0.3);
+    border-radius: 4px;
+  }
+
+  .scrollbar-themed::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.6);
+    border-radius: 4px;
+    border: 1px solid hsl(var(--border));
+  }
+
+  .scrollbar-themed::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.8);
+  }
+
+  .scrollbar-themed::-webkit-scrollbar-thumb:active {
+    background: hsl(var(--primary));
+  }
+
+  /* Dark theme scrollbar adjustments */
+  .dark .scrollbar-themed::-webkit-scrollbar-track {
+    background: hsl(var(--muted) / 0.2);
+  }
+
+  .dark .scrollbar-themed::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.7);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+
+  .dark .scrollbar-themed::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.9);
+  }
+
+  /* Radix ScrollArea themed styles - sem blur */
+  [data-slot="scroll-area-scrollbar"] {
+    background: hsl(var(--muted) / 0.3) !important;
+  }
+
+  [data-slot="scroll-area-thumb"] {
+    background: hsl(var(--primary) / 0.6) !important;
+    border: 1px solid hsl(var(--border)) !important;
+    transition: background-color 0.2s ease !important;
+  }
+
+  [data-slot="scroll-area-thumb"]:hover {
+    background: hsl(var(--primary) / 0.8) !important;
+  }
+
+  .dark [data-slot="scroll-area-scrollbar"] {
+    background: hsl(var(--muted) / 0.2) !important;
+  }
+
+  .dark [data-slot="scroll-area-thumb"] {
+    background: hsl(var(--primary) / 0.7) !important;
+    border: 1px solid hsl(var(--border) / 0.5) !important;
+  }
+
+  .dark [data-slot="scroll-area-thumb"]:hover {
+    background: hsl(var(--primary) / 0.9) !important;
+  }
 }

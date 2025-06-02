@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Plus, Search, Users, Calendar } from 'lucide-react'
 import { useTranslations } from 'next-intl'
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 interface Campaign {
   id: string
@@ -62,122 +63,134 @@ export default function CampaignsPage() {
   }
 
   return (
-    <div className="container mx-auto px-6 py-8">
-      {/* Header */}
-      <div className="flex justify-between items-center mb-8">
-        <div>
-          <h1 className="text-3xl font-bold text-foreground">
-            {t('title')}
-          </h1>
-          <p className="text-muted-foreground mt-2">
-            {t('description')}
-          </p>
-        </div>
-        <button 
-          onClick={handleCreateCampaign}
-          className="btn-primary px-6 py-3 rounded-lg flex items-center gap-2 transition-colors"
-        >
-          <Plus size={20} />
-          {t('newCampaign')}
-        </button>
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-background via-card to-muted relative overflow-hidden">
+      {/* Floating elements... */}
 
-      {/* Search Bar */}
-      <div className="relative mb-8">
-        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          <Search className="h-5 w-5 text-muted-foreground" />
-        </div>
-        <input
-          type="text"
-          placeholder={t('searchPlaceholder')}
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="themed-input block w-full pl-10 pr-3 py-3 rounded-lg leading-5"
-        />
-      </div>
-
-      {/* Campaigns Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredCampaigns.map((campaign) => (
-          <div
-            key={campaign.id}
-            className="campaign-card rounded-xl shadow-md transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105"
-          >
-            {/* Campaign Image */}
-            <div className="h-48 bg-gradient-to-r from-primary to-accent relative">
-              {campaign.image ? (
-                <img
-                  src={campaign.image}
-                  alt={campaign.title}
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <div className="flex items-center justify-center h-full">
-                  <h3 className="text-primary-foreground text-xl font-bold text-center px-4">
-                    {campaign.title}
-                  </h3>
-                </div>
-              )}
-            </div>
-
-            {/* Campaign Content */}
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-foreground mb-2">
-                {campaign.title}
-              </h3>
-              <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
-                {campaign.description}
-              </p>
-
-              {/* Campaign Stats */}
-              <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
-                <div className="flex items-center gap-1">
-                  <Users size={16} />
-                  <span>{campaign.playerCount}/{campaign.maxPlayers} {t('players')}</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <Calendar size={16} />
-                  <span>{new Date(campaign.nextSession).toLocaleDateString()}</span>
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex gap-2">
-                <button className="flex-1 bg-muted hover:bg-muted/80 text-muted-foreground py-2 px-4 rounded-lg text-sm font-medium transition-colors">
-                  {t('viewDetails')}
-                </button>
-                <button className="flex-1 btn-accent py-2 px-4 rounded-lg text-sm font-medium transition-colors">
-                  {t('joinSession')}
-                </button>
-              </div>
-            </div>
+      <div className="relative z-10">
+        {/* Header */}
+        <div className="flex justify-between items-center mb-8">
+          <div>
+            <h1 className="text-3xl font-bold text-foreground">
+              {t('title')}
+            </h1>
+            <p className="text-muted-foreground mt-2">
+              {t('description')}
+            </p>
           </div>
-        ))}
-      </div>
-
-      {/* Empty State */}
-      {filteredCampaigns.length === 0 && (
-        <div className="text-center py-12">
-          <div className="text-muted-foreground mb-4">
-            <Users size={64} className="mx-auto" />
-          </div>
-          <h3 className="text-xl font-semibold text-foreground mb-2">
-            {t('noCampaignsFound')}
-          </h3>
-          <p className="text-muted-foreground mb-6">
-            {searchTerm
-              ? t('noCampaignsDescription')
-              : t('createFirstCampaign')}
-          </p>
           <button 
             onClick={handleCreateCampaign}
-            className="btn-primary px-6 py-3 rounded-lg flex items-center gap-2 mx-auto transition-colors"
+            className="btn-primary px-6 py-3 rounded-lg flex items-center gap-2 transition-colors"
           >
             <Plus size={20} />
-            {t('createFirstCampaignButton')}
+            {t('newCampaign')}
           </button>
         </div>
-      )}
+
+        <div className="container mx-auto px-4 md:px-8 lg:px-16 py-8 max-w-7xl">
+          {/* Search Bar */}
+          <div className="relative mb-8">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <Search className="h-5 w-5 text-muted-foreground" />
+            </div>
+            <input
+              type="text"
+              placeholder={t('searchPlaceholder')}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="themed-input block w-full pl-10 pr-3 py-3 rounded-lg leading-5"
+            />
+          </div>
+
+          {/* Campaigns Grid */}
+          <ScrollArea className="h-[calc(100vh-300px)]">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pr-4">
+              {filteredCampaigns.map((campaign) => (
+                <div 
+                  key={campaign.id} 
+                  className="transform hover:scale-[1.02] transition-all duration-300"
+                >
+                  <div
+                    className="campaign-card rounded-xl shadow-md transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105"
+                  >
+                    {/* Campaign Image */}
+                    <div className="h-48 bg-gradient-to-r from-primary to-accent relative">
+                      {campaign.image ? (
+                        <img
+                          src={campaign.image}
+                          alt={campaign.title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="flex items-center justify-center h-full">
+                          <h3 className="text-primary-foreground text-xl font-bold text-center px-4">
+                            {campaign.title}
+                          </h3>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Campaign Content */}
+                    <div className="p-6">
+                      <h3 className="text-xl font-semibold text-foreground mb-2">
+                        {campaign.title}
+                      </h3>
+                      <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
+                        {campaign.description}
+                      </p>
+
+                      {/* Campaign Stats */}
+                      <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
+                        <div className="flex items-center gap-1">
+                          <Users size={16} />
+                          <span>{campaign.playerCount}/{campaign.maxPlayers} {t('players')}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Calendar size={16} />
+                          <span>{new Date(campaign.nextSession).toLocaleDateString()}</span>
+                        </div>
+                      </div>
+
+                      {/* Action Buttons */}
+                      <div className="flex gap-2">
+                        <button className="flex-1 bg-muted hover:bg-muted/80 text-muted-foreground py-2 px-4 rounded-lg text-sm font-medium transition-colors">
+                          {t('viewDetails')}
+                        </button>
+                        <button className="flex-1 btn-accent py-2 px-4 rounded-lg text-sm font-medium transition-colors">
+                          {t('joinSession')}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </ScrollArea>
+
+          {/* Empty State */}
+          {filteredCampaigns.length === 0 && (
+            <div className="text-center py-12">
+              <div className="text-muted-foreground mb-4">
+                <Users size={64} className="mx-auto" />
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-2">
+                {t('noCampaignsFound')}
+              </h3>
+              <p className="text-muted-foreground mb-6">
+                {searchTerm
+                  ? t('noCampaignsDescription')
+                  : t('createFirstCampaign')}
+              </p>
+              <button 
+                onClick={handleCreateCampaign}
+                className="btn-primary px-6 py-3 rounded-lg flex items-center gap-2 mx-auto transition-colors"
+              >
+                <Plus size={20} />
+                {t('createFirstCampaignButton')}
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   )
 }

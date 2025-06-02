@@ -74,12 +74,12 @@ export function CharacterImageUpload({
 
   return (
     <div className="flex flex-col items-center space-y-4 w-full">
-      <Card className="relative overflow-hidden shadow-lg w-full">
+      <Card className="relative overflow-hidden shadow-2xl w-full bg-card/50 border-border/70">
         <CardContent className={imageUrl ? "p-0" : "p-6"}>
           <div
-            className={`relative w-full aspect-square flex items-center justify-center transition-all duration-200 ${
-              isDragging ? 'bg-primary/10 border-primary' : 'bg-muted/30'
-            } ${!imageUrl ? 'border-2 border-dashed border-muted-foreground/30 cursor-pointer hover:border-primary/50' : ''}`}
+            className={`relative w-full aspect-square flex items-center justify-center transition-all duration-300 ${
+              isDragging ? 'bg-primary/30 border-primary/70 shadow-xl' : 'bg-muted/15'
+            } ${!imageUrl ? 'border-2 border-dashed border-muted-foreground/40 cursor-pointer hover:border-primary/70 hover:bg-primary/20 hover:shadow-lg' : ''}`}
             onDrop={handleDrop}
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
@@ -93,7 +93,7 @@ export function CharacterImageUpload({
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-black/0 hover:bg-black/20 transition-colors duration-200 flex items-center justify-center opacity-0 hover:opacity-100">
+                <div className="absolute inset-0 bg-black/0 hover:bg-black/40 transition-colors duration-300 flex items-center justify-center opacity-0 hover:opacity-100">
                   <div className="flex space-x-2">
                     <Button
                       variant="secondary"
@@ -102,7 +102,7 @@ export function CharacterImageUpload({
                         e.stopPropagation()
                         handleClick()
                       }}
-                      className="bg-white/90 hover:bg-white text-black"
+                      className="bg-white/80 hover:bg-white/90 text-black shadow-xl border border-white/30"
                     >
                       <Camera className="w-4 h-4 mr-2" />
                       {t('changeImage')}
@@ -114,7 +114,7 @@ export function CharacterImageUpload({
                         e.stopPropagation()
                         removeImage()
                       }}
-                      className="bg-destructive/90 hover:bg-destructive"
+                      className="bg-destructive/80 hover:bg-destructive/90 shadow-xl border border-destructive/30"
                     >
                       <X className="w-4 h-4" />
                     </Button>
@@ -123,8 +123,8 @@ export function CharacterImageUpload({
               </>
             ) : (
               <div className="text-center">
-                <div className="mx-auto w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                  <User className="w-8 h-8 text-primary" />
+                <div className="mx-auto w-16 h-16 bg-primary/30 rounded-full flex items-center justify-center mb-4 border border-primary/50 shadow-lg">
+                  <User className="w-8 h-8 text-primary drop-shadow-md" />
                 </div>
                 <p className="text-sm font-medium text-foreground mb-2">
                   {t('uploadCharacterImage')}
@@ -153,9 +153,9 @@ export function CharacterImageUpload({
       />
 
       {characterName && (
-        <div className="text-center">
+        <div className="text-center p-3 bg-card/50 rounded-lg border border-border/60 shadow-xl">
           <h3 className="text-xl font-bold text-foreground">{characterName}</h3>
-          <Badge variant="outline" className="mt-1">
+          <Badge variant="outline" className="mt-1 bg-card/40 border-border/50 shadow-md">
             {t('characterPortrait')}
           </Badge>
         </div>

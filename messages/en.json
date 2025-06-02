@@ -107,6 +107,7 @@
   "createSession": {
     "title": "Create New Session",
     "description": "Configure your adventure and invite players",
+    "createNewAdventure": "Create New Adventure",
     "basicInfo": "Basic Information",
     "basicInfoDescription": "Configure the main details of your session",
     "sessionName": "Session Name",
@@ -184,6 +185,7 @@
   "createCharacter": {
     "title": "Create Character",
     "description": "Configure your hero and start your journey",
+    "createNewCharacter": "Create New Character",
     "systemSelection": "System Selection",
     "systemSelectionDescription": "Choose the RPG system for your character",
     "rpgSystem": "RPG System",

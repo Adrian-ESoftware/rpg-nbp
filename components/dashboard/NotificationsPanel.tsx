@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { useTranslations } from 'next-intl'
 import { Bell, Scroll, Calendar, Settings, BookOpen, Mail } from "lucide-react"
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 const borderColorsByType: Record<string, string> = {
   update: "border-primary",
@@ -75,44 +76,46 @@ const NotificationsPanel: React.FC = () => {
         {tDashboard('notificationsBoard')}
       </h2>
       
-      <div className="space-y-4 max-h-[600px] overflow-y-auto scrollbar-thin scrollbar-thumb-border scrollbar-track-transparent">
-        {notificationList.map((notification) => {
-          const IconComponent = notification.icon
-          const borderColorClass = borderColorsByType[notification.type] || "border-primary"
-          
-          return (
-            <div
-              key={notification.id}
-              className={`
-                bg-background/50 p-4 rounded-lg border-l-4 ${borderColorClass}
-                hover:bg-accent/10 transition-all duration-200
-              `}
-            >
-              <div className="flex items-start space-x-3">
-                <div className="p-2 bg-primary/10 rounded-lg flex-shrink-0">
-                  <IconComponent className="w-4 h-4 text-primary" />
-                </div>
-                
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-semibold text-card-foreground mb-1 text-sm">
-                    {t(notification.titleKey)}
-                  </h3>
+      <ScrollArea className="h-[600px]">
+        <div className="space-y-4 pr-4">
+          {notificationList.map((notification) => {
+            const IconComponent = notification.icon
+            const borderColorClass = borderColorsByType[notification.type] || "border-primary"
+            
+            return (
+              <div
+                key={notification.id}
+                className={`
+                  bg-background/50 p-4 rounded-lg border-l-4 ${borderColorClass}
+                  hover:bg-accent/10 transition-all duration-200
+                `}
+              >
+                <div className="flex items-start space-x-3">
+                  <div className="p-2 bg-primary/10 rounded-lg flex-shrink-0">
+                    <IconComponent className="w-4 h-4 text-primary" />
+                  </div>
                   
-                  <p className="text-xs text-muted-foreground mb-2 leading-relaxed">
-                    {t(notification.contentKey)}
-                  </p>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-semibold text-card-foreground mb-1 text-sm">
+                      {t(notification.titleKey)}
+                    </h3>
                   
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-muted-foreground">
-                      {notification.date}
-                    </span>
+                    <p className="text-xs text-muted-foreground mb-2 leading-relaxed">
+                      {t(notification.contentKey)}
+                    </p>
+                  
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs text-muted-foreground">
+                        {notification.date}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          )
-        })}
-      </div>
+            )
+          })}
+        </div>
+      </ScrollArea>
     </div>
   )
 }

@@ -59,7 +59,7 @@ export default function CreateSessionPage() {
 
       <div className="relative z-10">
         {/* Header - sem badge */}
-        <div className="pt-8 pb-6">
+        <div className="pt-4 pb-4">
           <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-6xl text-center">
             <h1 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent mb-2 leading-[1.2] pb-3">
               {t('title')}
@@ -72,7 +72,7 @@ export default function CreateSessionPage() {
         </div>
 
         {/* Main Content - Layout melhorado em 2x2 */}
-        <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-6xl pb-20">
+        <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-6xl pb-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             
             {/* Quadrante Superior Esquerdo - Basic Info */}

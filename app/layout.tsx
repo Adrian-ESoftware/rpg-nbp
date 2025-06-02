@@ -4,6 +4,7 @@ import { getLocale, getMessages } from 'next-intl/server'
 import { ThemeProvider } from "next-themes"
 import { LanguageProvider } from '@/contexts/LanguageContext'
 import "../styles/globals.css"
+import "../styles/scrollbar.css"
 
 export const metadata: Metadata = {
   title: 'RPG App',

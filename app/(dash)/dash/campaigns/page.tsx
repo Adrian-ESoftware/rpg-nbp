@@ -191,7 +191,7 @@ export default function CampaignsPage() {
 
         {/* Grid com mais campanhas por linha */}
         <div className="container mx-auto px-6 md:px-12 lg:px-20 pb-32 max-w-8xl">
-          <ScrollArea className="h-[calc(100vh-400px)]">
+          <ScrollArea className="h-[calc(100vh-400px)] custom-scrollbar">
             {/* Grid responsivo com 5 colunas em telas grandes */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 pr-6">
               {filteredCampaigns.map((campaign) => (

@@ -71,6 +71,7 @@
   },
   "settings": {
     "title": "Configuración",
+    "description": "Personaliza tu experiencia y gestiona tu cuenta",
     "appearance": "Apariencia",
     "appearanceDescription": "Personaliza la apariencia de tu interfaz",
     "profile": "Perfil",
@@ -90,7 +91,9 @@
     "campaignNotifications": "Notificaciones de Campañas",
     "inviteNotifications": "Notificaciones de Invitaciones",
     "twoFactorAuth": "Autenticación de Dos Factores",
-    "activeSessions": "Sesiones Activas"
+    "activeSessions": "Sesiones Activas",
+    "notificationSettings": "Configuración de Notificaciones",
+    "save": "Guardar Configuración"
   },
   "themes": {
     "dark": "Oscuro",

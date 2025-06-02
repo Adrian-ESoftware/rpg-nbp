@@ -42,17 +42,17 @@ export function NotificationSettings() {
   }
 
   return (
-    <Card className="shadow-lg border-border/50 bg-card/70 backdrop-blur-sm">
-      <CardHeader>
+    <Card className="shadow-2xl border-primary/20 bg-card/50 backdrop-blur-lg rounded-2xl">
+      <CardHeader className="pb-4 bg-card/40 border-b border-border/60 shadow-lg rounded-t-2xl">
         <CardTitle className="text-lg font-semibold">
           {t('notificationSettings')}
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-6">
+      <CardContent className="p-6 bg-card/20 space-y-6">
         <ScrollArea className="h-[300px] pr-4">
           <div className="space-y-4">
             {/* Campaign Notifications */}
-            <div className="flex items-center justify-between p-4 bg-muted/30 rounded-lg border border-border/50">
+            <div className="flex items-center justify-between p-4 bg-card/40 backdrop-blur-sm rounded-lg border border-border/50 shadow-lg">
               <span className="text-sm font-medium">{t('campaignNotifications')}</span>
               <Switch
                 checked={campaignNotifications}
@@ -62,7 +62,7 @@ export function NotificationSettings() {
             </div>
 
             {/* Invite Notifications */}
-            <div className="flex items-center justify-between p-4 bg-muted/30 rounded-lg border border-border/50">
+            <div className="flex items-center justify-between p-4 bg-card/40 backdrop-blur-sm rounded-lg border border-border/50 shadow-lg">
               <span className="text-sm font-medium">{t('inviteNotifications')}</span>
               <Switch
                 checked={inviteNotifications}
@@ -72,7 +72,7 @@ export function NotificationSettings() {
             </div>
 
             {/* Two-Factor Authentication */}
-            <div className="flex items-center justify-between p-4 bg-muted/30 rounded-lg border border-border/50">
+            <div className="flex items-center justify-between p-4 bg-card/40 backdrop-blur-sm rounded-lg border border-border/50 shadow-lg">
               <span className="text-sm font-medium">{t('twoFactorAuth')}</span>
               <Switch
                 checked={twoFactorAuth}
@@ -83,10 +83,10 @@ export function NotificationSettings() {
           </div>
         </ScrollArea>
 
-        <div className="flex justify-end">
+        <div className="flex justify-end pt-4 border-t border-border/50">
           <Button
             onClick={handleSave}
-            className="w-full sm:w-auto"
+            className="w-full sm:w-auto bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 border border-primary/40 shadow-xl hover:shadow-2xl transition-all duration-300"
           >
             {t('save')}
           </Button>

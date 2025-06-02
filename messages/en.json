@@ -71,6 +71,7 @@
   },
   "settings": {
     "title": "Settings",
+    "description": "Customize your experience and manage your account",
     "appearance": "Appearance",
     "appearanceDescription": "Customize your interface appearance",
     "profile": "Profile",
@@ -90,7 +91,9 @@
     "campaignNotifications": "Campaign Notifications",
     "inviteNotifications": "Invite Notifications",
     "twoFactorAuth": "Two-Factor Authentication",
-    "activeSessions": "Active Sessions"
+    "activeSessions": "Active Sessions",
+    "notificationSettings": "Notification Settings",
+    "save": "Save Settings"
   },
   "themes": {
     "dark": "Dark",

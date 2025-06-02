@@ -2,7 +2,7 @@
 
 import React from "react"
 import { useTranslations } from 'next-intl'
-import { Wand2, Sparkles, Dice6 } from "lucide-react"
+import { Dice6 } from "lucide-react"
 import { useCreateSession } from './hooks/useCreateSession'
 import { BasicInfoCard } from './components/BasicInfoCard'
 import { SessionSettingsCard } from './components/SessionSettingsCard'
@@ -59,9 +59,9 @@ export default function CreateSessionPage() {
 
       <div className="relative z-10">
         {/* Header - sem badge */}
-        <div className="pt-16 pb-12">
+        <div className="pt-8 pb-6">
           <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-6xl text-center">
-            <h1 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent mb-6">
+            <h1 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent mb-2 leading-[1.2] pb-3">
               {t('title')}
             </h1>
             

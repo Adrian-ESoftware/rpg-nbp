@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl'
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { CardContent } from "@/components/ui/card"
 import { User, Scroll, Loader2 } from "lucide-react"
 import type { RPGSystemConfig, CharacterSheet } from "@/types/rpg-systems"
 

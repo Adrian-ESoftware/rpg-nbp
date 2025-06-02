@@ -2,14 +2,13 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { Plus, Search, Users, Calendar, Clock, MapPin, Star } from 'lucide-react'
+import { Plus, Search, Users, MapPin, Star } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
-import Image from "next/image"
 
 interface Campaign {
   id: string
@@ -152,10 +151,10 @@ export default function CampaignsPage() {
 
       <div className="relative z-10">
         {/* Header - sem badge */}
-        <div className="pt-20 pb-12">
+        <div className="pt-8 pb-6">
           <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-8xl">
-            <div className="text-center mb-12">
-              <h1 className="text-6xl md:text-7xl font-black bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent mb-6 tracking-tight">
+            <div className="text-center mb-8">
+              <h1 className="text-6xl md:text-7xl font-black bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent mb-2 tracking-tight leading-[1.2] pb-2">
                 {t('title')}
               </h1>
               
@@ -165,7 +164,7 @@ export default function CampaignsPage() {
             </div>
 
             {/* Search and Create Section */}
-            <div className="max-w-4xl mx-auto mb-16">
+            <div className="max-w-4xl mx-auto mb-8">
               <div className="flex flex-col lg:flex-row gap-6 items-center">
                 <div className="flex-1 w-full relative">
                   <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-6 w-6 text-muted-foreground" />

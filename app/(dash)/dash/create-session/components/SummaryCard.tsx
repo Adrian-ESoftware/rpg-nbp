@@ -1,10 +1,9 @@
 import React from 'react'
 import { useTranslations } from 'next-intl'
-import { CheckCircle, Users, Clock, Wand2, Sparkles, Loader2 } from 'lucide-react'
+import { Sparkles, Loader2 } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Separator } from "@/components/ui/separator"
 import { SessionData, FormOptions } from '../types'
 
 interface SummaryCardProps {

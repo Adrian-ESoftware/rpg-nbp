@@ -7,7 +7,6 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { SessionData, ValidationErrors, FormOptions } from '../types'
-import { ScrollArea } from "@/components/ui/scroll-area"
 
 interface BasicInfoCardProps {
   sessionData: SessionData

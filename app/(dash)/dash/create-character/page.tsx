@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
-import { Shield, Wand2 } from "lucide-react";
+import { Wand2 } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
@@ -204,8 +204,8 @@ export default function CreateCharacterPage() {
       <div className="relative z-10">
         <div className="container mx-auto px-4 md:px-8 lg:px-16 py-6 max-w-full">
           {/* Header */}
-          <div className="mb-8 text-center pt-8">
-            <h1 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent mb-4">
+          <div className="mb-4 text-center pt-4">
+            <h1 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent mb-2 leading-[1.2] pb-3">
               {t("title")}
             </h1>
             

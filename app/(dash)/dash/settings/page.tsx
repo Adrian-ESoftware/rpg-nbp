@@ -58,12 +58,12 @@ export default function SettingsPage() {
       <div className="absolute top-1/6 left-1/3 w-20 h-20 bg-primary/18 rounded-full blur-lg animate-pulse delay-800"></div>
       <div className="absolute bottom-1/6 right-1/4 w-32 h-32 bg-accent/22 rounded-full blur-xl animate-pulse delay-400"></div>
 
-      <div className="relative z-10">
+      <div className="relative z-100">
         <div className="max-w-7xl mx-auto p-8">
           {/* Header */}
-          <div className="pt-20 pb-16">
-            <div className="text-center mb-16">
-              <h1 className="text-6xl md:text-7xl font-black bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent mb-8 tracking-tight">
+          <div className="pt-4 pb-4">
+            <div className="text-center mb-4">
+              <h1 className="text-6xl md:text-7xl font-black bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent mb-2 tracking-tight leading-[1.2] pb-3">
                 {t('title')}
               </h1>
               
@@ -73,7 +73,7 @@ export default function SettingsPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 xl:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
             {/* Main Settings */}
             <div className="xl:col-span-2 space-y-12">
               {/* Theme Section */}

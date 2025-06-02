@@ -1,4 +1,6 @@
 export interface SessionData {
+  type: any
+  system: any
   name: string
   description: string
   maxPlayers: number

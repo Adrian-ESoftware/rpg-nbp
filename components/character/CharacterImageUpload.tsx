@@ -127,10 +127,10 @@ export function CharacterImageUpload({
                   <User className="w-8 h-8 text-primary drop-shadow-md" />
                 </div>
                 <p className="text-sm font-medium text-foreground mb-2">
-                  {t('uploadCharacterImage')}
+                  {t('characterImage')}
                 </p>
                 <p className="text-xs text-muted-foreground mb-4">
-                  {t('dragDropOrClick')}
+                  {t('clickOrDrag')}
                 </p>
                 <div className="flex items-center justify-center space-x-2">
                   <Upload className="w-4 h-4 text-muted-foreground" />
@@ -156,7 +156,7 @@ export function CharacterImageUpload({
         <div className="text-center p-3 bg-card/50 rounded-lg border border-border/60 shadow-xl">
           <h3 className="text-xl font-bold text-foreground">{characterName}</h3>
           <Badge variant="outline" className="mt-1 bg-card/40 border-border/50 shadow-md">
-            {t('characterPortrait')}
+            {t('portrait')}
           </Badge>
         </div>
       )}

@@ -53,7 +53,9 @@
     "mineDescription": "Desciende a las profundidades de una mina maldita en busca de riquezas y respuestas. Cuidado con lo que acecha en las sombras.",
     "createNewSession": "Crear Nueva Sesión",
     "createNewDescription": "Comienza una nueva aventura desde cero, define tus desafíos e invita a tus jugadores.",
-    "lastSession": "Última sesión"
+    "lastSession": "Última sesión",
+    "details": "Detalles",
+    "enter": "Entrar"
   },
   "notifications": {
     "newExpansion": "¡Nueva Expansión!",
@@ -163,7 +165,10 @@
     "hours": "horas",
     "difficulty": "Dificultad",
     "privacy": "Privacidad",
-    "more": "más"
+    "more": "más",
+    "goodLuck": "Buena suerte",
+    "master": "Maestro",
+    "goodLuckMaster": "¡Buena suerte, Maestro!"
   },
   "validation": {
     "sessionNameRequired": "El nombre de la sesión es obligatorio",
@@ -206,6 +211,9 @@
     "initialEquipment": "Equipamiento Inicial",
     "equipmentDescription": "Tu equipamiento inicial basado en el sistema elegido",
     "characterSummary": "Resumen del Personaje",
+    "summaryDescription": "Resumen de tu personaje",
+    "resources": "Recursos",
+    "progress": "Progreso",
     "createCharacter": "Crear Personaje",
     "creating": "Creando...",
     "successMessage": "¡Personaje creado exitosamente!",
@@ -233,10 +241,8 @@
     "legacy": "Legado",
     "combatPath": "Camino de Combate",
     "selectSystem": "Selecciona un sistema",
-    "stepOf": "Paso {current} de {total}",
-    "next": "Siguiente",
-    "previous": "Anterior",
-    "finish": "Finalizar"
+    "selectSessionType": "Selecciona un tipo de sesión",
+    "settings": "Configuración"
   },
   "characterSystems": {
     "gaia": {

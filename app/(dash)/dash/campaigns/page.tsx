@@ -267,7 +267,7 @@ export default function CampaignsPage() {
                             e.stopPropagation()
                           }}
                         >
-                          Detalhes
+                          {t('details')}
                         </Button>
                         <Button 
                           size="sm" 
@@ -276,7 +276,7 @@ export default function CampaignsPage() {
                             e.stopPropagation()
                           }}
                         >
-                          Entrar
+                          {t('enter')}
                         </Button>
                       </div>
                     </CardContent>

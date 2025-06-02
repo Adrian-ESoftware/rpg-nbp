@@ -205,11 +205,6 @@ export default function CreateCharacterPage() {
         <div className="container mx-auto px-4 md:px-8 lg:px-16 py-6 max-w-full">
           {/* Header */}
           <div className="mb-8 text-center pt-8">
-            <div className="inline-flex items-center space-x-3 mb-6 bg-card/70 backdrop-blur-sm px-6 py-3 rounded-full border border-border shadow-lg">
-              <Shield className="w-5 h-5 text-primary" />
-              <span className="text-sm font-medium text-primary">{t('createNewCharacter')}</span>
-            </div>
-            
             <h1 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent mb-4">
               {t("title")}
             </h1>

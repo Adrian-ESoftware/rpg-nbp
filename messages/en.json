@@ -53,7 +53,9 @@
     "mineDescription": "Descend into the depths of a cursed mine in search of riches and answers. Beware what lurks in the shadows.",
     "createNewSession": "Create New Session",
     "createNewDescription": "Start a new adventure from scratch, define your challenges and invite your players.",
-    "lastSession": "Last session"
+    "lastSession": "Last session",
+    "details": "Details",
+    "enter": "Enter"
   },
   "notifications": {
     "newExpansion": "New Expansion!",
@@ -163,7 +165,13 @@
     "hours": "hours",
     "difficulty": "Difficulty",
     "privacy": "Privacy",
-    "more": "more"
+    "more": "more",
+    "goodLuck": "Good luck",
+    "master": "Master",
+    "goodLuckMaster": "Good luck, Master!",
+    "selectSystem": "Select a system",
+    "selectSessionType": "Select a session type",
+    "settings": "Settings"
   },
   "validation": {
     "sessionNameRequired": "Session name is required",
@@ -206,6 +214,9 @@
     "initialEquipment": "Initial Equipment",
     "equipmentDescription": "Your initial equipment based on the chosen system",
     "characterSummary": "Character Summary",
+    "summaryDescription": "Summary of your character",
+    "resources": "Resources",
+    "progress": "Progress",
     "createCharacter": "Create Character",
     "creating": "Creating...",
     "successMessage": "Character created successfully!",
@@ -236,7 +247,11 @@
     "stepOf": "Step {current} of {total}",
     "next": "Next",
     "previous": "Previous",
-    "finish": "Finish"
+    "finish": "Finish",
+    "characterImage": "Character Image",
+    "clickOrDrag": "Click or drag",
+    "portrait": "Portrait",
+    "details": "Details"
   },
   "characterSystems": {
     "gaia": {

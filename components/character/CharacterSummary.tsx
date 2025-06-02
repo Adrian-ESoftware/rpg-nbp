@@ -55,7 +55,7 @@ export function CharacterSummary({
           <h2 className="text-xl font-semibold">{t('characterSummary')}</h2>
         </div>
         <p className="text-base text-muted-foreground">
-          Resumo do seu personagem
+          {t('summaryDescription')}
         </p>
       </div>
 
@@ -91,7 +91,7 @@ export function CharacterSummary({
 
       {/* Resources */}
       <div className="space-y-4">
-        <h4 className="font-semibold">Recursos</h4>
+        <h4 className="font-semibold">{t('resources')}</h4>
         <div className="grid grid-cols-1 gap-4">
           <div className="flex items-center justify-between p-3 bg-card/50 rounded-lg border border-border/60 shadow-lg hover:bg-card/70 hover:shadow-xl transition-all duration-300">
             <div className="flex items-center space-x-2">
@@ -120,7 +120,7 @@ export function CharacterSummary({
 
       {/* Progress */}
       <div className="space-y-4">
-        <h4 className="font-semibold">Progresso</h4>
+        <h4 className="font-semibold">{t('progress')}</h4>
         <div className="space-y-4">
           <div className="flex items-center justify-between p-3 bg-card/40 rounded-lg border border-border/50 shadow-md">
             <span className="text-sm font-medium">{tSystem(system.attributes.label)}:</span>

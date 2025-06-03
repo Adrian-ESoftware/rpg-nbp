@@ -393,5 +393,38 @@
         }
       }
     }
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "forgotPassword": "Forgot Password?",
+    "rememberMe": "Remember Me",
+    "loginButton": "Login",
+    "registerButton": "Register",
+    "logoutButton": "Logout",
+    "welcomeBack": "Welcome back, {name}!",
+    "createAccountDescription": "Create an account to start your adventure.",
+    "accountCreated": "Account created successfully! Please log in.",
+    "invalidCredentials": "Invalid email or password. Please try again.",
+    "passwordMismatch": "Passwords do not match. Please check and try again.",
+    "emailRequired": "Email is required.",
+    "passwordRequired": "Password is required.",
+    "registrationSuccess": "Registration successful! You can now log in.",
+    "loginDescription": "Log in to your account to access your campaigns.",
+    "loginWithGoogle": "Login with Google",
+    "loading": "Loading...",
+    "notHaveAccount": "Don't have an account?",
+    "alreadyHaveAccount": "Already have an account?",
+    "username": "Username",
+    "fullName": "Full Name",
+    "createAccount": "Create Account",
+    "forgotPasswordDescription": "Enter your email to receive a password reset link.",
+    "sendResetLink": "Send Reset Link",
+    "forgotPasswordSuccess": "If the email exists, a reset link has been sent.",
+    "backToLogin": "Back to Login",
+    "missingFields": "Please fill in all required fields."
   }
 }

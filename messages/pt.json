@@ -396,5 +396,38 @@
         }
       }
     }
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Registrar",
+    "email": "E-mail",
+    "password": "Senha",
+    "confirmPassword": "Confirmar Senha",
+    "forgotPassword": "Esqueceu a Senha?",
+    "rememberMe": "Lembrar-me",
+    "loginButton": "Entrar",
+    "registerButton": "Registrar",
+    "logoutButton": "Sair",
+    "welcomeBack": "Bem-vindo de volta, {name}!",
+    "createAccountDescription": "Crie uma conta para começar sua aventura.",
+    "accountCreated": "Conta criada com sucesso! Por favor, faça login.",
+    "invalidCredentials": "E-mail ou senha inválidos. Tente novamente.",
+    "passwordMismatch": "As senhas não coincidem. Verifique e tente novamente.",
+    "emailRequired": "E-mail é obrigatório.",
+    "passwordRequired": "Senha é obrigatória.",
+    "registrationSuccess": "Cadastro realizado com sucesso! Agora você pode entrar.",
+    "loginDescription": "Entre na sua conta para acessar suas campanhas.",
+    "loginWithGoogle": "Entrar com Google",
+    "loading": "Carregando...",
+    "notHaveAccount": "Não tem uma conta?",
+    "alreadyHaveAccount": "Já tem uma conta?",
+    "username": "Nome de usuário",
+    "fullName": "Nome completo",
+    "createAccount": "Criar conta",
+    "forgotPasswordDescription": "Insira seu e-mail para receber um link de redefinição de senha.",
+    "sendResetLink": "Enviar link de redefinição",
+    "forgotPasswordSuccess": "Se o e-mail existir, um link de redefinição foi enviado.",
+    "backToLogin": "Voltar para Login",
+    "missingFields": "Por favor, preencha todos os campos obrigatórios."
   }
 }

@@ -384,5 +384,38 @@
         }
       }
     }
+  },
+  "auth": {
+    "login": "Iniciar sesión",
+    "register": "Registrarse",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "rememberMe": "Recuérdame",
+    "loginButton": "Entrar",
+    "registerButton": "Registrarse",
+    "logoutButton": "Cerrar sesión",
+    "welcomeBack": "¡Bienvenido de nuevo, {name}!",
+    "createAccountDescription": "Crea una cuenta para comenzar tu aventura.",
+    "accountCreated": "¡Cuenta creada exitosamente! Por favor, inicia sesión.",
+    "invalidCredentials": "Correo electrónico o contraseña inválidos. Inténtalo de nuevo.",
+    "passwordMismatch": "Las contraseñas no coinciden. Por favor, verifica e inténtalo de nuevo.",
+    "emailRequired": "El correo electrónico es obligatorio.",
+    "passwordRequired": "La contraseña es obligatoria.",
+    "registrationSuccess": "¡Registro exitoso! Ahora puedes iniciar sesión.",
+    "loginDescription": "Inicia sesión en tu cuenta para acceder a tus campañas.",
+    "loginWithGoogle": "Iniciar sesión con Google",
+    "loading": "Cargando...",
+    "notHaveAccount": "¿No tienes una cuenta?",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+    "username": "Nombre de usuario",
+    "fullName": "Nombre completo",
+    "createAccount": "Crear cuenta",
+    "forgotPasswordDescription": "Ingresa tu correo electrónico para recibir un enlace de restablecimiento de contraseña.",
+    "sendResetLink": "Enviar enlace de restablecimiento",
+    "forgotPasswordSuccess": "Si el correo electrónico existe, se ha enviado un enlace de restablecimiento.",
+    "backToLogin": "Volver a Iniciar Sesión",
+    "missingFields": "Por favor, completa todos los campos requeridos."
   }
 }

@@ -428,7 +428,6 @@
     "forgotPasswordSuccess": "Si el correo electrónico existe, se ha enviado un enlace de restablecimiento.",
     "backToLogin": "Volver a Iniciar Sesión",
     "missingFields": "Por favor, completa todos los campos requeridos."
-<<<<<<< HEAD
   },
   "profile": {
     "title": "Mi Perfil",
@@ -475,7 +474,5 @@
       "sessions": "Sesiones",
       "hoursPlayed": "Horas Jugadas"
     }
-=======
->>>>>>> a2407ee2a801135faa1af495f88f49d8d579e845
   }
 }

@@ -429,7 +429,6 @@
     "forgotPasswordSuccess": "Se o e-mail existir, um link de redefinição foi enviado.",
     "backToLogin": "Voltar para Login",
     "missingFields": "Por favor, preencha todos os campos obrigatórios."
-<<<<<<< HEAD
   },
   "profile": {
     "title": "Meu Perfil",
@@ -476,7 +475,5 @@
       "sessions": "Sessões",
       "hoursPlayed": "Horas Jogadas"
     }
-=======
->>>>>>> a2407ee2a801135faa1af495f88f49d8d579e845
   }
 }

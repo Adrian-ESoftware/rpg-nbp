@@ -426,6 +426,7 @@
     "forgotPasswordSuccess": "If the email exists, a reset link has been sent.",
     "backToLogin": "Back to Login",
     "missingFields": "Please fill in all required fields."
+<<<<<<< HEAD
   },
   "profile": {
     "title": "My Profile",
@@ -472,5 +473,7 @@
       "sessions": "Sessions",
       "hoursPlayed": "Hours Played"
     }
+=======
+>>>>>>> a2407ee2a801135faa1af495f88f49d8d579e845
   }
 }

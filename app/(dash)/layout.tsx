@@ -8,8 +8,7 @@ import LayoutSidebar from '@/components/layout/Sidebar'
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
 
 export const metadata: Metadata = {
-  title: 'RPG Dash',
-  description: 'Sistema de RPG',
+  title: 'Arkadice - Dashboard',
 }
 
 export default async function RootLayout({

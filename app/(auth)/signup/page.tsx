@@ -49,8 +49,8 @@ export default function SignupPage() {
       <div className="absolute top-1/6 left-1/3 w-20 h-20 bg-primary/18 rounded-full blur-lg animate-pulse delay-800"></div>
       <div className="absolute bottom-1/6 right-1/4 w-32 h-32 bg-accent/22 rounded-full blur-xl animate-pulse delay-400"></div>
 
-      <div className="relative z-10 w-full max-w-md mx-auto">
-        <Card className="shadow-2xl border-primary/20 bg-card/70 backdrop-blur-lg">
+      <div className="relative z-10 w-full max-w-md mx-auto sm:max-w-md sm:mx-auto h-screen sm:h-auto flex items-center">
+        <Card className="shadow-2xl border-primary/20 bg-card/70 backdrop-blur-lg w-full h-full sm:h-auto flex flex-col justify-center">
           <CardHeader className="pb-2 text-center">
             <CardTitle className="text-3xl font-black bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent mb-2">
               <div className="p-4 flex justify-center items-center">

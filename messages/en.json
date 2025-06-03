@@ -426,5 +426,51 @@
     "forgotPasswordSuccess": "If the email exists, a reset link has been sent.",
     "backToLogin": "Back to Login",
     "missingFields": "Please fill in all required fields."
+  },
+  "profile": {
+    "title": "My Profile",
+    "description": "Manage your player information and RPG preferences",
+    "editProfile": "Edit Profile",
+    "cancelEdit": "Cancel Edit",
+    "saveChanges": "Save Changes",
+    "cancel": "Cancel",
+    "personalInfo": "Player Information",
+    "playerName": "Player Name",
+    "playerNamePlaceholder": "Enter your player name...",
+    "nickname": "Nickname",
+    "nicknamePlaceholder": "@yournick",
+    "email": "Email",
+    "emailPlaceholder": "your@email.com",
+    "playerBio": "Player Bio",
+    "playerBioPlaceholder": "Tell about your RPG experience, preferred play style, memorable campaigns...",
+    "location": "Location",
+    "locationPlaceholder": "City, State",
+    "birthDate": "Birth Date",
+    "rpgPreferences": "RPG Preferences",
+    "favoriteSystem": "Favorite System",
+    "favoriteSystemPlaceholder": "Ex: Gaia RPG, D&D 5e, Pathfinder...",
+    "favoriteCharacter": "Favorite Character",
+    "favoriteCharacterPlaceholder": "Name and class of your favorite character...",
+    "preferredRole": "Preferred Role",
+    "preferredRolePlaceholder": "Ex: Tank, Support, DPS, Face...",
+    "playingTime": "Available Time",
+    "playingTimePlaceholder": "Ex: Weekends, Evenings, Flexible...",
+    "experienceLevel": "Experience Level",
+    "campaignsPlayed": "Campaigns Played",
+    "memberSince": "Member since",
+    "uploadPhoto": "Change Photo",
+    "changeAvatar": "Change Avatar",
+    "experienceLevels": {
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced",
+      "master": "Veteran"
+    },
+    "stats": {
+      "campaigns": "Campaigns",
+      "characters": "Characters",
+      "sessions": "Sessions",
+      "hoursPlayed": "Hours Played"
+    }
   }
 }

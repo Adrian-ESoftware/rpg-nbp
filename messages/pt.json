@@ -429,5 +429,51 @@
     "forgotPasswordSuccess": "Se o e-mail existir, um link de redefinição foi enviado.",
     "backToLogin": "Voltar para Login",
     "missingFields": "Por favor, preencha todos os campos obrigatórios."
+  },
+  "profile": {
+    "title": "Meu Perfil",
+    "description": "Gerencie suas informações de jogador e preferências de RPG",
+    "editProfile": "Editar Perfil",
+    "cancelEdit": "Cancelar Edição",
+    "saveChanges": "Salvar Alterações",
+    "cancel": "Cancelar",
+    "personalInfo": "Informações do Jogador",
+    "playerName": "Nome do Jogador",
+    "playerNamePlaceholder": "Digite seu nome de jogador...",
+    "nickname": "Apelido",
+    "nicknamePlaceholder": "@seunick",
+    "email": "Email",
+    "emailPlaceholder": "seu@email.com",
+    "playerBio": "Biografia do Jogador",
+    "playerBioPlaceholder": "Conte sobre sua experiência com RPG, estilo de jogo preferido, campanhas marcantes...",
+    "location": "Localização",
+    "locationPlaceholder": "Cidade, Estado",
+    "birthDate": "Data de Nascimento",
+    "rpgPreferences": "Preferências de RPG",
+    "favoriteSystem": "Sistema Favorito",
+    "favoriteSystemPlaceholder": "Ex: Gaia RPG, D&D 5e, Pathfinder...",
+    "favoriteCharacter": "Personagem Favorito",
+    "favoriteCharacterPlaceholder": "Nome e classe do seu personagem favorito...",
+    "preferredRole": "Papel Preferido",
+    "preferredRolePlaceholder": "Ex: Tanque, Suporte, DPS, Face...",
+    "playingTime": "Tempo Disponível",
+    "playingTimePlaceholder": "Ex: Fins de semana, Noites, Flexível...",
+    "experienceLevel": "Nível de Experiência",
+    "campaignsPlayed": "Campanhas Jogadas",
+    "memberSince": "Membro desde",
+    "uploadPhoto": "Alterar Foto",
+    "changeAvatar": "Trocar Avatar",
+    "experienceLevels": {
+      "beginner": "Iniciante",
+      "intermediate": "Intermediário", 
+      "advanced": "Avançado",
+      "master": "Veterano"
+    },
+    "stats": {
+      "campaigns": "Campanhas",
+      "characters": "Personagens",
+      "sessions": "Sessões",
+      "hoursPlayed": "Horas Jogadas"
+    }
   }
 }

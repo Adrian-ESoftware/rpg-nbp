@@ -171,7 +171,10 @@
     "more": "más",
     "goodLuck": "Buena suerte",
     "master": "Maestro",
-    "goodLuckMaster": "¡Buena suerte, Maestro!"
+    "goodLuckMaster": "¡Buena suerte, Maestro!",
+    "selectSystem": "Selecciona un sistema",
+    "selectSessionType": "Selecciona un tipo de sesión",
+    "settings": "Configuración"
   },
   "validation": {
     "sessionNameRequired": "El nombre de la sesión es obligatorio",
@@ -245,7 +248,15 @@
     "combatPath": "Camino de Combate",
     "selectSystem": "Selecciona un sistema",
     "selectSessionType": "Selecciona un tipo de sesión",
-    "settings": "Configuración"
+    "settings": "Configuración",
+    "stepOf": "Paso {current} de {total}",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "finish": "Finalizar",
+    "characterImage": "Imagen del Personaje",
+    "clickOrDrag": "Haz clic o arrastra",
+    "portrait": "Retrato",
+    "details": "Detalles"
   },
   "characterSystems": {
     "gaia": {
@@ -417,5 +428,51 @@
     "forgotPasswordSuccess": "Si el correo electrónico existe, se ha enviado un enlace de restablecimiento.",
     "backToLogin": "Volver a Iniciar Sesión",
     "missingFields": "Por favor, completa todos los campos requeridos."
+  },
+  "profile": {
+    "title": "Mi Perfil",
+    "description": "Gestiona tu información de jugador y preferencias de RPG",
+    "editProfile": "Editar Perfil",
+    "cancelEdit": "Cancelar Edición",
+    "saveChanges": "Guardar Cambios",
+    "cancel": "Cancelar",
+    "personalInfo": "Información del Jugador",
+    "playerName": "Nombre del Jugador",
+    "playerNamePlaceholder": "Ingresa tu nombre de jugador...",
+    "nickname": "Apodo",
+    "nicknamePlaceholder": "@tuapodo",
+    "email": "Email",
+    "emailPlaceholder": "tu@email.com",
+    "playerBio": "Biografía del Jugador",
+    "playerBioPlaceholder": "Cuenta sobre tu experiencia con RPG, estilo de juego preferido, campañas memorables...",
+    "location": "Ubicación",
+    "locationPlaceholder": "Ciudad, Estado",
+    "birthDate": "Fecha de Nacimiento",
+    "rpgPreferences": "Preferencias de RPG",
+    "favoriteSystem": "Sistema Favorito",
+    "favoriteSystemPlaceholder": "Ej: Gaia RPG, D&D 5e, Pathfinder...",
+    "favoriteCharacter": "Personaje Favorito",
+    "favoriteCharacterPlaceholder": "Nombre y clase de tu personaje favorito...",
+    "preferredRole": "Rol Preferido",
+    "preferredRolePlaceholder": "Ej: Tanque, Soporte, DPS, Cara...",
+    "playingTime": "Tiempo Disponible",
+    "playingTimePlaceholder": "Ej: Fines de semana, Noches, Flexible...",
+    "experienceLevel": "Nivel de Experiencia",
+    "campaignsPlayed": "Campañas Jugadas",
+    "memberSince": "Miembro desde",
+    "uploadPhoto": "Cambiar Foto",
+    "changeAvatar": "Cambiar Avatar",
+    "experienceLevels": {
+      "beginner": "Principiante",
+      "intermediate": "Intermedio",
+      "advanced": "Avanzado",
+      "master": "Veterano"
+    },
+    "stats": {
+      "campaigns": "Campañas",
+      "characters": "Personajes",
+      "sessions": "Sesiones",
+      "hoursPlayed": "Horas Jugadas"
+    }
   }
 }

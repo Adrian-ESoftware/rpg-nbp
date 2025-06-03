@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { User, Bell, Shield, LogOut, Palette, Globe, Download, Database } from "lucide-react"
 import ThemeSwitcher from "@/components/ThemeSwitcher"
@@ -9,6 +10,7 @@ import LanguageSwitcher from "@/components/LanguageSwitcher"
 export default function SettingsPage() {
   const [mounted, setMounted] = useState(false)
   const t = useTranslations('settings')
+  const router = useRouter()
 
   useEffect(() => {
     setMounted(true)
@@ -22,7 +24,7 @@ export default function SettingsPage() {
       icon: User,
       description: t('profileDescription'),
       items: [
-        { labelKey: "editProfile", action: () => console.log("Editar perfil") },
+        { labelKey: "editProfile", action: () => router.push('/dash/profile') },
         { labelKey: "changePassword", action: () => console.log("Alterar senha") },
       ]
     },

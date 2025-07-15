@@ -425,7 +425,10 @@
     "sendResetLink": "Send Reset Link",
     "forgotPasswordSuccess": "If the email exists, a reset link has been sent.",
     "backToLogin": "Back to Login",
-    "missingFields": "Please fill in all required fields."
+    "missingFields": "Please fill in all required fields.",
+    "unauthorized": "Unauthorized access. Please log in.",
+    "accessDenied": "Access denied. Please log in to continue.",
+    "loginError": "An error occurred while logging in. Please try again."
   },
   "profile": {
     "title": "My Profile",

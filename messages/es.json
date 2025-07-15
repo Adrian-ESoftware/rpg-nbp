@@ -427,7 +427,10 @@
     "sendResetLink": "Enviar enlace de restablecimiento",
     "forgotPasswordSuccess": "Si el correo electrónico existe, se ha enviado un enlace de restablecimiento.",
     "backToLogin": "Volver a Iniciar Sesión",
-    "missingFields": "Por favor, completa todos los campos requeridos."
+    "missingFields": "Por favor, completa todos los campos requeridos.",
+    "unauthorized": "Acceso no autorizado. Por favor, inicia sesión.",
+    "accessDenied": "Acceso denegado. Por favor, inicia sesión para continuar.",
+    "loginError": "Ocurrió un error al iniciar sesión. Por favor, inténtalo de nuevo."
   },
   "profile": {
     "title": "Mi Perfil",

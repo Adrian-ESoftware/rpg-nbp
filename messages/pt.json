@@ -428,7 +428,10 @@
     "sendResetLink": "Enviar link de redefinição",
     "forgotPasswordSuccess": "Se o e-mail existir, um link de redefinição foi enviado.",
     "backToLogin": "Voltar para Login",
-    "missingFields": "Por favor, preencha todos os campos obrigatórios."
+    "missingFields": "Por favor, preencha todos os campos obrigatórios.",
+    "unauthorized": "Acesso não autorizado. Por favor, faça login.",
+    "accessDenied": "Acesso negado. Por favor, faça login para continuar.",
+    "loginError": "Ocorreu um erro ao fazer login. Por favor, tente novamente."
   },
   "profile": {
     "title": "Meu Perfil",

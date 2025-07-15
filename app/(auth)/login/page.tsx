@@ -1,36 +1,64 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useTranslations } from "next-intl"
-import { Lock, User } from "lucide-react"
+import { useSearchParams } from "next/navigation"
+import { Lock, User, AlertCircle } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Alert, AlertDescription } from "@/components/ui/alert"
 import ThemedIcon from "@/components/svg/ThemedIcon"
+import { authApi } from "@/lib/api"
 
 export default function LoginPage() {
   const t = useTranslations("auth")
+  const searchParams = useSearchParams()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [urlError, setUrlError] = useState<string | null>(null)
+
+  useEffect(() => {
+    const errorParam = searchParams.get('error')
+    if (errorParam) {
+      switch (errorParam) {
+        case 'unauthorized':
+          setUrlError(t("unauthorized"))
+          break
+        case 'access_denied':
+          setUrlError(t("accessDenied"))
+          break
+        default:
+          setUrlError(t("loginError"))
+      }
+    }
+  }, [searchParams])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
     setError(null)
-    // Simulate login
-    await new Promise((r) => setTimeout(r, 1200))
+
     if (!email || !password) {
       setError(t("missingFields"))
       setLoading(false)
       return
     }
-    // TODO: Replace with real authentication logic
-    if (email === "demo@rpg.com" && password === "demo") {
+
+    try {
+      await authApi.login({ email, password })
+      // Redirect to dashboard on successful login
       window.location.href = "/dash"
-    } else {
-      setError(t("invalidCredentials"))
+    } catch (error: any) {
+      console.error('Login error:', error)
+      if (error.response?.status === 401) {
+        setError(t("invalidCredentials"))
+      } else {
+        setError("An error occurred during login. Please try again.")
+      }
+    } finally {
       setLoading(false)
     }
   }
@@ -48,6 +76,13 @@ export default function LoginPage() {
       <div className="absolute bottom-1/6 right-1/4 w-32 h-32 bg-accent/22 rounded-full blur-xl animate-pulse delay-400"></div>
 
     <div className="relative z-10 w-full max-w-md mx-auto">
+      {urlError && (
+        <Alert variant="destructive" className="mb-4">
+          <AlertCircle className="h-4 w-4" />
+          <AlertDescription>{urlError}</AlertDescription>
+        </Alert>
+      )}
+      
       <Card className="shadow-2xl border-primary/20 bg-card/70 backdrop-blur-lg">
         <CardHeader className="pb-2 text-center">
         <CardTitle className="text-3xl font-black bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent mb-2">
